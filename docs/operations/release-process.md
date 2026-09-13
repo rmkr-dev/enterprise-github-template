@@ -25,7 +25,7 @@ git push origin v0.1.0
 
 ## GitHub Releases
 
-If a release workflow is present (`.github/workflows/release.yml`), pushing a `v*` tag creates a GitHub Release from that tag. Otherwise create the release manually from the tag in the GitHub UI.
+Pushing a `v*` tag triggers [`.github/workflows/release.yml`](../../.github/workflows/release.yml), which creates a GitHub Release from that tag. See also [tagging.md](tagging.md).
 
 Release notes should summarize consumer-visible changes (new required files, CI behavior, policy docs)—not internal refactor chatter.
 
