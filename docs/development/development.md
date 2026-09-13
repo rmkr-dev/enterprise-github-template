@@ -40,9 +40,11 @@ On every pull request and every push to `main`:
 | [`.github/workflows/codeql.yml`](../../.github/workflows/codeql.yml) | CodeQL analysis for GitHub Actions workflow YAML (`actions` language), also on a weekly schedule |
 | [`.github/workflows/release.yml`](../../.github/workflows/release.yml) | Creates a GitHub Release when a `v*` tag is pushed |
 
-Dependabot opens weekly PRs for GitHub Actions action updates (`.github/dependabot.yml`). `CODEOWNERS` routes reviews to `@rmkr-dev`.
+Dependabot opens weekly PRs for GitHub Actions updates (`.github/dependabot.yml`), grouped into a single Actions PR when possible. `CODEOWNERS` routes reviews to `@rmkr-dev`.
 
 There is **no application build** in this repository. CI is intentionally limited to template hygiene checks.
+
+Recommended branch protection and required check names: [branch-protection.md](../operations/branch-protection.md).
 
 ## Working on a slice
 
