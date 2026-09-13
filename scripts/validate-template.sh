@@ -23,9 +23,11 @@ REQUIRED=(
   "docs/operations/README.md"
   "docs/operations/operations.md"
   "docs/operations/release-process.md"
+  "docs/operations/tagging.md"
   "CHANGELOG.md"
   ".github/workflows/ci.yml"
   ".github/workflows/codeql.yml"
+  ".github/workflows/release.yml"
   ".github/dependabot.yml"
   ".github/CODEOWNERS"
   ".github/PULL_REQUEST_TEMPLATE.md"
@@ -51,7 +53,7 @@ for path in "${REQUIRED[@]}"; do
 done
 
 echo "==> Checking workflow jobs are non-empty"
-for wf in .github/workflows/ci.yml .github/workflows/codeql.yml; do
+for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflows/release.yml; do
   if ! grep -qE '^[[:space:]]*jobs:' "$wf"; then
     echo "MISSING jobs: key in $wf" >&2
     fail=1

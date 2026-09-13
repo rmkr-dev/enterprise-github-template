@@ -68,7 +68,7 @@ bash scripts/validate-template.sh
 bash tests/test_validate_template.sh
 ```
 
-GitHub Actions runs those same checks on pull requests and pushes to `main`. CodeQL analyzes Actions workflow YAML. Details: [docs/development/development.md](docs/development/development.md).
+GitHub Actions runs those same checks on pull requests and pushes to `main`. CodeQL analyzes Actions workflow YAML. Pushing a `v*` tag creates a GitHub Release via `.github/workflows/release.yml`. Details: [docs/development/development.md](docs/development/development.md).
 
 ## Documentation
 
@@ -90,6 +90,7 @@ GitHub Actions runs those same checks on pull requests and pushes to `main`. Cod
 | [Security](docs/security/security.md) | Baseline security expectations |
 | [Operations](docs/operations/README.md) | Maintainer ops for this template |
 | [Release process](docs/operations/release-process.md) | Tagging and template releases |
+| [Tagging](docs/operations/tagging.md) | `v*` tags and the release workflow |
 | [Changelog](CHANGELOG.md) | Notable template changes |
 
 ## Contributing

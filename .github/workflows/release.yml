@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Create release from tag
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF_NAME}"
+          notes_file="$(mktemp)"
+          {
+            echo "Template snapshot \`${tag}\`."
+            echo
+            echo "See CHANGELOG.md for consumer-visible history."
+            echo "This release has no application binaries."
+          } > "$notes_file"
+          gh release create "$tag" \
+            --title "$tag" \
+            --notes-file "$notes_file" \
+            --verify-tag
