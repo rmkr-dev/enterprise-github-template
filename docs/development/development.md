@@ -48,10 +48,14 @@ There is **no application build** in this repository. CI is intentionally limite
 5. If the decision is significant, add an ADR under `docs/decisions/`.
 6. Run the local validation commands before opening the PR.
 
+## Template flag status
+
+The GitHub **template repository** flag is **enabled** on `rmkr-dev/enterprise-github-template`. Consumers can create a new repository with **Use this template** from the GitHub UI. Maintainers should keep that flag on unless an ADR records turning it off.
+
 ## What this template does not have yet
 
 - Application source or a sample service
-- The GitHub “template repository” flag (enable when you are ready to publish)
+- Language-specific build/test jobs (add those in the derived repo when application code lands)
 
 ## After you copy the template
 
