@@ -1,6 +1,6 @@
 # Architecture diagram
 
-Mermaid diagram-as-code for the **current** template. Boxes are files and process surfaces that exist (or are planned and labeled as such), not a fictional application.
+Mermaid diagram-as-code for the **current** template. Boxes are files and process surfaces that exist in the tree, not a fictional application.
 
 ```mermaid
 flowchart TB
@@ -14,6 +14,7 @@ flowchart TB
     README["README.md"]
     AGENTS["AGENTS.md"]
     Contrib["CONTRIBUTING.md"]
+    SecRoot["SECURITY.md"]
 
     subgraph docs["docs/"]
       Arch["architecture/<br/>architecture.md + diagrams"]
@@ -22,10 +23,15 @@ flowchart TB
       Sec["security/"]
     end
 
-    subgraph future[".github/ (future slice)"]
-      WF["workflows/<br/>CI, CodeQL"]
+    subgraph github[".github/"]
+      WF["workflows/<br/>ci.yml, codeql.yml"]
       Dep["dependabot.yml"]
       Hygiene["CODEOWNERS, ISSUE_TEMPLATE,<br/>PULL_REQUEST_TEMPLATE"]
+    end
+
+    subgraph tooling["Validation"]
+      Script["scripts/validate-template.sh"]
+      Tests["tests/test_validate_template.sh"]
     end
 
     subgraph config["Repo config surfaces"]
@@ -40,13 +46,15 @@ flowchart TB
   Human --> AGENTS
   README --> docs
   AGENTS --> docs
+  WF --> Script
+  Script --> Tests
   Derived -.->|"inherits copy of"| template
-  future -.->|"planned; not present yet"| template
 ```
 
 ## How to read it
 
 - **Consumers** (people and agents) enter through `README.md` and `AGENTS.md`.
 - **`docs/`** holds the lasting description of architecture, decisions, development practice, and security posture.
-- **`.github/`** is drawn as a future surface so the diagram does not pretend CI already exists. When that slice lands, update this figure and [architecture.md](architecture.md) in the same PR.
+- **`.github/`** runs template validation and CodeQL on Actions YAML, plus Dependabot and community templates.
+- **`scripts/` / `tests/`** are the only “runtime” in this repo: shell checks invoked by CI and locally.
 - A **derived repository** gets a snapshot of these files; it does not stay coupled to upstream template updates unless the consumer chooses to merge them later.

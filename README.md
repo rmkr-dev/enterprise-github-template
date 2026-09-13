@@ -1,6 +1,6 @@
 # Enterprise GitHub Template
 
-A GitHub-native starting point for public and private repositories that need the same baseline: human-first engineering standards, architecture and decision docs, security defaults, and (in later slices) CI that runs on GitHub Actions.
+A GitHub-native starting point for public and private repositories that need the same baseline: human-first engineering standards, architecture and decision docs, security defaults, and CI that runs on GitHub Actions.
 
 This repository is the **template**, not an application. Use it to bootstrap a new repo, then replace placeholders with the product you are actually building.
 
@@ -11,8 +11,7 @@ Most new repos accumulate process after the fact: a README that goes stale, CI c
 - what “done” means
 - where architecture and decisions live
 - how to change the repo without leaving orphans or fake implementations
-
-Automation (workflows, dependency updates, security scanning) is intentionally **not** in this slice. Those land in follow-up PRs so each piece can be reviewed on its own.
+- a small Actions pipeline that validates the template itself (not a fake app build)
 
 ## How to use it as a GitHub template
 
@@ -22,7 +21,7 @@ The repo is not marked as a GitHub template yet. When it is:
 2. Clone your new repo.
 3. Rewrite this README for the product. Keep the `docs/` layout unless you have a reason to change it.
 4. Fill in `docs/architecture/architecture.md` for the real system. Add ADRs when you make significant decisions.
-5. Add application code, tests, and workflows in later commits — do not invent a sample app here just to look complete.
+5. Add application code and language-specific workflows in later commits — do not invent a sample app here just to look complete.
 
 Until the template flag is on, you can still clone or fork this repo and treat it the same way.
 
@@ -34,8 +33,8 @@ Until the template flag is on, you can still clone or fork this repo and treat i
 | --- | --- |
 | GitHub Actions, Issues, Projects, Discussions as needed | Third-party CI as the primary pipeline |
 | Markdown docs in the repo | Wiki-only or undocumented Slack process |
-| Dependabot / CodeQL when those slices land | Paid scanners required to merge |
-| Language-native tooling | Adding Node/npm only to run docs or lint Markdown |
+| Dependabot / CodeQL | Paid scanners required to merge |
+| Shell-based template validation | Adding Node/npm only to run docs or lint Markdown |
 
 Do not introduce Node, npm, or other runtimes in this template unless a later application slice actually needs them.
 
@@ -45,8 +44,12 @@ Do not introduce Node, npm, or other runtimes in this template unless a later ap
 .
 ├── AGENTS.md                 # Read before changing code or docs
 ├── CONTRIBUTING.md           # How to propose changes
+├── SECURITY.md               # Vulnerability reporting for this template
 ├── LICENSE
 ├── README.md                 # You are here
+├── scripts/                  # Template validation (used by CI)
+├── tests/                    # Checks for the validator
+├── .github/                  # Actions, Dependabot, community templates
 └── docs/
     ├── architecture/         # Current system + diagrams
     ├── decisions/            # Architecture Decision Records
@@ -54,7 +57,14 @@ Do not introduce Node, npm, or other runtimes in this template unless a later ap
     └── security/             # Security posture for template consumers
 ```
 
-Later slices are expected to add `.github/` (workflows, issue/PR templates, Dependabot), then application code and tests. Do not assume those directories exist today.
+## Local checks and CI
+
+```bash
+bash scripts/validate-template.sh
+bash tests/test_validate_template.sh
+```
+
+GitHub Actions runs those same checks on pull requests and pushes to `main`. CodeQL analyzes Actions workflow YAML. Details: [docs/development/development.md](docs/development/development.md).
 
 ## Documentation
 
@@ -62,7 +72,8 @@ Later slices are expected to add `.github/` (workflows, issue/PR templates, Depe
 | --- | --- |
 | [AGENTS.md](AGENTS.md) | Guardrails for humans and coding agents |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | How to open a change |
-| [Development](docs/development/development.md) | Day-to-day contributor workflow |
+| [SECURITY.md](SECURITY.md) | How to report vulnerabilities |
+| [Development](docs/development/development.md) | Local validation and what CI does |
 | [Architecture overview](docs/architecture/README.md) | How architecture docs are organized |
 | [Current architecture](docs/architecture/architecture.md) | What this repo is today |
 | [Architecture diagram](docs/architecture/architecture-diagram.md) | Mermaid view of template surfaces |
@@ -73,7 +84,7 @@ Later slices are expected to add `.github/` (workflows, issue/PR templates, Depe
 
 ## Contributing
 
-Read [CONTRIBUTING.md](CONTRIBUTING.md) and [AGENTS.md](AGENTS.md) before you edit. Changes should be the smallest complete slice that leaves docs, structure, and (when they exist) tests consistent.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) and [AGENTS.md](AGENTS.md) before you edit. Changes should be the smallest complete slice that leaves docs, structure, and tests consistent.
 
 ## License
 

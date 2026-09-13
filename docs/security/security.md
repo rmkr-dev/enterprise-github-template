@@ -1,22 +1,27 @@
 # Security
 
-This is the security posture **for people who consume the template**, and for anyone changing the template itself. It is not a vulnerability-reporting policy file; a root `SECURITY.md` can be added in a later slice if you want GitHub’s reporting UI.
+## Posture for this template
 
-## Defaults
+This repository ships documentation, process defaults, and GitHub Actions hygiene—not an application runtime. Security expectations for **the template itself**:
 
-- **No secrets in git.** Tokens, keys, and `.env` files stay out of the tree and out of examples. Use GitHub Actions secrets or the host’s secret store when automation exists.
-- **Least privilege.** When workflows appear, grant `permissions` explicitly and keep `GITHUB_TOKEN` write access off unless the job must push or comment.
-- **Public-safe content.** This template is meant for public portfolio use: no personal contact details, no company names, no certifications or awards in repo content.
-- **Dependencies.** Do not add packages to “look complete.” Every dependency is an attack surface. Language lockfiles and Dependabot belong with the application slice, not this docs slice.
+- No secrets, tokens, or credentials in the tree, examples, or commit messages
+- Workflow permissions are least-privilege (`contents: read` for CI; CodeQL adds `security-events: write`)
+- Dependabot keeps GitHub Actions dependencies on a weekly cadence
+- CodeQL analyzes Actions workflow YAML on PR, push to `main`, and a weekly schedule
+- Vulnerability reports for this template go through [SECURITY.md](../../SECURITY.md) (GitHub Security Advisories / `@rmkr-dev`)
 
-## What consumers should do after copying
+## Expectations for derived repositories
 
-1. Set branch protection on `main` (reviews, and required checks once CI exists).
-2. Restrict who can approve workflows and who can create tokens.
-3. Add a real `SECURITY.md` with a reporting path that you actually monitor.
-4. Turn on Dependabot and CodeQL (or equivalent) when those files exist in a later slice — do not paste badges before the scans run.
-5. Review `AGENTS.md` and drop only the rules that do not apply, via an ADR.
+When you create a product repo from this template:
 
-## Reporting a problem in this template
+1. Keep the “no secrets in git” rule.
+2. Extend CodeQL languages and CI jobs when you add application code.
+3. Replace architecture and network docs when you introduce real systems; document trust boundaries there.
+4. Do not publish personal contact details; prefer GitHub handles and private advisories.
+5. Review workflow permissions whenever you add third-party actions.
 
-Open a GitHub issue on the template repository describing the doc or default that is unsafe. Do not file secrets in the issue; rotate first, then describe the class of leak.
+## Out of scope here
+
+- Production hardening for a specific cloud or runtime (owned by the consumer)
+- Paid scanners as a merge gate
+- Company names or private support emails in the template
