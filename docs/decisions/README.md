@@ -25,3 +25,4 @@ Skip an ADR for typo fixes, doc wording, and other local edits that do not chang
 | ADR | Title | Status |
 | --- | --- | --- |
 | [ADR-001](ADR-001-github-native-template.md) | GitHub-native free-first repository template | Accepted |
+| [ADR-002](ADR-002-validation-in-ci.md) | Validate the template in GitHub Actions CI | Accepted |

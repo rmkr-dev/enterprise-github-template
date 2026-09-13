@@ -40,7 +40,7 @@ See [architecture-diagram.md](architecture-diagram.md) for a Mermaid view of the
 
 ## CI shape
 
-CI does **not** build an application. It validates that the template’s required files and docs stay coherent. CodeQL analyzes Actions workflow YAML. See [development.md](../development/development.md) for how to run checks locally.
+CI does **not** build an application. It validates that the template’s required files and docs stay coherent (`scripts/validate-template.sh` plus tests, including a shell-syntax job). CodeQL analyzes Actions workflow YAML. See [ADR-002](../decisions/ADR-002-validation-in-ci.md) and [development.md](../development/development.md).
 
 ## Network posture
 
@@ -49,6 +49,7 @@ This template has **no networked runtime**. There is nothing to put on a VPC, CD
 ## Related decisions
 
 - [ADR-001: GitHub-native free-first repository template](../decisions/ADR-001-github-native-template.md)
+- [ADR-002: Validate the template in GitHub Actions CI](../decisions/ADR-002-validation-in-ci.md)
 
 ## What is intentionally out of scope here
 

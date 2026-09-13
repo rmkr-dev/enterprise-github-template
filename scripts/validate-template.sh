@@ -17,6 +17,7 @@ REQUIRED=(
   "docs/architecture/README.md"
   "docs/decisions/README.md"
   "docs/decisions/ADR-001-github-native-template.md"
+  "docs/decisions/ADR-002-validation-in-ci.md"
   "docs/development/development.md"
   "docs/security/security.md"
   "docs/operations/README.md"

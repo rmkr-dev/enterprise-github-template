@@ -30,3 +30,8 @@ flowchart LR
 ```
 
 Mark your real diagram as owned by the product team, keep secrets out of labels, and prefer environment-agnostic names over vendor marketing terms unless the vendor is a hard dependency recorded in an ADR.
+
+## Template CI runners (not a product network)
+
+GitHub Actions jobs for this template run on **ephemeral GitHub-hosted runners** (for example `ubuntu-latest`). That is GitHub’s shared infrastructure, not a VPC or service mesh belonging to this repository. Do not draw those runners into a product network diagram; mention them only as the execution environment for `scripts/validate-template.sh` and CodeQL.
+
