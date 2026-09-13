@@ -44,6 +44,8 @@ Do not introduce Node, npm, or other runtimes in this template unless a later ap
 .
 ├── AGENTS.md                 # Read before changing code or docs
 ├── CONTRIBUTING.md           # How to propose changes
+├── CODE_OF_CONDUCT.md        # Contributor Covenant
+├── SUPPORT.md                # Where to ask for help
 ├── SECURITY.md               # Vulnerability reporting for this template
 ├── CHANGELOG.md              # Template release history
 ├── LICENSE
@@ -75,6 +77,8 @@ GitHub Actions runs those same checks on pull requests and pushes to `main`. Cod
 | [AGENTS.md](AGENTS.md) | Guardrails for humans and coding agents |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | How to open a change |
 | [SECURITY.md](SECURITY.md) | How to report vulnerabilities |
+| [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Contributor Covenant conduct policy |
+| [SUPPORT.md](SUPPORT.md) | Where questions and reports should go |
 | [Development](docs/development/development.md) | Local validation and what CI does |
 | [Architecture overview](docs/architecture/README.md) | How architecture docs are organized |
 | [Current architecture](docs/architecture/architecture.md) | What this repo is today |

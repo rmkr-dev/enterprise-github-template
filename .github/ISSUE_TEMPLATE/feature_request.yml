@@ -1,0 +1,42 @@
+name: Feature request
+description: Propose an improvement to this template
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Propose a change to the **template** (docs, guardrails, CI, community files). Application features belong in derived repositories.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What gap does the template leave for consumers or maintainers?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: checkboxes
+    id: dod
+    attributes:
+      label: Definition of Done impact
+      description: Which layers would this change touch?
+      options:
+        - label: AGENTS.md / CONTRIBUTING.md
+        - label: docs/ (architecture, decisions, development, security, operations)
+        - label: scripts/ or tests/
+        - label: .github/ workflows or templates
+        - label: Security defaults
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Explicitly out of scope
+      placeholder: e.g. sample application, Node/npm toolchain

@@ -1,0 +1,67 @@
+name: Bug report
+description: Something in this template is wrong or misleading
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping keep the template honest. Use this form for **docs, scripts, or workflows in this repository**. Security issues go through [SECURITY.md](../SECURITY.md) / private advisories — not here.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Docs / README
+        - Validator scripts
+        - GitHub Actions workflows
+        - Issue or PR templates
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong
+      description: Describe the bug in the template docs, scripts, or workflows.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      value: |
+        1.
+        2.
+    validations:
+      required: true
+  - type: dropdown
+    id: context_repo
+    attributes:
+      label: Where are you seeing this?
+      options:
+        - enterprise-github-template (this repo)
+        - A repository created from this template
+    validations:
+      required: true
+  - type: textarea
+    id: files
+    attributes:
+      label: Relevant files
+      placeholder: e.g. scripts/validate-template.sh, docs/development/development.md
+  - type: textarea
+    id: more
+    attributes:
+      label: Additional context
