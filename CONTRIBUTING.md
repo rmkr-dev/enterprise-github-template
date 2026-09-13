@@ -23,3 +23,8 @@ Thanks for improving this template. Keep changes small, complete, and honest abo
 - Drive-by reformatting of files you did not otherwise change
 
 Questions about process belong in the pull request. Architecture-level choices belong in an ADR — see [docs/decisions/README.md](docs/decisions/README.md).
+
+## Community
+
+- Be excellent: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- Questions and support routing: [SUPPORT.md](SUPPORT.md)

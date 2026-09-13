@@ -8,6 +8,10 @@ This document is how people (and agents) work **on this template**. After you cr
 - `bash` (for the local template validator)
 - No Node/npm. Do not add other runtimes unless a later application slice needs them.
 
+## Support routing
+
+See [SUPPORT.md](../../SUPPORT.md) for where bugs, features, security, and conduct reports should go. Prefer issue forms over blank issues.
+
 ## Branching and review
 
 - Branch from `main`. One concern per branch and pull request.

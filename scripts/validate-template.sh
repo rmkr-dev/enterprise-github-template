@@ -29,9 +29,11 @@ REQUIRED=(
   ".github/dependabot.yml"
   ".github/CODEOWNERS"
   ".github/PULL_REQUEST_TEMPLATE.md"
-  ".github/ISSUE_TEMPLATE/bug_report.md"
-  ".github/ISSUE_TEMPLATE/feature_request.md"
+  ".github/ISSUE_TEMPLATE/bug_report.yml"
+  ".github/ISSUE_TEMPLATE/feature_request.yml"
   ".github/ISSUE_TEMPLATE/config.yml"
+  "CODE_OF_CONDUCT.md"
+  "SUPPORT.md"
   "scripts/validate-template.sh"
   "tests/test_validate_template.sh"
 )

@@ -9,6 +9,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+- Contributor Covenant (`CODE_OF_CONDUCT.md`), `SUPPORT.md`, and improved issue forms
 - Operations guide (`docs/operations/`) and release process documentation
 - Changelog for template consumers and maintainers
 - Stronger template validation (workflows, CODEOWNERS, SECURITY, ADR presence) and a CI shell-syntax job
