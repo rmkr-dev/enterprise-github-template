@@ -15,7 +15,7 @@ Most new repos accumulate process after the fact: a README that goes stale, CI c
 
 ## How to use it as a GitHub template
 
-The repo is not marked as a GitHub template yet. When it is:
+This repository is a GitHub template. Create a new repo from it with **Use this template**:
 
 1. On GitHub, choose **Use this template** → **Create a new repository**.
 2. Clone your new repo.
@@ -23,7 +23,7 @@ The repo is not marked as a GitHub template yet. When it is:
 4. Fill in `docs/architecture/architecture.md` for the real system. Add ADRs when you make significant decisions.
 5. Add application code and language-specific workflows in later commits — do not invent a sample app here just to look complete.
 
-Until the template flag is on, you can still clone or fork this repo and treat it the same way.
+You can still clone or fork this repo and treat it the same way.
 
 ## Technology stance
 
