@@ -9,19 +9,24 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+### Changed
+
+## [0.1.0] — 2026-09-13
+
+### Added
+
+- GitHub-native docs layout (`docs/architecture`, `docs/decisions`, `docs/development`, `docs/security`, `docs/operations`)
+- `AGENTS.md` guardrails and CONTRIBUTING / SECURITY policies
+- Actions CI for template validation (required files, links, CODEOWNERS, SECURITY, ADRs) plus shell-syntax job
+- CodeQL for Actions workflow YAML and Dependabot for Actions
+- Community files: issue forms, PR template, Contributor Covenant, SUPPORT.md
 - Release workflow (`.github/workflows/release.yml`) for `v*` tags
-- Contributor Covenant (`CODE_OF_CONDUCT.md`), `SUPPORT.md`, and improved issue forms
-- Operations guide (`docs/operations/`) and release process documentation
-- Changelog for template consumers and maintainers
-- Stronger template validation (workflows, CODEOWNERS, SECURITY, ADR presence) and a CI shell-syntax job
+- ADR-001 (GitHub-native free-first) and ADR-002 (validation in CI)
+- Changelog and release/tagging documentation
 
 ### Changed
 
-- Development and architecture docs record that the GitHub template flag is enabled
-
-## [0.1.0] — TBD
-
-Baseline public template: GitHub-native docs layout, `AGENTS.md` guardrails, Actions CI for template validation, CodeQL for Actions YAML, Dependabot, and community issue/PR templates.
+- Documented that the GitHub **template repository** flag is enabled and **Use this template** works now
 
 [Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.1.0
