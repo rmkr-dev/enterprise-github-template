@@ -1,0 +1,37 @@
+# Operations
+
+How maintainers operate **this template repository**. Derived products should replace or extend this document for their own runtime; do not invent application ops here.
+
+## What we operate
+
+| Surface | Owner action |
+| --- | --- |
+| GitHub template flag | Keep enabled so **Use this template** works |
+| Default branch `main` | Merge complete slices only; keep CI green |
+| Actions (CI, CodeQL) | Free-plan workflows; least-privilege permissions |
+| Dependabot | Review weekly Actions update PRs |
+| Security advisories | Triage via [SECURITY.md](../../SECURITY.md) |
+
+There is no application runtime, hosting, or on-call rotation for this template.
+
+## Day-to-day
+
+1. Prefer small PRs that leave docs, scripts, and workflows consistent.
+2. Run `bash scripts/validate-template.sh` and `bash tests/test_validate_template.sh` before merge when changing required files or links.
+3. Merge Dependabot PRs after CI is green; major action bumps deserve a quick look at release notes.
+4. When adding a required file, update `scripts/validate-template.sh` in the same PR.
+
+## Incidents (template-scoped)
+
+| Symptom | First response |
+| --- | --- |
+| CI red on `main` | Revert or fix-forward the last merge; do not leave `main` broken |
+| Broken relative Markdown links | Fix links or restore the target file; validator must pass |
+| Suspected unsafe default in a workflow | Draft a private advisory per SECURITY.md; tighten permissions |
+
+## Related docs
+
+- [Development](../development/development.md) — local checks and CI shape
+- [Release process](release-process.md) — tagging and GitHub Releases
+- [CHANGELOG.md](../../CHANGELOG.md) — user-facing history
+- [Security](../security/security.md) — consumer posture
