@@ -82,6 +82,7 @@ GitHub Actions runs those same checks on pull requests and pushes to `main`. Cod
 | [Network diagram note](docs/architecture/network-diagram.md) | No runtime network; consumer stub |
 | [Decisions](docs/decisions/README.md) | When and how to write an ADR |
 | [ADR-001](docs/decisions/ADR-001-github-native-template.md) | Why GitHub-native free-first |
+| [ADR-002](docs/decisions/ADR-002-validation-in-ci.md) | Why validation runs in Actions CI |
 | [Security](docs/security/security.md) | Baseline security expectations |
 | [Operations](docs/operations/README.md) | Maintainer ops for this template |
 | [Release process](docs/operations/release-process.md) | Tagging and template releases |
