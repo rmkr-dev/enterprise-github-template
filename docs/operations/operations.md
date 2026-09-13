@@ -33,5 +33,6 @@ There is no application runtime, hosting, or on-call rotation for this template.
 
 - [Development](../development/development.md) — local checks and CI shape
 - [Release process](release-process.md) — tagging and GitHub Releases
+- [Branch protection](branch-protection.md) — recommended required checks on `main`
 - [CHANGELOG.md](../../CHANGELOG.md) — user-facing history
 - [Security](../security/security.md) — consumer posture

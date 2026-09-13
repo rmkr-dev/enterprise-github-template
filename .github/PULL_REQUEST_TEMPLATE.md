@@ -18,5 +18,7 @@
 - [ ] CI is considered (workflows updated or confirmed still correct)
 - [ ] Security considered (no secrets; permissions least-privilege; `SECURITY.md` / docs/security updated if posture changed)
 - [ ] Docs match reality (`README.md`, architecture, ADRs as needed)
+- [ ] Consumer-visible template changes noted in `CHANGELOG.md` (Unreleased) when applicable
+- [ ] Conduct/support paths unchanged or updated (`CODE_OF_CONDUCT.md`, `SUPPORT.md`)
 - [ ] Significant decisions have an ADR
 - [ ] High-impact items are called out for a human reviewer
