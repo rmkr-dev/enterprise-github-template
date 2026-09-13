@@ -15,15 +15,15 @@ Most new repos accumulate process after the fact: a README that goes stale, CI c
 
 ## How to use it as a GitHub template
 
-This repository is a GitHub template. Create a new repo from it with **Use this template**:
+The **template repository** flag is enabled on this repo today. **Use this template** works now — you do not need to wait for a later publish step.
 
-1. On GitHub, choose **Use this template** → **Create a new repository**.
+1. On GitHub, open this repository and choose **Use this template** → **Create a new repository**.
 2. Clone your new repo.
 3. Rewrite this README for the product. Keep the `docs/` layout unless you have a reason to change it.
 4. Fill in `docs/architecture/architecture.md` for the real system. Add ADRs when you make significant decisions.
 5. Add application code and language-specific workflows in later commits — do not invent a sample app here just to look complete.
 
-You can still clone or fork this repo and treat it the same way.
+You can still clone or fork this repo and treat it the same way. Prefer **Use this template** when you want a clean history without this template’s commit log.
 
 ## Technology stance
 
