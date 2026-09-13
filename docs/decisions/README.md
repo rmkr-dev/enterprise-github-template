@@ -15,22 +15,13 @@ Skip an ADR for typo fixes, doc wording, and other local edits that do not chang
 
 ## How to record one
 
-1. Add `NNNN-short-title.md` in this directory. Numbers are zero-padded and monotonic (`0001`, `0002`, …).
-2. Use a short, stable structure:
-
-   ```markdown
-   # NNNN: Title
-
-   - Status: Proposed | Accepted | Superseded by NNNN
-   - Date: YYYY-MM-DD
-
-   ## Context
-   ## Decision
-   ## Consequences
-   ## Alternatives considered
-   ```
-
+1. Add `ADR-NNN-short-title.md` or `NNNN-short-title.md` in this directory. Keep numbers monotonic.
+2. Use a short, stable structure (Context, Options or Alternatives, Decision, Rationale, Consequences / Trade-offs).
 3. Link the ADR from the PR and from `docs/architecture/architecture.md` if the current-state design changed.
 4. Do not rewrite history. Supersede the old ADR and leave it in place.
 
-There are no ADRs in this slice. The first accepted decision in a consumer repo should be `0001`.
+## Index
+
+| ADR | Title | Status |
+| --- | --- | --- |
+| [ADR-001](ADR-001-github-native-template.md) | GitHub-native free-first repository template | Accepted |
