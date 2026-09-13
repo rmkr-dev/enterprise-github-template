@@ -4,7 +4,7 @@ Read this file before you change this repository. These rules apply to people an
 
 ## Before you write code
 
-1. Read `README.md`, this file, and the docs that touch your change (`docs/architecture/`, `docs/decisions/`, `docs/development/`, `docs/security/`).
+1. Read `README.md`, this file, and the docs that touch your change (`docs/architecture/`, `docs/decisions/`, `docs/development/`, `docs/operations/`, `docs/security/`). Also know `SUPPORT.md` and `CODE_OF_CONDUCT.md` exist for routing questions and conduct.
 2. State the slice you are completing. If the work is larger than one reviewable PR, split it.
 3. Prefer the smallest change that is **correct and complete** for that slice. Do not “while you’re here” refactor.
 
@@ -35,7 +35,7 @@ Do not add a file that nothing references, or a doc that describes a file that d
 
 ## Tests and CI are first-class
 
-CI runs on GitHub Actions for this template: required-file validation and a small test around that validator. There is no application build.
+CI runs on GitHub Actions for this template: required-file validation, a small test around that validator, and a shell-syntax job. Pushing a `v*` tag creates a GitHub Release. There is no application build.
 
 - **GitHub Actions first.** Do not introduce another CI system unless an ADR explains why Actions cannot do the job.
 - **GitHub Free-first.** Workflows and required checks must be viable on a free GitHub plan. Do not depend on paid GitHub features or third-party secrets to get a green default pipeline.
@@ -63,6 +63,7 @@ A change is done when all of the following are true:
 - [ ] Behavior, tests, automation, and docs that this slice requires are present and consistent
 - [ ] No secrets, personal contact details, or leftover placeholders that claim to be finished
 - [ ] `README.md` and any linked docs still describe the repo as it is
+- [ ] Consumer-visible template changes are noted in `CHANGELOG.md` when applicable
 - [ ] Significant decisions have an ADR
 - [ ] High-impact items are called out for a human reviewer
 - [ ] Local validation passes when scripts apply (`bash scripts/validate-template.sh`)
