@@ -25,3 +25,9 @@ When you create a product repo from this template:
 - Production hardening for a specific cloud or runtime (owned by the consumer)
 - Paid scanners as a merge gate
 - Company names or private support emails in the template
+
+## Related community docs
+
+- Vulnerability reporting: [SECURITY.md](../../SECURITY.md)
+- Support routing (non-security): [SUPPORT.md](../../SUPPORT.md)
+- Conduct: [CODE_OF_CONDUCT.md](../../CODE_OF_CONDUCT.md)
