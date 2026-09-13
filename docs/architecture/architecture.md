@@ -16,6 +16,8 @@ What exists today is the documentation, process skeleton, and GitHub hygiene/CI 
 | `docs/decisions/` | Architecture Decision Records |
 | `docs/development/` | Contributor workflow on the template |
 | `docs/security/` | Security expectations for template consumers |
+| `docs/operations/` | Maintainer operations and release process |
+| `CHANGELOG.md` | Notable changes for template consumers |
 | `.github/workflows/` | CI (template validation) and CodeQL (`actions`) |
 | `.github/dependabot.yml` | Weekly GitHub Actions dependency updates |
 | `.github/CODEOWNERS` | Default review owner `@rmkr-dev` |

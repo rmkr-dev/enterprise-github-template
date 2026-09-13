@@ -45,8 +45,9 @@ There is **no application build** in this repository. CI is intentionally limite
 2. Change the smallest set of files that leaves the repo consistent.
 3. Update indexes (`README.md`, folder READMEs) when you add or remove docs.
 4. If you add a required file, also add it to `scripts/validate-template.sh`.
-5. If the decision is significant, add an ADR under `docs/decisions/`.
-6. Run the local validation commands before opening the PR.
+5. Note consumer-visible template changes in [CHANGELOG.md](../../CHANGELOG.md) (Unreleased).
+6. If the decision is significant, add an ADR under `docs/decisions/`.
+7. Run the local validation commands before opening the PR.
 
 ## Template flag status
 
