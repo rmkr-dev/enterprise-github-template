@@ -22,3 +22,7 @@ git push origin v0.1.0
 ```
 
 Then confirm the Release appears under the repository’s Releases tab.
+
+## First release
+
+`v0.1.0` marks the first public snapshot with CI validation, ADRs, community files, and the release workflow in place.
