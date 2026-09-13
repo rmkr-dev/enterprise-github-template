@@ -18,6 +18,8 @@ What exists today is the documentation, process skeleton, and GitHub hygiene/CI 
 | `docs/security/` | Security expectations for template consumers |
 | `docs/operations/` | Maintainer operations and release process |
 | `CHANGELOG.md` | Notable changes for template consumers |
+| `.gitignore` | Ignores editor/env/accidental build artifacts |
+| `docs/operations/branch-protection.md` | Recommended required checks on `main` |
 | `.github/workflows/` | CI (template validation) and CodeQL (`actions`) |
 | `.github/dependabot.yml` | Weekly GitHub Actions dependency updates |
 | `.github/CODEOWNERS` | Default review owner `@rmkr-dev` |

@@ -12,6 +12,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 - `.gitignore` for editor/env/accidental build artifacts
 - Branch protection checklist (`docs/operations/branch-protection.md`)
 - CI and release badges on the README
+- Dependabot grouping for GitHub Actions updates
 
 ### Changed
 
