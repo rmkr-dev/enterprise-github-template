@@ -27,7 +27,7 @@ Consumers copy this layout into a new repo, then replace the architecture narrat
 
 ## Template inheritance
 
-A derived repository starts with the same docs, guardrails, and `.github/` defaults. Inheritance is copy-based (GitHub “Use this template” or clone/fork), not a live link. After creation, the consumer owns every file and should:
+The GitHub **template repository** flag is enabled on this repository, so **Use this template** is available in the GitHub UI. A derived repository starts with the same docs, guardrails, and `.github/` defaults. Inheritance is copy-based (GitHub “Use this template” or clone/fork), not a live link. After creation, the consumer owns every file and should:
 
 1. Rewrite `README.md` for the product.
 2. Replace this document with the real system architecture.
