@@ -24,6 +24,8 @@ REQUIRED=(
   "docs/operations/operations.md"
   "docs/operations/release-process.md"
   "docs/operations/tagging.md"
+  "docs/operations/branch-protection.md"
+  ".gitignore"
   "CHANGELOG.md"
   ".github/workflows/ci.yml"
   ".github/workflows/codeql.yml"
