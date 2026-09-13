@@ -11,7 +11,11 @@ permissions:
 jobs:
   validate:
     name: Validate template
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -21,3 +25,17 @@ jobs:
 
       - name: Run validator tests
         run: bash tests/test_validate_template.sh
+
+  shellcheck-scripts:
+    name: Shell syntax check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Bash -n on scripts and tests
+        run: |
+          set -euo pipefail
+          bash -n scripts/validate-template.sh
+          bash -n tests/test_validate_template.sh
+          echo "shell syntax: OK"
