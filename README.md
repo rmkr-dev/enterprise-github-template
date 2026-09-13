@@ -1,5 +1,8 @@
 # Enterprise GitHub Template
 
+[![CI](https://github.com/rmkr-dev/enterprise-github-template/actions/workflows/ci.yml/badge.svg)](https://github.com/rmkr-dev/enterprise-github-template/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/rmkr-dev/enterprise-github-template)](https://github.com/rmkr-dev/enterprise-github-template/releases)
+
 A GitHub-native starting point for public and private repositories that need the same baseline: human-first engineering standards, architecture and decision docs, security defaults, and CI that runs on GitHub Actions.
 
 This repository is the **template**, not an application. Use it to bootstrap a new repo, then replace placeholders with the product you are actually building.

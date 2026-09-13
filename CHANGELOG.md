@@ -9,7 +9,14 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+- `.gitignore` for editor/env/accidental build artifacts
+- Branch protection checklist (`docs/operations/branch-protection.md`)
+- CI and release badges on the README
+
 ### Changed
+
+- PR template checklist covers CHANGELOG and community docs
+- `AGENTS.md` and security docs point at operations, SUPPORT, and release-on-tag behavior
 
 ## [0.1.0] — 2026-09-13
 
