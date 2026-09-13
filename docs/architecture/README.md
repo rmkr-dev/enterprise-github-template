@@ -4,7 +4,7 @@ This folder is the system description for repositories created from this templat
 
 | File | Role |
 | --- | --- |
-| [architecture.md](architecture.md) | Current-state architecture: what this template is, inheritance, and boundaries |
+| [architecture.md](architecture.md) | Current-state architecture: template surfaces, CI, inheritance |
 | [architecture-diagram.md](architecture-diagram.md) | Mermaid diagram of template surfaces and derived-repo inheritance |
 | [network-diagram.md](network-diagram.md) | Explicit “no networked runtime” note plus consumer-owned stub |
 
@@ -20,4 +20,4 @@ This folder is the system description for repositories created from this templat
 - Network diagrams of infrastructure that is not in this repo (see [network-diagram.md](network-diagram.md) for the consumer rule)
 - Vendor or company names that are not part of the software
 
-This template repository has no application runtime. Start from [architecture.md](architecture.md) and replace it when you introduce real components.
+This template repository has no application runtime. CI validates docs and required files only. Start from [architecture.md](architecture.md) and replace it when you introduce real components.

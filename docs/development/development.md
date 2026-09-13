@@ -5,36 +5,57 @@ This document is how people (and agents) work **on this template**. After you cr
 ## Prerequisites
 
 - Git and a GitHub account
-- No language runtime is required for this slice. Do not add Node/npm (or any other toolchain) unless a later slice introduces application code that needs it.
+- `bash` (for the local template validator)
+- No Node/npm. Do not add other runtimes unless a later application slice needs them.
 
 ## Branching and review
 
 - Branch from `main`. One concern per branch and pull request.
-- Conventional commits (`docs:`, `feat:`, `chore:`, `fix:`). Messages should read as if a person typed them; no tool or agent footers.
-- PRs say what slice landed and what is still out of scope.
+- Conventional commits (`docs:`, `feat:`, `ci:`, `chore:`, `fix:`). Messages should read as if a person typed them; no tool or agent footers.
+- PRs say what slice landed and what is still out of scope. Use the pull request template checklist.
 - High-impact changes wait for a human approval. See [AGENTS.md](../../AGENTS.md).
+
+## Local validation
+
+From the repository root:
+
+```bash
+bash scripts/validate-template.sh
+bash tests/test_validate_template.sh
+```
+
+The validator checks that required template files exist, Mermaid fences are present in the architecture diagram docs, and relative Markdown links resolve. The test script asserts the happy path and a deliberate missing-file failure.
+
+## CI (GitHub Actions)
+
+On every pull request and every push to `main`:
+
+| Workflow | What it does |
+| --- | --- |
+| [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml) | Runs `scripts/validate-template.sh` and `tests/test_validate_template.sh` |
+| [`.github/workflows/codeql.yml`](../../.github/workflows/codeql.yml) | CodeQL analysis for GitHub Actions workflow YAML (`actions` language), also on a weekly schedule |
+
+Dependabot opens weekly PRs for GitHub Actions action updates (`.github/dependabot.yml`). `CODEOWNERS` routes reviews to `@rmkr-dev`.
+
+There is **no application build** in this repository. CI is intentionally limited to template hygiene checks.
 
 ## Working on a slice
 
 1. Read [AGENTS.md](../../AGENTS.md) and the docs you will touch.
 2. Change the smallest set of files that leaves the repo consistent.
 3. Update indexes (`README.md`, folder READMEs) when you add or remove docs.
-4. If the decision is significant, add an ADR under `docs/decisions/`.
+4. If you add a required file, also add it to `scripts/validate-template.sh`.
+5. If the decision is significant, add an ADR under `docs/decisions/`.
+6. Run the local validation commands before opening the PR.
 
 ## What this template does not have yet
 
-Do not document or depend on these until a later PR adds them:
-
-- GitHub Actions workflows, Dependabot, CodeQL
-- Issue and pull request templates, `CODEOWNERS`, a root `SECURITY.md`
-- Application source, tests, or a sample service
-- The GitHub “template repository” flag
-
-Local verification for this slice is reading the docs against the tree: links resolve, and no doc claims a file that is missing.
+- Application source or a sample service
+- The GitHub “template repository” flag (enable when you are ready to publish)
 
 ## After you copy the template
 
 1. Rewrite `README.md` for the product.
-2. Fill `docs/architecture/architecture.md` and add a diagram when you have components.
+2. Fill `docs/architecture/architecture.md` and update diagrams for real components.
 3. Add ADRs as you choose stack and hosting.
-4. Introduce language toolchain, tests, and Actions in that order — tests before you require CI to stay green.
+4. Extend Actions with language-specific test/build jobs when application code arrives — keep Free-plan defaults and least-privilege permissions.
