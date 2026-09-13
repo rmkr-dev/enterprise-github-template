@@ -4,18 +4,20 @@ This folder is the system description for repositories created from this templat
 
 | File | Role |
 | --- | --- |
-| [architecture.md](architecture.md) | Current-state architecture: what the system is, trust boundaries, and major components |
+| [architecture.md](architecture.md) | Current-state architecture: what this template is, inheritance, and boundaries |
+| [architecture-diagram.md](architecture-diagram.md) | Mermaid diagram of template surfaces and derived-repo inheritance |
+| [network-diagram.md](network-diagram.md) | Explicit “no networked runtime” note plus consumer-owned stub |
 
 ## What belongs here
 
 - A short current-state narrative that matches the repo **as it exists**
-- Diagrams that explain that narrative (application structure, request flow). Add them when there is a real system to draw.
+- Diagrams that explain that narrative (template layout, later application structure). Add or update them when the tree changes.
 - Links to ADRs in [`docs/decisions/`](../decisions/README.md) for the choices that shaped the design
 
 ## What does not belong here
 
 - Roadmaps disguised as current state
-- Network diagrams unless the product has a network worth documenting (VPCs, private links, multi-region). Consumers add those in their own repo when networking applies.
+- Network diagrams of infrastructure that is not in this repo (see [network-diagram.md](network-diagram.md) for the consumer rule)
 - Vendor or company names that are not part of the software
 
-This template repository has no application runtime yet. Start from [architecture.md](architecture.md) and replace it when you introduce real components.
+This template repository has no application runtime. Start from [architecture.md](architecture.md) and replace it when you introduce real components.

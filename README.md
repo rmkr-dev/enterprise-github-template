@@ -48,7 +48,7 @@ Do not introduce Node, npm, or other runtimes in this template unless a later ap
 ├── LICENSE
 ├── README.md                 # You are here
 └── docs/
-    ├── architecture/         # Current system + diagrams (later)
+    ├── architecture/         # Current system + diagrams
     ├── decisions/            # Architecture Decision Records
     ├── development/          # Contributor workflow
     └── security/             # Security posture for template consumers
@@ -65,7 +65,10 @@ Later slices are expected to add `.github/` (workflows, issue/PR templates, Depe
 | [Development](docs/development/development.md) | Day-to-day contributor workflow |
 | [Architecture overview](docs/architecture/README.md) | How architecture docs are organized |
 | [Current architecture](docs/architecture/architecture.md) | What this repo is today |
+| [Architecture diagram](docs/architecture/architecture-diagram.md) | Mermaid view of template surfaces |
+| [Network diagram note](docs/architecture/network-diagram.md) | No runtime network; consumer stub |
 | [Decisions](docs/decisions/README.md) | When and how to write an ADR |
+| [ADR-001](docs/decisions/ADR-001-github-native-template.md) | Why GitHub-native free-first |
 | [Security](docs/security/security.md) | Baseline security expectations |
 
 ## Contributing
