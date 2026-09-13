@@ -25,7 +25,7 @@ flowchart TB
     end
 
     subgraph github[".github/"]
-      WF["workflows/<br/>ci.yml, codeql.yml"]
+      WF["workflows/<br/>ci.yml, codeql.yml, release.yml"]
       Dep["dependabot.yml"]
       Hygiene["CODEOWNERS, ISSUE_TEMPLATE,<br/>PULL_REQUEST_TEMPLATE"]
     end
