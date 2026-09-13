@@ -1,1 +1,11 @@
 blank_issues_enabled: false
+contact_links:
+  - name: Template questions and how-to
+    url: https://github.com/rmkr-dev/enterprise-github-template/blob/main/docs/development/development.md
+    about: How to work on this template locally and what CI does.
+  - name: Security vulnerability report
+    url: https://github.com/rmkr-dev/enterprise-github-template/security/advisories/new
+    about: Private reporting for security issues in this template (not public issues).
+  - name: Code of Conduct reports
+    url: https://github.com/rmkr-dev/enterprise-github-template/blob/main/CODE_OF_CONDUCT.md
+    about: How to report conduct concerns privately to maintainers.
