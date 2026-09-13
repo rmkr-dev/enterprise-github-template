@@ -45,6 +45,7 @@ Do not introduce Node, npm, or other runtimes in this template unless a later ap
 ├── AGENTS.md                 # Read before changing code or docs
 ├── CONTRIBUTING.md           # How to propose changes
 ├── SECURITY.md               # Vulnerability reporting for this template
+├── CHANGELOG.md              # Template release history
 ├── LICENSE
 ├── README.md                 # You are here
 ├── scripts/                  # Template validation (used by CI)
@@ -54,6 +55,7 @@ Do not introduce Node, npm, or other runtimes in this template unless a later ap
     ├── architecture/         # Current system + diagrams
     ├── decisions/            # Architecture Decision Records
     ├── development/          # Contributor workflow
+    ├── operations/           # Maintainer ops + release process
     └── security/             # Security posture for template consumers
 ```
 
@@ -81,6 +83,9 @@ GitHub Actions runs those same checks on pull requests and pushes to `main`. Cod
 | [Decisions](docs/decisions/README.md) | When and how to write an ADR |
 | [ADR-001](docs/decisions/ADR-001-github-native-template.md) | Why GitHub-native free-first |
 | [Security](docs/security/security.md) | Baseline security expectations |
+| [Operations](docs/operations/README.md) | Maintainer ops for this template |
+| [Release process](docs/operations/release-process.md) | Tagging and template releases |
+| [Changelog](CHANGELOG.md) | Notable template changes |
 
 ## Contributing
 
