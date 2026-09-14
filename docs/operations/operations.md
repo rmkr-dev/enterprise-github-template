@@ -10,6 +10,8 @@ How maintainers operate **this template repository**. Derived products should re
 | Default branch `main` | Merge complete slices only; keep CI green |
 | Actions (CI, CodeQL, dependency review, Scorecard) | Free-plan workflows; least-privilege permissions |
 | Dependabot | Review weekly Actions update PRs |
+| Dependency graph / alerts | Keep enabled so dependency-review CI can run |
+| OpenSSF Scorecard | Review code-scanning / Scorecard results after `main` pushes |
 | Security advisories | Triage via [SECURITY.md](../../SECURITY.md) |
 
 There is no application runtime, hosting, or on-call rotation for this template.
