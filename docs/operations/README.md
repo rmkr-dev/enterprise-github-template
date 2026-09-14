@@ -9,5 +9,6 @@ Maintainer-facing notes for operating **this template repository**.
 | [release-process.md](release-process.md) | When and how to tag template releases |
 | [tagging.md](tagging.md) | Tag naming and release workflow trigger |
 | [branch-protection.md](branch-protection.md) | Recommended `main` protection and required checks |
+| [troubleshooting.md](troubleshooting.md) | Common CI/docs/release failure modes |
 
 Application runbooks do not belong here until a derived product introduces a runtime.

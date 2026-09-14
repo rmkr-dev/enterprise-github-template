@@ -38,6 +38,7 @@ For a fuller light checklist (containment, disclosure, follow-through), see [inc
 ## Related docs
 
 - [Incident response](incident-response.md) — light IR checklist for template consumers
+- [Troubleshooting](troubleshooting.md) — common CI/docs/release failures
 - [Development](../development/development.md) — local checks and CI shape
 - [Release process](release-process.md) — tagging and GitHub Releases
 - [Branch protection](branch-protection.md) — recommended required checks on `main`
