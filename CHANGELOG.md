@@ -10,6 +10,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 ### Added
 
 - Validator requires a catch-all `*` owner rule in `.github/CODEOWNERS`
+- Ruby consumer evolution sketch in `docs/references/examples.md` (docs only)
 
 ### Changed
 
