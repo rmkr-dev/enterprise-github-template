@@ -54,6 +54,7 @@ This template has **no networked runtime**. There is nothing to put on a VPC, CD
 
 - [ADR-001: GitHub-native free-first repository template](../decisions/ADR-001-github-native-template.md)
 - [ADR-002: Validate the template in GitHub Actions CI](../decisions/ADR-002-validation-in-ci.md)
+- [ADR-003: Weekly scheduled template validation](../decisions/ADR-003-weekly-scheduled-validation.md)
 
 ## What is intentionally out of scope here
 
