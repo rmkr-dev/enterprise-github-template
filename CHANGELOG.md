@@ -10,6 +10,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 ### Added
 
 - Architecture docs point at secrets/OIDC hygiene guide
+- Kotlin consumer evolution sketch in `docs/references/examples.md` (docs only)
 
 ### Changed
 
