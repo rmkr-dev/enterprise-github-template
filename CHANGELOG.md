@@ -9,6 +9,12 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+### Changed
+
+## [0.2.3] — 2026-09-14
+
+### Added
+
 - Concurrency groups on CI, CodeQL, and dependency-review workflows (cancel superseded runs)
 - Validator checks that those workflows declare `permissions:` and `concurrency:`
 - First-week checklist for template consumers (`docs/development/first-week.md`)
@@ -81,7 +87,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Documented that the GitHub **template repository** flag is enabled and **Use this template** works now
 
-[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.2.2...HEAD
+[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.2.3...HEAD
+[0.2.3]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.3
 [0.2.2]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.2
 [0.2.1]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.1
 [0.2.0]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.0
