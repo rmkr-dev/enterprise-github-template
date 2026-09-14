@@ -37,6 +37,8 @@ bash tests/test_validate_template.sh
 - Template-scoped incidents (leaked token, unsafe workflow): [incident-response.md](../operations/incident-response.md).
 - Product outages belong in **your** runtime IR plan, not this checklist.
 
+Also skim [secrets-and-oidc.md](../operations/secrets-and-oidc.md) before adding deploy workflows.
+
 ## Related
 
 - [README](../../README.md) — how to use the template

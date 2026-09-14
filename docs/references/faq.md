@@ -38,6 +38,18 @@ No. It does not run on pull requests. Keep PR required checks aligned with `ci.y
 
 Docs-only evolution guidance for Java, Python, Go, Rust, .NET/C#, Terraform/IaC, and Azure/AKS lives in [examples.md](examples.md). None of those sketches add application code to **this** template.
 
+## How do I cut a template-style release?
+
+On this template (or a derived repo that kept the workflow), push an annotated `vMAJOR.MINOR.PATCH` tag. `.github/workflows/release.yml` creates the GitHub Release. See [tagging.md](../operations/tagging.md) and [release-process.md](../operations/release-process.md).
+
+## Where should cloud credentials live?
+
+Not in git. Prefer OIDC / federated credentials from GitHub Actions. See [secrets-and-oidc.md](../operations/secrets-and-oidc.md).
+
+## Can I add Prettier or markdownlint via npm?
+
+Not in **this** template — ADR-004 keeps validation shell-only. A derived product repo may add Node if the **product** needs it; do not add it only to lint Markdown here.
+
 ## Related
 
 - [examples.md](examples.md) — Java / Python / Go / Rust / .NET / Terraform / Azure-AKS evolution sketches
