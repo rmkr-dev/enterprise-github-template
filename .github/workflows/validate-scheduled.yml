@@ -1,0 +1,43 @@
+name: Scheduled validate
+
+# Weekly hygiene: same template checks as CI, without waiting for a PR.
+on:
+  schedule:
+    # Monday 06:17 UTC — offset from top-of-hour to reduce Actions contention
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scheduled-validate
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate template
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Run template validator
+        run: bash scripts/validate-template.sh
+
+      - name: Run validator tests
+        run: bash tests/test_validate_template.sh
+
+  shellcheck-scripts:
+    name: Shell syntax check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Bash -n on scripts and tests
+        run: |
+          set -euo pipefail
+          bash -n scripts/validate-template.sh
+          bash -n tests/test_validate_template.sh
+          echo "shell syntax: OK"
