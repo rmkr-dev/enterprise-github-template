@@ -9,6 +9,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+- Validator requires Dependabot `groups:` and Scorecard `results_format: sarif`
+
 ### Changed
 
 

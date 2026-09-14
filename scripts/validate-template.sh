@@ -163,6 +163,12 @@ if ! grep -qE 'sarif_file:' .github/workflows/scorecard.yml; then
 else
   echo "OK: scorecard sarif_file"
 fi
+if ! grep -qE 'results_format:[[:space:]]*sarif' .github/workflows/scorecard.yml; then
+  echo "MISSING results_format: sarif in scorecard.yml" >&2
+  fail=1
+else
+  echo "OK: scorecard results_format sarif"
+fi
 
 echo "==> Checking release workflow tag trigger and permissions"
 if ! grep -qE 'tags:' .github/workflows/release.yml; then
@@ -411,6 +417,12 @@ if grep -qE 'interval:[[:space:]]*(daily|monthly)' .github/dependabot.yml; then
   fail=1
 else
   echo "OK: dependabot has no daily/monthly interval"
+fi
+if ! grep -qE '^[[:space:]]*groups:' .github/dependabot.yml; then
+  echo "MISSING groups: in dependabot.yml" >&2
+  fail=1
+else
+  echo "OK: dependabot groups present"
 fi
 
 echo "==> Checking no Node/npm package manifests (ADR-004)"

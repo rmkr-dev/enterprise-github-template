@@ -84,6 +84,7 @@ assert_contains "no write-all ci" "OK no write-all: .github/workflows/ci.yml" "$
 assert_contains "no write-all scorecard" "OK no write-all: .github/workflows/scorecard.yml" "$out"
 assert_contains "scorecard upload-sarif" "OK: scorecard upload-sarif" "$out"
 assert_contains "scorecard sarif_file" "OK: scorecard sarif_file" "$out"
+assert_contains "scorecard results_format" "OK: scorecard results_format sarif" "$out"
 assert_contains "release tags check" "OK tags: release.yml" "$out"
 assert_contains "release contents write" "OK contents write: release.yml" "$out"
 assert_contains "release verify-tag" "OK verify-tag: release.yml" "$out"
@@ -104,6 +105,7 @@ assert_contains "Dependabot github-actions check" "OK: dependabot github-actions
 assert_contains "Dependabot no npm ecosystem" "OK: dependabot has no npm/yarn/pnpm ecosystem" "$out"
 assert_contains "Dependabot weekly interval" "OK: dependabot interval weekly" "$out"
 assert_contains "Dependabot no daily/monthly" "OK: dependabot has no daily/monthly interval" "$out"
+assert_contains "Dependabot groups" "OK: dependabot groups present" "$out"
 assert_contains "CI persist-credentials" "OK persist-credentials: .github/workflows/ci.yml" "$out"
 assert_contains "CodeQL persist-credentials" "OK persist-credentials: .github/workflows/codeql.yml" "$out"
 assert_contains "Dependency-review persist-credentials" "OK persist-credentials: .github/workflows/dependency-review.yml" "$out"
@@ -428,6 +430,24 @@ set +e
 pem_rc=$?
 set -e
 assert_eq "validator fails when .gitignore lacks *.pem" "1" "$pem_rc"
+
+# Negative: dependabot without groups should fail
+cp -a "$ROOT/." "$tmpdir/repo37"
+sed -i '/groups:/,/patterns:/d' "$tmpdir/repo37/.github/dependabot.yml"
+set +e
+"$tmpdir/repo37/scripts/validate-template.sh" >/dev/null 2>&1
+grp_rc=$?
+set -e
+assert_eq "validator fails when dependabot lacks groups" "1" "$grp_rc"
+
+# Negative: scorecard without results_format sarif should fail
+cp -a "$ROOT/." "$tmpdir/repo38"
+sed -i 's/results_format: sarif/results_format: json/' "$tmpdir/repo38/.github/workflows/scorecard.yml"
+set +e
+"$tmpdir/repo38/scripts/validate-template.sh" >/dev/null 2>&1
+fmt_rc=$?
+set -e
+assert_eq "validator fails when scorecard lacks results_format sarif" "1" "$fmt_rc"
 
 # Negative: ci.yml with permissions write-all should fail
 cp -a "$ROOT/." "$tmpdir/repo35"
