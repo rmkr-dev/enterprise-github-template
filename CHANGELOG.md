@@ -9,6 +9,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+- `docs/references/examples.md` showing how derived Java/Python repos can evolve from this template
 - Deeper template validation: CHANGELOG `[Unreleased]` + versioned sections, ADR `Status:` lines, workflow `on:` triggers; expanded negative tests
 - `.gitignore` for editor/env/accidental build artifacts
 - Branch protection checklist (`docs/operations/branch-protection.md`)

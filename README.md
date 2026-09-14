@@ -61,6 +61,7 @@ Do not introduce Node, npm, or other runtimes in this template unless a later ap
     ├── decisions/            # Architecture Decision Records
     ├── development/          # Contributor workflow
     ├── operations/           # Maintainer ops + release process
+    ├── references/           # Consumer evolution examples
     └── security/             # Security posture for template consumers
 ```
 
@@ -96,6 +97,7 @@ GitHub Actions runs those same checks on pull requests and pushes to `main`. Cod
 | [Tagging](docs/operations/tagging.md) | `v*` tags and the release workflow |
 | [Branch protection](docs/operations/branch-protection.md) | Recommended required checks |
 | [Changelog](CHANGELOG.md) | Notable template changes |
+| [Examples (derived repos)](docs/references/examples.md) | How Java/Python consumers can evolve from this template |
 
 ## Contributing
 
