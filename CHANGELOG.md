@@ -12,8 +12,11 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 - Job `timeout-minutes` on CI, scheduled validate, and release workflows
 - Concurrency group on OpenSSF Scorecard workflow
 - Operations troubleshooting guide (`docs/operations/troubleshooting.md`)
+- `.editorconfig` / `.gitattributes` required by the template validator
 
 ### Changed
+
+- EditorConfig adds an explicit shell section; architecture diagram notes troubleshooting docs
 
 
 ## [0.2.3] — 2026-09-14

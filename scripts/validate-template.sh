@@ -32,6 +32,8 @@ REQUIRED=(
   "docs/references/README.md"
   "docs/references/examples.md"
   ".gitignore"
+  ".editorconfig"
+  ".gitattributes"
   "CHANGELOG.md"
   ".github/workflows/ci.yml"
   ".github/workflows/codeql.yml"
