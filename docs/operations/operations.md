@@ -35,7 +35,10 @@ There is no application runtime, hosting, or on-call rotation for this template.
 
 For a fuller light checklist (containment, disclosure, follow-through), see [incident-response.md](incident-response.md).
 
-## Related docs
+## Related
+
+- [secrets-and-oidc.md](secrets-and-oidc.md) — secrets hygiene / OIDC for consumers
+ docs
 
 - [Incident response](incident-response.md) — light IR checklist for template consumers
 - [Troubleshooting](troubleshooting.md) — common CI/docs/release failures
