@@ -60,6 +60,7 @@ This template has **no networked runtime**. There is nothing to put on a VPC, CD
 - [ADR-003: Weekly scheduled template validation](../decisions/ADR-003-weekly-scheduled-validation.md)
 - [ADR-004: Shell-only template validation (no Node/npm)](../decisions/ADR-004-shell-only-template-validation.md)
 - [ADR-005: Pin GitHub Actions to commit SHAs](../decisions/ADR-005-pin-github-actions-to-shas.md)
+- [ADR-006: CHANGELOG-backed GitHub Releases](../decisions/ADR-006-changelog-backed-github-releases.md)
 
 ## What is intentionally out of scope here
 
