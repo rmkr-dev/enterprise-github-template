@@ -9,6 +9,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+- Validator forbids npm/yarn/pnpm Dependabot ecosystems (ADR-004)
+
 ### Changed
 
 
