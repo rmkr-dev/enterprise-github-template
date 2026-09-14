@@ -19,6 +19,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Polished `SECURITY.md` with supported-versions table, advisory URL, response expectations, and clearer scope
 - Expanded CONTRIBUTING with read-first links, label guidance, local checks, and security reporting pointer
+- Architecture, operations, SUPPORT, and branch-protection docs synced for IR, weekly validate, and good-first-issue surfaces
 
 ## [0.2.0] — 2026-09-14
 
