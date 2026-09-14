@@ -28,7 +28,7 @@ bash scripts/validate-template.sh
 bash tests/test_validate_template.sh
 ```
 
-The validator checks that required template files exist, Mermaid fences are present in the architecture diagram docs, and relative Markdown links resolve. The test script asserts the happy path and a deliberate missing-file failure.
+The validator checks that required template files exist (including CODEOWNERS, SECURITY.md, CHANGELOG.md, ADRs, and workflow YAML), workflow `on:` / `jobs:` / checkout are present, CODEOWNERS names an owner, SECURITY.md has a reporting path, CHANGELOG has `[Unreleased]` and a versioned section, each ADR declares `Status:`, Mermaid fences exist in the architecture diagram docs, and relative Markdown links resolve. The test script asserts the happy path plus negative cases (missing file, empty CODEOWNERS, weak SECURITY.md, broken CHANGELOG/ADR/workflow shape).
 
 ## CI (GitHub Actions)
 

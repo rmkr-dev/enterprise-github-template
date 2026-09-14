@@ -9,6 +9,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+- Deeper template validation: CHANGELOG `[Unreleased]` + versioned sections, ADR `Status:` lines, workflow `on:` triggers; expanded negative tests
 - `.gitignore` for editor/env/accidental build artifacts
 - Branch protection checklist (`docs/operations/branch-protection.md`)
 - CI and release badges on the README
