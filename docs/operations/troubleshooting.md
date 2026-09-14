@@ -8,7 +8,7 @@ Quick fixes for common problems on **this template** or a fresh derived repo. No
 | --- | --- | --- |
 | `MISSING: path` in validate | Required file renamed/removed without updating the validator | Restore the file or update `scripts/validate-template.sh` in the same PR |
 | `BROKEN LINK in …` | Relative Markdown target moved | Fix the link or restore the target |
-| `MISSING concurrency:` / `permissions:` | PR-facing or Scorecard workflow edited incompletely | Add least-privilege `permissions:` and a `concurrency:` group (see `ci.yml` / `scorecard.yml`) |
+| `MISSING concurrency:` / `permissions:` | Workflow edited incompletely | Add least-privilege `permissions:` and a `concurrency:` group (see `ci.yml`, `scorecard.yml`, `validate-scheduled.yml`, `release.yml`) |
 | `MISSING persist-credentials: false` on Scorecard | Checkout may keep credentials longer than needed | Restore `persist-credentials: false` on the Scorecard checkout step |
 | `MISSING package-ecosystem: github-actions` | Dependabot config lost Actions updates | Restore `package-ecosystem: github-actions` in `.github/dependabot.yml` |
 | `MISSING timeout-minutes:` | Workflow job can hang indefinitely | Add `timeout-minutes` on jobs in CI, CodeQL, Scorecard, release, scheduled validate, and dependency-review workflows |
