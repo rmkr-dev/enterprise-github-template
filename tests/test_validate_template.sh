@@ -54,6 +54,7 @@ assert_contains "workflow jobs check" "OK jobs: .github/workflows/ci.yml" "$out"
 assert_contains "ADR Status check" "OK Status: docs/decisions/ADR-001-github-native-template.md" "$out"
 assert_contains "scheduled workflow schedule" "OK schedule: validate-scheduled.yml" "$out"
 assert_contains "scheduled workflow cron" "OK cron: validate-scheduled.yml" "$out"
+assert_contains "scheduled workflow_dispatch" "OK: validate-scheduled workflow_dispatch" "$out"
 assert_contains "ADR-003 Status check" "OK Status: docs/decisions/ADR-003-weekly-scheduled-validation.md" "$out"
 assert_contains "ADR-004 Status check" "OK Status: docs/decisions/ADR-004-shell-only-template-validation.md" "$out"
 assert_contains "CI permissions check" "OK permissions: .github/workflows/ci.yml" "$out"
@@ -361,6 +362,16 @@ set +e
 sc_sched_rc=$?
 set -e
 assert_eq "validator fails when scorecard lacks schedule/cron" "1" "$sc_sched_rc"
+
+
+# Negative: validate-scheduled without workflow_dispatch should fail
+cp -a "$ROOT/." "$tmpdir/repo28"
+printf 'name: Scheduled validate\non:\n  schedule:\n    - cron: "0 6 * * 1"\npermissions:\n  contents: read\nconcurrency:\n  group: sched\njobs:\n  validate:\n    timeout-minutes: 10\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v7\n' > "$tmpdir/repo28/.github/workflows/validate-scheduled.yml"
+set +e
+"$tmpdir/repo28/scripts/validate-template.sh" >/dev/null 2>&1
+sched_wd_rc=$?
+set -e
+assert_eq "validator fails when validate-scheduled lacks workflow_dispatch" "1" "$sched_wd_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2
