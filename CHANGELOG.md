@@ -9,6 +9,13 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+### Changed
+
+
+## [0.2.7] — 2026-09-14
+
+### Added
+
 - Job `timeout-minutes` on dependency-review; validator requires timeouts on scheduled validate and dependency-review
 - Secrets and OIDC hygiene guide (`docs/operations/secrets-and-oidc.md`)
 - FAQ entries for tagging/releases, secrets/OIDC, and ADR-004 / no-npm
@@ -134,7 +141,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Documented that the GitHub **template repository** flag is enabled and **Use this template** works now
 
-[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.2.6...HEAD
+[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.2.7...HEAD
+[0.2.7]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.7
 [0.2.6]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.6
 [0.2.5]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.5
 [0.2.4]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.4
