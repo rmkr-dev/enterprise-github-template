@@ -12,6 +12,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 - Validator forbids npm/yarn/pnpm Dependabot ecosystems (ADR-004)
 - First-week checklist and SUPPORT point at upgrading-from-upstream guide
 - Validator requires dependency-review `pull_request` trigger and `dependency-review-action`
+- Validator requires CodeQL weekly `schedule` / `cron`
 
 ### Changed
 
