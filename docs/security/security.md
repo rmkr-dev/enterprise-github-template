@@ -5,7 +5,7 @@
 This repository ships documentation, process defaults, and GitHub Actions hygiene—not an application runtime. Security expectations for **the template itself**:
 
 - No secrets, tokens, or credentials in the tree, examples, or commit messages
-- Workflow permissions are least-privilege (`contents: read` for CI; CodeQL adds `security-events: write`)
+- Workflow permissions are least-privilege (`contents: read` for CI; CodeQL adds `security-events: write`); `permissions: write-all` is forbidden by the validator
 - Every `actions/checkout` sets `persist-credentials: false` so the job token is not left in local git config
 - Third-party Actions are pinned to commit SHAs with version comments (see [ADR-005](../decisions/ADR-005-pin-github-actions-to-shas.md))
 - Dependabot keeps GitHub Actions dependencies on a **weekly** cadence (validator forbids daily/monthly intervals)
@@ -23,7 +23,7 @@ This repository ships documentation, process defaults, and GitHub Actions hygien
 | `validate-scheduled.yml` | `contents: read` | Same checks on a weekly cron |
 | `dependency-review.yml` | `contents: read` | PR dependency graph review |
 | `codeql.yml` | `contents: read`, `security-events: write`, `actions: read` | Upload CodeQL results |
-| `scorecard.yml` | `read-all` at workflow; job grants `security-events` / `id-token` write | Public Scorecard + SARIF |
+| `scorecard.yml` | `read-all` at workflow; job grants `security-events` / `id-token` write | Public Scorecard + SARIF upload (`upload-sarif`) |
 | `release.yml` | `contents: write` | Create GitHub Release for `v*` tags |
 
 Derived repos should re-review these when adding deploy jobs. Prefer OIDC over long-lived cloud secrets. Do not widen `GITHUB_TOKEN` permissions “just in case.”
