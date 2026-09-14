@@ -60,6 +60,8 @@ assert_contains "CI timeout check" "OK timeout: .github/workflows/ci.yml" "$out"
 assert_contains "CodeQL timeout check" "OK timeout: .github/workflows/codeql.yml" "$out"
 assert_contains "Scorecard timeout check" "OK timeout: .github/workflows/scorecard.yml" "$out"
 assert_contains "Release timeout check" "OK timeout: .github/workflows/release.yml" "$out"
+assert_contains "Scheduled timeout check" "OK timeout: .github/workflows/validate-scheduled.yml" "$out"
+assert_contains "Dependency-review timeout check" "OK timeout: .github/workflows/dependency-review.yml" "$out"
 assert_contains "release tags check" "OK tags: release.yml" "$out"
 assert_contains "release contents write" "OK contents write: release.yml" "$out"
 assert_contains "Scorecard permissions check" "OK permissions: .github/workflows/scorecard.yml" "$out"
@@ -197,6 +199,16 @@ set +e
 cq_to_rc=$?
 set -e
 assert_eq "validator fails when codeql.yml lacks timeout-minutes" "1" "$cq_to_rc"
+
+
+# Negative: dependency-review.yml without timeout-minutes should fail
+cp -a "$ROOT/." "$tmpdir/repo14"
+printf 'name: Dependency review\non:\n  pull_request:\npermissions:\n  contents: read\nconcurrency:\n  group: dr\njobs:\n  dependency-review:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v7\n' > "$tmpdir/repo14/.github/workflows/dependency-review.yml"
+set +e
+"$tmpdir/repo14/scripts/validate-template.sh" >/dev/null 2>&1
+dr_to_rc=$?
+set -e
+assert_eq "validator fails when dependency-review.yml lacks timeout-minutes" "1" "$dr_to_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2

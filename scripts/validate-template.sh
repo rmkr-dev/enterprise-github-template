@@ -105,7 +105,7 @@ else
 fi
 
 echo "==> Checking key workflows declare job timeouts"
-for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflows/scorecard.yml .github/workflows/release.yml; do
+for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflows/scorecard.yml .github/workflows/release.yml .github/workflows/validate-scheduled.yml .github/workflows/dependency-review.yml; do
   if ! grep -qE 'timeout-minutes:' "$wf"; then
     echo "MISSING timeout-minutes: in $wf" >&2
     fail=1
