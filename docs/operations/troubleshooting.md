@@ -9,6 +9,8 @@ Quick fixes for common problems on **this template** or a fresh derived repo. No
 | `MISSING: path` in validate | Required file renamed/removed without updating the validator | Restore the file or update `scripts/validate-template.sh` in the same PR |
 | `BROKEN LINK in …` | Relative Markdown target moved | Fix the link or restore the target |
 | `MISSING concurrency:` / `permissions:` | Workflow edited incompletely | Add least-privilege `permissions:` and a `concurrency:` group (see `ci.yml`, `scorecard.yml`, `validate-scheduled.yml`, `release.yml`) |
+| `FORBIDDEN permissions: write-all` | Over-broad token grants | Use explicit least-privilege `permissions:` maps; never `write-all` |
+| `MISSING codeql-action/upload-sarif` / `sarif_file` | Scorecard results not landing in code scanning | Restore the upload-sarif step and `sarif_file: results.sarif` |
 | `MISSING persist-credentials: false for every checkout` | A job checkout keeps `GITHUB_TOKEN` in local git config | Set `persist-credentials: false` on **every** `actions/checkout` (including Scorecard, CI, CodeQL, dependency-review, release, scheduled validate) |
 | `UNPINNED action` / `MISSING version comment on pinned action` | A `uses:` line is a floating tag (`@v7`) or a SHA without `# vX.Y.Z` | Pin the release commit SHA and keep a version comment (ADR-005). Dependabot can bump both together |
 | `MISSING package-ecosystem: github-actions` | Dependabot config lost Actions updates | Restore `package-ecosystem: github-actions` in `.github/dependabot.yml` |
