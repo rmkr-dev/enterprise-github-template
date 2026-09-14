@@ -102,7 +102,7 @@ GitHub Actions runs those same checks on pull requests, pushes to `main`, and on
 
 ## Contributing
 
-Read [CONTRIBUTING.md](CONTRIBUTING.md) and [AGENTS.md](AGENTS.md) before you edit. Changes should be the smallest complete slice that leaves docs, structure, and tests consistent.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) and [AGENTS.md](AGENTS.md) before you edit. Changes should be the smallest complete slice that leaves docs, structure, and tests consistent. Newcomers: look for issues labeled `good first issue`.
 
 ## License
 

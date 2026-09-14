@@ -17,6 +17,7 @@ See [SUPPORT.md](../../SUPPORT.md) for where bugs, features, security, and condu
 - Branch from `main`. One concern per branch and pull request.
 - Conventional commits (`docs:`, `feat:`, `ci:`, `chore:`, `fix:`). Messages should read as if a person typed them; no tool or agent footers.
 - PRs say what slice landed and what is still out of scope. Use the pull request template checklist.
+- Starter tasks: see **good first issue** guidance in [CONTRIBUTING.md](../../CONTRIBUTING.md) and the matching issue form.
 - High-impact changes wait for a human approval. See [AGENTS.md](../../AGENTS.md).
 
 ## Local validation

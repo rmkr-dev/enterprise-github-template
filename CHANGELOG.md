@@ -13,10 +13,12 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 - Stronger `SECURITY.md` policy checks in the template validator (supported versions, private reporting, no public disclosure)
 - Azure/AKS consumer evolution sketch in `docs/references/examples.md` (docs only)
 - Weekly scheduled template validation workflow (`.github/workflows/validate-scheduled.yml`)
+- Good-first-issue guidance in CONTRIBUTING and `.github/ISSUE_TEMPLATE/good_first_issue.yml`
 
 ### Changed
 
 - Polished `SECURITY.md` with supported-versions table, advisory URL, response expectations, and clearer scope
+- Expanded CONTRIBUTING with read-first links, label guidance, local checks, and security reporting pointer
 
 ## [0.2.0] — 2026-09-14
 
