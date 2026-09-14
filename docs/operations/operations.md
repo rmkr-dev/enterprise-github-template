@@ -22,6 +22,7 @@ There is no application runtime, hosting, or on-call rotation for this template.
 2. Run `bash scripts/validate-template.sh` and `bash tests/test_validate_template.sh` before merge when changing required files or links.
 3. Merge Dependabot PRs after CI is green; major action bumps deserve a quick look at release notes.
 4. When adding a required file, update `scripts/validate-template.sh` in the same PR.
+5. Treat a red weekly `validate-scheduled` run like a red `main` CI — fix-forward or revert; do not ignore schedule failures.
 
 ## Incidents (template-scoped)
 

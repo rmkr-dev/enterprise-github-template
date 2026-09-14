@@ -9,7 +9,8 @@ This repository ships documentation, process defaults, and GitHub Actions hygien
 - Dependabot keeps GitHub Actions dependencies on a weekly cadence
 - CodeQL analyzes Actions workflow YAML on PR, push to `main`, and a weekly schedule
 - Dependency review runs on pull requests (GitHub-native; free for public repositories). Requires Dependency graph / vulnerability alerts enabled under the repository Security settings (enable Dependabot alerts if the workflow reports that Dependency review is not supported).
-- OpenSSF Scorecard runs on pushes to `main` and weekly, publishing results to the public Scorecard API and code scanning (free for public repositories; private consumers should revisit `publish_results` and permissions)
+- OpenSSF Scorecard runs on pushes to `main` and weekly, publishing results to the public Scorecard API and code scanning (free for public repositories; private consumers should revisit `publish_results` and permissions). The README Scorecard badge reflects the public API result.
+- Template validation also runs on a **weekly schedule** (`.github/workflows/validate-scheduled.yml`) in addition to pull requests and pushes to `main`
 - Vulnerability reports for this template go through [SECURITY.md](../../SECURITY.md) (GitHub Security Advisories / `@rmkr-dev`)
 
 ## Expectations for derived repositories
