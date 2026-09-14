@@ -112,7 +112,7 @@ else
 fi
 
 echo "==> Checking CI workflows declare permissions and concurrency"
-for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflows/dependency-review.yml; do
+for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflows/dependency-review.yml .github/workflows/scorecard.yml; do
   if ! grep -qE '^[[:space:]]*permissions:' "$wf"; then
     echo "MISSING permissions: in $wf" >&2
     fail=1
