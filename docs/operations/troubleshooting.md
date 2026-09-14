@@ -11,6 +11,7 @@ Quick fixes for common problems on **this template** or a fresh derived repo. No
 | `MISSING concurrency:` / `permissions:` | Workflow edited incompletely | Add least-privilege `permissions:` and a `concurrency:` group (see `ci.yml`, `scorecard.yml`, `validate-scheduled.yml`, `release.yml`) |
 | `MISSING persist-credentials: false` on Scorecard | Checkout may keep credentials longer than needed | Restore `persist-credentials: false` on the Scorecard checkout step |
 | `MISSING package-ecosystem: github-actions` | Dependabot config lost Actions updates | Restore `package-ecosystem: github-actions` in `.github/dependabot.yml` |
+| `FORBIDDEN Node package-ecosystem` in Dependabot | npm/yarn/pnpm update stream added to this template | Remove Node ecosystems; keep `github-actions` only (ADR-004) |
 | `FORBIDDEN Node/npm artifacts` | `package.json` / lockfile / `node_modules` landed in template | Remove them; ADR-004 keeps validation shell-only |
 | `MISSING languages: actions` / `security-events: write` | CodeQL no longer analyzes Actions YAML or cannot upload SARIF | Restore `languages: actions` and `security-events: write` in `codeql.yml` |
 | `MISSING publish_results: true` | Scorecard no longer publishes to the public API / badge | Restore `publish_results: true` (or document private-repo exception) |
