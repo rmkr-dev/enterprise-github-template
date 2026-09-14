@@ -39,3 +39,4 @@ Choose **option 3**: run `scripts/validate-template.sh` (and its tests) in GitHu
 - [ADR-001: GitHub-native free-first repository template](ADR-001-github-native-template.md)
 - [Development](../development/development.md)
 - [Architecture](../architecture/architecture.md)
+- [ADR-003: Weekly scheduled template validation](ADR-003-weekly-scheduled-validation.md)

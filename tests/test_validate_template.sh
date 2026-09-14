@@ -48,6 +48,9 @@ assert_contains "CHANGELOG version check" "OK: CHANGELOG has a versioned section
 assert_contains "workflow on: check" "OK on: .github/workflows/ci.yml" "$out"
 assert_contains "workflow jobs check" "OK jobs: .github/workflows/ci.yml" "$out"
 assert_contains "ADR Status check" "OK Status: docs/decisions/ADR-001-github-native-template.md" "$out"
+assert_contains "scheduled workflow schedule" "OK schedule: validate-scheduled.yml" "$out"
+assert_contains "scheduled workflow cron" "OK cron: validate-scheduled.yml" "$out"
+assert_contains "ADR-003 Status check" "OK Status: docs/decisions/ADR-003-weekly-scheduled-validation.md" "$out"
 
 # Negative: missing required file should fail
 tmpdir="$(mktemp -d)"
@@ -122,6 +125,15 @@ set +e
 wf_rc=$?
 set -e
 assert_eq "validator fails when workflow lacks on:" "1" "$wf_rc"
+
+# Negative: validate-scheduled without schedule/cron should fail
+cp -a "$ROOT/." "$tmpdir/repo8"
+printf 'name: Scheduled validate\non:\n  workflow_dispatch:\njobs:\n  validate:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v7\n' > "$tmpdir/repo8/.github/workflows/validate-scheduled.yml"
+set +e
+"$tmpdir/repo8/scripts/validate-template.sh" >/dev/null 2>&1
+sched_rc=$?
+set -e
+assert_eq "validator fails when validate-scheduled lacks schedule/cron" "1" "$sched_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2

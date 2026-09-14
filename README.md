@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/rmkr-dev/enterprise-github-template/actions/workflows/ci.yml/badge.svg)](https://github.com/rmkr-dev/enterprise-github-template/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/rmkr-dev/enterprise-github-template)](https://github.com/rmkr-dev/enterprise-github-template/releases)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/rmkr-dev/enterprise-github-template/badge)](https://scorecard.dev/viewer/?uri=github.com/rmkr-dev/enterprise-github-template)
 
 A GitHub-native starting point for public and private repositories that need the same baseline: human-first engineering standards, architecture and decision docs, security defaults, and CI that runs on GitHub Actions.
 
@@ -91,6 +92,7 @@ GitHub Actions runs those same checks on pull requests, pushes to `main`, and on
 | [Decisions](docs/decisions/README.md) | When and how to write an ADR |
 | [ADR-001](docs/decisions/ADR-001-github-native-template.md) | Why GitHub-native free-first |
 | [ADR-002](docs/decisions/ADR-002-validation-in-ci.md) | Why validation runs in Actions CI |
+| [ADR-003](docs/decisions/ADR-003-weekly-scheduled-validation.md) | Why validation also runs on a weekly schedule |
 | [Security](docs/security/security.md) | Baseline security expectations |
 | [Operations](docs/operations/README.md) | Maintainer ops for this template |
 | [Release process](docs/operations/release-process.md) | Tagging and template releases |
