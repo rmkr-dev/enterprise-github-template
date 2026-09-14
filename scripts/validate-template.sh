@@ -41,6 +41,7 @@ REQUIRED=(
   ".github/PULL_REQUEST_TEMPLATE.md"
   ".github/ISSUE_TEMPLATE/bug_report.yml"
   ".github/ISSUE_TEMPLATE/feature_request.yml"
+  ".github/ISSUE_TEMPLATE/good_first_issue.yml"
   ".github/ISSUE_TEMPLATE/config.yml"
   "CODE_OF_CONDUCT.md"
   "SUPPORT.md"

@@ -1,0 +1,51 @@
+name: Good first issue
+description: Suggest a small, well-scoped starter task for new contributors
+title: "good first issue: "
+labels: ["good first issue", "help wanted"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form when you want maintainers to track a **small** improvement. Prefer concrete file paths and acceptance checks. See [CONTRIBUTING.md](../../CONTRIBUTING.md).
+  - type: textarea
+    id: why
+    attributes:
+      label: Why this helps
+      description: What gap does this close for template consumers or new contributors?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Suggested steps
+      description: Ordered steps a newcomer can follow.
+      placeholder: |
+        1. Open file X
+        2. Change Y
+        3. Run bash scripts/validate-template.sh
+    validations:
+      required: true
+  - type: textarea
+    id: files
+    attributes:
+      label: Likely files
+      description: Paths that should change (keep the list short).
+    validations:
+      required: true
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Out of scope
+      description: What should this issue explicitly not include?
+      value: No sample apps, Node/npm, or security-default redesigns.
+    validations:
+      required: true
+  - type: checkboxes
+    id: size
+    attributes:
+      label: Size check
+      options:
+        - label: This fits in one small PR (roughly one concern, few files)
+          required: true
+        - label: Acceptance includes `bash scripts/validate-template.sh` (and tests if scripts change)
+          required: true
