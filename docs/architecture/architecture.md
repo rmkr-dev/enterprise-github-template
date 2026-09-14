@@ -17,6 +17,7 @@ What exists today is the documentation, process skeleton, and GitHub hygiene/CI 
 | `docs/development/` | Contributor workflow on the template |
 | `docs/security/` | Security expectations for template consumers |
 | `docs/operations/` | Maintainer operations and release process |
+| `docs/references/` | Consumer evolution examples (not a sample app) |
 | `CHANGELOG.md` | Notable changes for template consumers |
 | `.gitignore` | Ignores editor/env/accidental build artifacts |
 | `docs/operations/branch-protection.md` | Recommended required checks on `main` |
