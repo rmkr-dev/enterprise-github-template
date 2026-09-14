@@ -22,6 +22,7 @@ Exact check names come from workflow `name:` / job `name:` fields:
 - `Analyze Actions workflows` from `.github/workflows/codeql.yml`
 - `Dependency review` from `.github/workflows/dependency-review.yml` (PRs)
 - Scorecard checks appear after `.github/workflows/scorecard.yml` runs on `main` (not a default PR required check)
+- Weekly `validate-scheduled.yml` runs are hygiene only — do **not** add them as required PR checks (they do not run on pull requests)
 
 Re-check the Actions UI after renaming jobs.
 
