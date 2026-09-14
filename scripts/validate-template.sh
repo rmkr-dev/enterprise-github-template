@@ -127,6 +127,20 @@ for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflow
   fi
 done
 
+echo "==> Checking release workflow tag trigger and permissions"
+if ! grep -qE 'tags:' .github/workflows/release.yml; then
+  echo "MISSING tags: trigger in release.yml" >&2
+  fail=1
+else
+  echo "OK tags: release.yml"
+fi
+if ! grep -qE 'contents:[[:space:]]*write' .github/workflows/release.yml; then
+  echo "MISSING contents: write in release.yml" >&2
+  fail=1
+else
+  echo "OK contents write: release.yml"
+fi
+
 echo "==> Checking CODEOWNERS has an owner"
 if ! grep -qE '@[A-Za-z0-9_-]+' .github/CODEOWNERS; then
   echo "MISSING owner handle in .github/CODEOWNERS" >&2
