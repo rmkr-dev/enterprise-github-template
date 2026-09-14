@@ -145,6 +145,12 @@ if ! grep -qE 'contents:[[:space:]]*write' .github/workflows/release.yml; then
 else
   echo "OK contents write: release.yml"
 fi
+if ! grep -qE -- '--verify-tag' .github/workflows/release.yml; then
+  echo "MISSING --verify-tag in release.yml" >&2
+  fail=1
+else
+  echo "OK verify-tag: release.yml"
+fi
 
 echo "==> Checking CODEOWNERS has an owner"
 if ! grep -qE '@[A-Za-z0-9_-]+' .github/CODEOWNERS; then

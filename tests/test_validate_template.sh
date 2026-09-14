@@ -66,6 +66,7 @@ assert_contains "Scheduled timeout check" "OK timeout: .github/workflows/validat
 assert_contains "Dependency-review timeout check" "OK timeout: .github/workflows/dependency-review.yml" "$out"
 assert_contains "release tags check" "OK tags: release.yml" "$out"
 assert_contains "release contents write" "OK contents write: release.yml" "$out"
+assert_contains "release verify-tag" "OK verify-tag: release.yml" "$out"
 assert_contains "Scorecard permissions check" "OK permissions: .github/workflows/scorecard.yml" "$out"
 assert_contains "Scorecard concurrency check" "OK concurrency: .github/workflows/scorecard.yml" "$out"
 assert_contains "Scheduled permissions check" "OK permissions: .github/workflows/validate-scheduled.yml" "$out"
@@ -303,6 +304,16 @@ set +e
 gi_rc=$?
 set -e
 assert_eq "validator fails when .gitignore lacks .env/node_modules" "1" "$gi_rc"
+
+
+# Negative: release.yml without --verify-tag should fail
+cp -a "$ROOT/." "$tmpdir/repo23"
+sed -i '/--verify-tag/d' "$tmpdir/repo23/.github/workflows/release.yml"
+set +e
+"$tmpdir/repo23/scripts/validate-template.sh" >/dev/null 2>&1
+vt_rc=$?
+set -e
+assert_eq "validator fails when release.yml lacks --verify-tag" "1" "$vt_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2
