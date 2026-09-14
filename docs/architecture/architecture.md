@@ -14,14 +14,14 @@ What exists today is the documentation, process skeleton, and GitHub hygiene/CI 
 | `SECURITY.md` | How to report vulnerabilities in this template |
 | `docs/architecture/` | Current-state narrative and diagrams for *this* template |
 | `docs/decisions/` | Architecture Decision Records |
-| `docs/development/` | Contributor workflow on the template |
+| `docs/development/` | Contributor workflow + first-week consumer checklist |
 | `docs/security/` | Security expectations for template consumers |
 | `docs/operations/` | Maintainer operations and release process |
 | `docs/references/` | Consumer evolution examples (not a sample app) |
 | `CHANGELOG.md` | Notable changes for template consumers |
 | `.gitignore` | Ignores editor/env/accidental build artifacts |
 | `docs/operations/branch-protection.md` | Recommended required checks on `main` |
-| `.github/workflows/` | CI validation, weekly scheduled validate, CodeQL (`actions`), dependency review, OpenSSF Scorecard, release-on-tag |
+| `.github/workflows/` | CI validation (with concurrency), weekly scheduled validate, CodeQL (`actions`), dependency review, OpenSSF Scorecard, release-on-tag |
 | `.github/dependabot.yml` | Weekly GitHub Actions dependency updates |
 | `.github/CODEOWNERS` | Default review owner `@rmkr-dev` |
 | `.github/ISSUE_TEMPLATE/`, `PULL_REQUEST_TEMPLATE.md` | Community issue/PR hygiene (including good-first-issue form) |
