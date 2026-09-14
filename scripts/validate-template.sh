@@ -30,6 +30,7 @@ REQUIRED=(
   "docs/operations/branch-protection.md"
   "docs/operations/incident-response.md"
   "docs/operations/troubleshooting.md"
+  "docs/operations/secrets-and-oidc.md"
   "docs/references/README.md"
   "docs/references/examples.md"
   "docs/references/faq.md"

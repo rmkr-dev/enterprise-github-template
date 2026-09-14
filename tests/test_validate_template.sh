@@ -38,6 +38,7 @@ set -e
 assert_eq "validator exit 0 on repo" "0" "$rc"
 assert_contains "PASSED line" "validate-template: PASSED" "$out"
 assert_contains "editorconfig required" "OK: .editorconfig" "$out"
+assert_contains "secrets-and-oidc required" "OK: docs/operations/secrets-and-oidc.md" "$out"
 assert_contains "gitattributes required" "OK: .gitattributes" "$out"
 assert_contains "CODEOWNERS check ran" "OK: CODEOWNERS has owner" "$out"
 assert_contains "SECURITY check ran" "OK: SECURITY.md reporting path" "$out"
