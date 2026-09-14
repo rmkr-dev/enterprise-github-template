@@ -9,6 +9,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+- Validator requires a catch-all `*` owner rule in `.github/CODEOWNERS`
+
 ### Changed
 
 
