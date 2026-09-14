@@ -227,6 +227,12 @@ if ! grep -qE 'package-ecosystem:[[:space:]]*github-actions' .github/dependabot.
 else
   echo "OK: dependabot github-actions ecosystem"
 fi
+if grep -qE 'package-ecosystem:[[:space:]]*(npm|yarn|pnpm)' .github/dependabot.yml; then
+  echo "FORBIDDEN Node package-ecosystem in dependabot.yml (ADR-004)" >&2
+  fail=1
+else
+  echo "OK: dependabot has no npm/yarn/pnpm ecosystem"
+fi
 
 echo "==> Checking no Node/npm package manifests (ADR-004)"
 node_hits=()

@@ -74,6 +74,7 @@ assert_contains "Scheduled concurrency check" "OK concurrency: .github/workflows
 assert_contains "Release permissions check" "OK permissions: .github/workflows/release.yml" "$out"
 assert_contains "Release concurrency check" "OK concurrency: .github/workflows/release.yml" "$out"
 assert_contains "Dependabot github-actions check" "OK: dependabot github-actions ecosystem" "$out"
+assert_contains "Dependabot no npm ecosystem" "OK: dependabot has no npm/yarn/pnpm ecosystem" "$out"
 assert_contains "Scorecard persist-credentials" "OK: scorecard persist-credentials false" "$out"
 assert_contains "CodeQL languages actions" "OK: codeql languages actions" "$out"
 assert_contains "CodeQL security-events write" "OK: codeql security-events write" "$out"
@@ -314,6 +315,16 @@ set +e
 vt_rc=$?
 set -e
 assert_eq "validator fails when release.yml lacks --verify-tag" "1" "$vt_rc"
+
+
+# Negative: dependabot with github-actions plus npm should fail (ADR-004)
+cp -a "$ROOT/." "$tmpdir/repo24"
+printf 'version: 2\nupdates:\n  - package-ecosystem: github-actions\n    directory: /\n    schedule:\n      interval: weekly\n  - package-ecosystem: npm\n    directory: /\n    schedule:\n      interval: weekly\n' > "$tmpdir/repo24/.github/dependabot.yml"
+set +e
+"$tmpdir/repo24/scripts/validate-template.sh" >/dev/null 2>&1
+dep_npm_rc=$?
+set -e
+assert_eq "validator fails when dependabot includes npm ecosystem" "1" "$dep_npm_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2
