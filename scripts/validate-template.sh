@@ -140,6 +140,30 @@ for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflow
   fi
 done
 
+echo "==> Checking workflows do not use write-all permissions"
+for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflows/dependency-review.yml .github/workflows/scorecard.yml .github/workflows/release.yml .github/workflows/validate-scheduled.yml; do
+  if grep -qiE 'permissions:[[:space:]]*write-all' "$wf"; then
+    echo "FORBIDDEN permissions: write-all in $wf" >&2
+    fail=1
+  else
+    echo "OK no write-all: $wf"
+  fi
+done
+
+echo "==> Checking Scorecard uploads SARIF to code scanning"
+if ! grep -qE 'uses:[[:space:]]*github/codeql-action/upload-sarif@' .github/workflows/scorecard.yml; then
+  echo "MISSING codeql-action/upload-sarif in scorecard.yml" >&2
+  fail=1
+else
+  echo "OK: scorecard upload-sarif"
+fi
+if ! grep -qE 'sarif_file:' .github/workflows/scorecard.yml; then
+  echo "MISSING sarif_file: in scorecard.yml" >&2
+  fail=1
+else
+  echo "OK: scorecard sarif_file"
+fi
+
 echo "==> Checking release workflow tag trigger and permissions"
 if ! grep -qE 'tags:' .github/workflows/release.yml; then
   echo "MISSING tags: trigger in release.yml" >&2

@@ -80,6 +80,10 @@ assert_contains "Scorecard timeout check" "OK timeout: .github/workflows/scoreca
 assert_contains "Release timeout check" "OK timeout: .github/workflows/release.yml" "$out"
 assert_contains "Scheduled timeout check" "OK timeout: .github/workflows/validate-scheduled.yml" "$out"
 assert_contains "Dependency-review timeout check" "OK timeout: .github/workflows/dependency-review.yml" "$out"
+assert_contains "no write-all ci" "OK no write-all: .github/workflows/ci.yml" "$out"
+assert_contains "no write-all scorecard" "OK no write-all: .github/workflows/scorecard.yml" "$out"
+assert_contains "scorecard upload-sarif" "OK: scorecard upload-sarif" "$out"
+assert_contains "scorecard sarif_file" "OK: scorecard sarif_file" "$out"
 assert_contains "release tags check" "OK tags: release.yml" "$out"
 assert_contains "release contents write" "OK contents write: release.yml" "$out"
 assert_contains "release verify-tag" "OK verify-tag: release.yml" "$out"
@@ -424,6 +428,25 @@ set +e
 pem_rc=$?
 set -e
 assert_eq "validator fails when .gitignore lacks *.pem" "1" "$pem_rc"
+
+# Negative: ci.yml with permissions write-all should fail
+cp -a "$ROOT/." "$tmpdir/repo35"
+sed -i 's/permissions:\n  contents: read/permissions: write-all/' "$tmpdir/repo35/.github/workflows/ci.yml" || true
+printf 'name: CI\non:\n  pull_request:\n  workflow_dispatch:\npermissions: write-all\nconcurrency:\n  group: ci\njobs:\n  validate:\n    timeout-minutes: 10\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1\n        with:\n          persist-credentials: false\n' > "$tmpdir/repo35/.github/workflows/ci.yml"
+set +e
+"$tmpdir/repo35/scripts/validate-template.sh" >/dev/null 2>&1
+wa_rc=$?
+set -e
+assert_eq "validator fails when ci.yml has write-all" "1" "$wa_rc"
+
+# Negative: scorecard without upload-sarif should fail
+cp -a "$ROOT/." "$tmpdir/repo36"
+sed -i '/upload-sarif/,+3d' "$tmpdir/repo36/.github/workflows/scorecard.yml"
+set +e
+"$tmpdir/repo36/scripts/validate-template.sh" >/dev/null 2>&1
+sarif_rc=$?
+set -e
+assert_eq "validator fails when scorecard lacks upload-sarif" "1" "$sarif_rc"
 
 # Negative: dependabot with daily interval should fail
 cp -a "$ROOT/." "$tmpdir/repo34"
