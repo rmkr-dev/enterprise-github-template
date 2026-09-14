@@ -39,6 +39,7 @@ CI runs on GitHub Actions for this template: required-file validation, a small t
 
 - **GitHub Actions first.** Do not introduce another CI system unless an ADR explains why Actions cannot do the job.
 - **GitHub Free-first.** Workflows and required checks must be viable on a free GitHub plan. Do not depend on paid GitHub features or third-party secrets to get a green default pipeline.
+- **Shell-only template tooling.** Do not add Node/npm (or other package managers) to maintain this template; see [ADR-004](docs/decisions/ADR-004-shell-only-template-validation.md).
 - When you add or rename required files, update `scripts/validate-template.sh` in the same PR.
 - When application code exists later, tests ship in the same PR as the behavior and CI stays the default way those tests run.
 

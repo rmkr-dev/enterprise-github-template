@@ -94,6 +94,7 @@ GitHub Actions runs those same checks on pull requests, pushes to `main`, and on
 | [ADR-001](docs/decisions/ADR-001-github-native-template.md) | Why GitHub-native free-first |
 | [ADR-002](docs/decisions/ADR-002-validation-in-ci.md) | Why validation runs in Actions CI |
 | [ADR-003](docs/decisions/ADR-003-weekly-scheduled-validation.md) | Why validation also runs on a weekly schedule |
+| [ADR-004](docs/decisions/ADR-004-shell-only-template-validation.md) | Why template validation stays shell-only (no Node/npm) |
 | [Security](docs/security/security.md) | Baseline security expectations |
 | [Operations](docs/operations/README.md) | Maintainer ops for this template |
 | [Troubleshooting](docs/operations/troubleshooting.md) | Common CI/docs/release failure modes |

@@ -27,3 +27,4 @@ Skip an ADR for typo fixes, doc wording, and other local edits that do not chang
 | [ADR-001](ADR-001-github-native-template.md) | GitHub-native free-first repository template | Accepted |
 | [ADR-002](ADR-002-validation-in-ci.md) | Validate the template in GitHub Actions CI | Accepted |
 | [ADR-003](ADR-003-weekly-scheduled-validation.md) | Weekly scheduled template validation | Accepted |
+| [ADR-004](ADR-004-shell-only-template-validation.md) | Shell-only template validation (no Node/npm) | Accepted |
