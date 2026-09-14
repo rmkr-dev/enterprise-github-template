@@ -42,4 +42,4 @@ For a fuller light checklist (containment, disclosure, follow-through), see [inc
 - [Release process](release-process.md) — tagging and GitHub Releases
 - [Branch protection](branch-protection.md) — recommended required checks on `main`
 - [CHANGELOG.md](../../CHANGELOG.md) — user-facing history
-- [Security](../security/security.md) — consumer posture
+- [Security](../security/security.md) — consumer posture and workflow permissions table
