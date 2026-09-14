@@ -30,9 +30,13 @@ There is no application runtime, hosting, or on-call rotation for this template.
 | CI red on `main` | Revert or fix-forward the last merge; do not leave `main` broken |
 | Broken relative Markdown links | Fix links or restore the target file; validator must pass |
 | Suspected unsafe default in a workflow | Draft a private advisory per SECURITY.md; tighten permissions |
+| Secret in git or compromised Action | Follow [incident-response.md](incident-response.md); rotate credentials first |
+
+For a fuller light checklist (containment, disclosure, follow-through), see [incident-response.md](incident-response.md).
 
 ## Related docs
 
+- [Incident response](incident-response.md) — light IR checklist for template consumers
 - [Development](../development/development.md) — local checks and CI shape
 - [Release process](release-process.md) — tagging and GitHub Releases
 - [Branch protection](branch-protection.md) — recommended required checks on `main`

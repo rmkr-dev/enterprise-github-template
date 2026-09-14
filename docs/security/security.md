@@ -31,5 +31,6 @@ When you create a product repo from this template:
 ## Related community docs
 
 - Vulnerability reporting: [SECURITY.md](../../SECURITY.md)
+- Incident response (template-scoped): [docs/operations/incident-response.md](../operations/incident-response.md)
 - Support routing (non-security): [SUPPORT.md](../../SUPPORT.md)
 - Conduct: [CODE_OF_CONDUCT.md](../../CODE_OF_CONDUCT.md)
