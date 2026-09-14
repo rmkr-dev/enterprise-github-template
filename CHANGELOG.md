@@ -9,6 +9,13 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+### Changed
+
+
+## [0.3.5] — 2026-09-14
+
+### Added
+
 - Validator requires Dependabot `interval: weekly` and forbids `daily`/`monthly`
 - `scripts/extract-changelog-section.sh` shared by release workflow; validator requires it
 - Validator forbids `permissions: write-all` and requires Scorecard `upload-sarif` / `sarif_file`
@@ -230,7 +237,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Documented that the GitHub **template repository** flag is enabled and **Use this template** works now
 
-[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.3.4...HEAD
+[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.3.5...HEAD
+[0.3.5]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.5
 [0.3.4]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.4
 [0.3.3]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.3
 [0.3.2]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.2
