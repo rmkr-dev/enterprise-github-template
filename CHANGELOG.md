@@ -11,6 +11,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Concurrency groups on CI, CodeQL, and dependency-review workflows (cancel superseded runs)
 - Validator checks that those workflows declare `permissions:` and `concurrency:`
+- First-week checklist for template consumers (`docs/development/first-week.md`)
 
 ### Changed
 
