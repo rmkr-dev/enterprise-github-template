@@ -9,10 +9,18 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+### Changed
+
+
+## [0.3.3] — 2026-09-14
+
+### Added
+
 - `.gitignore` covers common credential patterns (`*.pem`, `id_rsa`, keystores); validator requires `*.pem` and `id_rsa`
 - CONTRIBUTING and architecture docs point at upgrading-from-upstream guide
 
 ### Changed
+
 
 
 ## [0.3.2] — 2026-09-14
@@ -206,7 +214,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Documented that the GitHub **template repository** flag is enabled and **Use this template** works now
 
-[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.3.2...HEAD
+[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.3.3...HEAD
+[0.3.3]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.3
 [0.3.2]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.2
 [0.3.1]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.1
 [0.3.0]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.0
