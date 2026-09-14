@@ -10,6 +10,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 ### Added
 
 - Validator forbids Node/npm package manifests and `node_modules/` (ADR-004)
+- Validator requires CodeQL `languages: actions` and `security-events: write`
 
 ### Changed
 
