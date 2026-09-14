@@ -53,6 +53,7 @@ assert_contains "scheduled workflow cron" "OK cron: validate-scheduled.yml" "$ou
 assert_contains "ADR-003 Status check" "OK Status: docs/decisions/ADR-003-weekly-scheduled-validation.md" "$out"
 assert_contains "CI permissions check" "OK permissions: .github/workflows/ci.yml" "$out"
 assert_contains "CI concurrency check" "OK concurrency: .github/workflows/ci.yml" "$out"
+assert_contains "CI timeout check" "OK timeout: .github/workflows/ci.yml" "$out"
 
 # Negative: missing required file should fail
 tmpdir="$(mktemp -d)"

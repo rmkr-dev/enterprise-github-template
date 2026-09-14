@@ -9,7 +9,12 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+- Job `timeout-minutes` on CI, scheduled validate, and release workflows
+- Concurrency group on OpenSSF Scorecard workflow
+- Operations troubleshooting guide (`docs/operations/troubleshooting.md`)
+
 ### Changed
+
 
 ## [0.2.3] — 2026-09-14
 

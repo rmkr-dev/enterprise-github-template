@@ -28,6 +28,7 @@ REQUIRED=(
   "docs/operations/tagging.md"
   "docs/operations/branch-protection.md"
   "docs/operations/incident-response.md"
+  "docs/operations/troubleshooting.md"
   "docs/references/README.md"
   "docs/references/examples.md"
   ".gitignore"
@@ -97,6 +98,14 @@ if ! grep -qE 'cron:' .github/workflows/validate-scheduled.yml; then
   fail=1
 else
   echo "OK cron: validate-scheduled.yml"
+fi
+
+echo "==> Checking CI validate job has a timeout"
+if ! grep -qE 'timeout-minutes:' .github/workflows/ci.yml; then
+  echo "MISSING timeout-minutes: in ci.yml" >&2
+  fail=1
+else
+  echo "OK timeout: .github/workflows/ci.yml"
 fi
 
 echo "==> Checking CI workflows declare permissions and concurrency"
