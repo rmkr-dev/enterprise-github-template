@@ -11,6 +11,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Validator requires a catch-all `*` owner rule in `.github/CODEOWNERS`
 - Ruby consumer evolution sketch in `docs/references/examples.md` (docs only)
+- Release workflow concurrency group; validator requires permissions/concurrency on scheduled validate and release
 
 ### Changed
 
