@@ -74,6 +74,7 @@ assert_contains "Release permissions check" "OK permissions: .github/workflows/r
 assert_contains "Release concurrency check" "OK concurrency: .github/workflows/release.yml" "$out"
 assert_contains "Dependabot github-actions check" "OK: dependabot github-actions ecosystem" "$out"
 assert_contains "Scorecard persist-credentials" "OK: scorecard persist-credentials false" "$out"
+assert_contains "no Node/npm manifests" "OK: no Node/npm package manifests" "$out"
 
 # Negative: missing required file should fail
 tmpdir="$(mktemp -d)"
@@ -246,6 +247,16 @@ set +e
 rel_conc_rc=$?
 set -e
 assert_eq "validator fails when release.yml lacks concurrency" "1" "$rel_conc_rc"
+
+
+# Negative: package.json present should fail (ADR-004)
+cp -a "$ROOT/." "$tmpdir/repo18"
+printf '{ "name": "forbidden" }\n' > "$tmpdir/repo18/package.json"
+set +e
+"$tmpdir/repo18/scripts/validate-template.sh" >/dev/null 2>&1
+npm_rc=$?
+set -e
+assert_eq "validator fails when package.json present" "1" "$npm_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2
