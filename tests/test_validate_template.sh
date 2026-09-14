@@ -80,6 +80,8 @@ assert_contains "Dependabot no npm ecosystem" "OK: dependabot has no npm/yarn/pn
 assert_contains "Scorecard persist-credentials" "OK: scorecard persist-credentials false" "$out"
 assert_contains "CodeQL languages actions" "OK: codeql languages actions" "$out"
 assert_contains "CodeQL security-events write" "OK: codeql security-events write" "$out"
+assert_contains "CodeQL schedule" "OK: codeql schedule" "$out"
+assert_contains "CodeQL cron" "OK: codeql cron" "$out"
 assert_contains "Scorecard publish_results" "OK: scorecard publish_results true" "$out"
 assert_contains "CI workflow_dispatch" "OK: ci workflow_dispatch" "$out"
 assert_contains "gitignore .env" "OK: gitignore covers .env" "$out"
@@ -337,6 +339,16 @@ set +e
 dr_pr_rc=$?
 set -e
 assert_eq "validator fails when dependency-review lacks pull_request" "1" "$dr_pr_rc"
+
+
+# Negative: codeql.yml without schedule/cron should fail
+cp -a "$ROOT/." "$tmpdir/repo26"
+sed -i '/schedule:/,/cron:/d' "$tmpdir/repo26/.github/workflows/codeql.yml"
+set +e
+"$tmpdir/repo26/scripts/validate-template.sh" >/dev/null 2>&1
+cq_sched_rc=$?
+set -e
+assert_eq "validator fails when codeql lacks schedule/cron" "1" "$cq_sched_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2
