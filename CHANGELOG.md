@@ -9,6 +9,12 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+### Changed
+
+## [0.2.2] — 2026-09-14
+
+### Added
+
 - ADR-003 documenting weekly scheduled template validation
 - OpenSSF Scorecard badge on the README
 
@@ -67,7 +73,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Documented that the GitHub **template repository** flag is enabled and **Use this template** works now
 
-[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.2.2...HEAD
+[0.2.2]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.2
 [0.2.1]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.1
 [0.2.0]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.0
 [0.1.0]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.1.0
