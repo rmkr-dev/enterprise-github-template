@@ -77,6 +77,7 @@ assert_contains "Scorecard persist-credentials" "OK: scorecard persist-credentia
 assert_contains "CodeQL languages actions" "OK: codeql languages actions" "$out"
 assert_contains "CodeQL security-events write" "OK: codeql security-events write" "$out"
 assert_contains "Scorecard publish_results" "OK: scorecard publish_results true" "$out"
+assert_contains "CI workflow_dispatch" "OK: ci workflow_dispatch" "$out"
 assert_contains "no Node/npm manifests" "OK: no Node/npm package manifests" "$out"
 
 # Negative: missing required file should fail
@@ -280,6 +281,16 @@ set +e
 pr_rc=$?
 set -e
 assert_eq "validator fails when scorecard lacks publish_results true" "1" "$pr_rc"
+
+
+# Negative: ci.yml without workflow_dispatch should fail
+cp -a "$ROOT/." "$tmpdir/repo21"
+sed -i '/workflow_dispatch:/d' "$tmpdir/repo21/.github/workflows/ci.yml"
+set +e
+"$tmpdir/repo21/scripts/validate-template.sh" >/dev/null 2>&1
+wd_rc=$?
+set -e
+assert_eq "validator fails when ci.yml lacks workflow_dispatch" "1" "$wd_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2

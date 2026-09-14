@@ -192,6 +192,14 @@ else
   echo "OK: scorecard publish_results true"
 fi
 
+echo "==> Checking CI allows on-demand workflow_dispatch"
+if ! grep -qE 'workflow_dispatch:' .github/workflows/ci.yml; then
+  echo "MISSING workflow_dispatch: in ci.yml" >&2
+  fail=1
+else
+  echo "OK: ci workflow_dispatch"
+fi
+
 echo "==> Checking Dependabot covers github-actions"
 if ! grep -qE 'package-ecosystem:[[:space:]]*github-actions' .github/dependabot.yml; then
   echo "MISSING package-ecosystem: github-actions in dependabot.yml" >&2
