@@ -16,7 +16,7 @@ What exists today is the documentation, process skeleton, and GitHub hygiene/CI 
 | `docs/decisions/` | Architecture Decision Records |
 | `docs/development/` | Contributor workflow + first-week consumer checklist |
 | `docs/security/` | Security expectations for template consumers |
-| `docs/operations/` | Maintainer operations and release process |
+| `docs/operations/` | Maintainer operations, release process, secrets/OIDC hygiene |
 | `docs/references/` | Consumer evolution examples (incl. Terraform/IaC) + FAQ (not a sample app) |
 | `CHANGELOG.md` | Notable changes for template consumers |
 | `.gitignore` | Ignores editor/env/accidental build artifacts |
