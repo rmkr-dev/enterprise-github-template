@@ -1,6 +1,6 @@
 # Examples: evolving a derived repository
 
-This template is **not** a sample application. After **Use this template**, the derived repo should grow into a real product in small, honest slices. The sketches below show a reasonable order for **Java**, **Python**, **Go**, **Rust**, and **Azure/AKS** consumers. They are guidance, not files that ship in this template.
+This template is **not** a sample application. After **Use this template**, the derived repo should grow into a real product in small, honest slices. The sketches below show a reasonable order for **Java**, **Python**, **Go**, **Rust**, **.NET/C#**, and **Azure/AKS** consumers. They are guidance, not files that ship in this template.
 
 ## Shared first steps (any language)
 
@@ -66,6 +66,21 @@ Typical order after the shared steps:
 
 Prefer Cargo and rustup. Do not introduce Node/npm solely for documentation.
 
+
+## .NET / C# sketch
+
+Typical order after the shared steps:
+
+| Slice | What lands | What stays honest |
+| --- | --- | --- |
+| 1. Project skeleton | `.sln` / `.csproj` (or equivalent), package layout, no fake ASP.NET endpoints claiming production APIs | README describes the real library or service purpose |
+| 2. Tests | `dotnet test` for real behavior | CI runs tests only after they exist |
+| 3. App CI | Workflow: checkout → .NET setup → `dotnet test` | Keep or retire template validation deliberately |
+| 4. Supply chain | Dependabot `nuget` ecosystem; extend CodeQL with `csharp` | Document TFM / LTS policy |
+| 5. Architecture | ADRs for hosting model (library vs worker vs web) and deploy target | No containers/K8s diagrams until those artifacts exist |
+
+Prefer the .NET SDK CLI. Do not introduce Node/npm solely for documentation.
+
 ## Azure / AKS sketch
 
 Typical order after the shared steps, when the derived product will run on **Azure Kubernetes Service**. Docs-only guidance for consumers — this template still ships **no** manifests, Helm charts, or Terraform.
@@ -87,7 +102,7 @@ Typical order after the shared steps, when the derived product will run on **Azu
 
 ## What not to copy from these sketches into the template
 
-- Sample `pom.xml`, `pyproject.toml`, `go.mod`, `Cargo.toml`, or application source
+- Sample `pom.xml`, `pyproject.toml`, `go.mod`, `Cargo.toml`, `.csproj`/`.sln`, or application source
 - Language package managers or lockfiles in **this** template repository
 - Fake “hello world” services added only to make CI look busy
 - Sample Dockerfile, Helm chart, Terraform, or AKS manifests in **this** template repository
