@@ -9,6 +9,13 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+### Changed
+
+
+## [0.2.9] — 2026-09-14
+
+### Added
+
 - Architecture docs point at secrets/OIDC hygiene guide
 - Kotlin consumer evolution sketch in `docs/references/examples.md` (docs only)
 
@@ -155,7 +162,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Documented that the GitHub **template repository** flag is enabled and **Use this template** works now
 
-[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.2.8...HEAD
+[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.2.9...HEAD
+[0.2.9]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.9
 [0.2.8]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.8
 [0.2.7]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.7
 [0.2.6]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.6
