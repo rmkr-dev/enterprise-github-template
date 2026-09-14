@@ -9,6 +9,13 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+### Changed
+
+
+## [0.3.4] — 2026-09-14
+
+### Added
+
 - All workflow checkouts set `persist-credentials: false`; validator requires one persist-false per `actions/checkout`
 - GitHub Actions `uses:` lines pinned to commit SHAs with version comments (ADR-005); validator requires 40-char pins
 - Release workflow embeds the matching `CHANGELOG.md` version section into GitHub Release notes; validator requires the CHANGELOG reference
@@ -219,7 +226,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Documented that the GitHub **template repository** flag is enabled and **Use this template** works now
 
-[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.3.3...HEAD
+[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.3.4...HEAD
+[0.3.4]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.4
 [0.3.3]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.3
 [0.3.2]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.2
 [0.3.1]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.1
