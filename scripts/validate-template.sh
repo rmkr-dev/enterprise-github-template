@@ -31,6 +31,7 @@ REQUIRED=(
   "docs/operations/troubleshooting.md"
   "docs/references/README.md"
   "docs/references/examples.md"
+  "docs/references/faq.md"
   ".gitignore"
   ".editorconfig"
   ".gitattributes"
