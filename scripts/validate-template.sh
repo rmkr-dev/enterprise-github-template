@@ -32,6 +32,8 @@ REQUIRED=(
   ".github/workflows/ci.yml"
   ".github/workflows/codeql.yml"
   ".github/workflows/release.yml"
+  ".github/workflows/dependency-review.yml"
+  ".github/workflows/scorecard.yml"
   ".github/dependabot.yml"
   ".github/CODEOWNERS"
   ".github/PULL_REQUEST_TEMPLATE.md"
@@ -57,7 +59,7 @@ for path in "${REQUIRED[@]}"; do
 done
 
 echo "==> Checking workflow triggers and jobs"
-for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflows/release.yml; do
+for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflows/release.yml .github/workflows/dependency-review.yml .github/workflows/scorecard.yml; do
   if ! grep -qE '^[[:space:]]*on:' "$wf"; then
     echo "MISSING on: trigger in $wf" >&2
     fail=1

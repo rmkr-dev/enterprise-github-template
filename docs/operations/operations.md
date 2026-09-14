@@ -8,7 +8,7 @@ How maintainers operate **this template repository**. Derived products should re
 | --- | --- |
 | GitHub template flag | Keep enabled so **Use this template** works |
 | Default branch `main` | Merge complete slices only; keep CI green |
-| Actions (CI, CodeQL) | Free-plan workflows; least-privilege permissions |
+| Actions (CI, CodeQL, dependency review, Scorecard) | Free-plan workflows; least-privilege permissions |
 | Dependabot | Review weekly Actions update PRs |
 | Security advisories | Triage via [SECURITY.md](../../SECURITY.md) |
 
