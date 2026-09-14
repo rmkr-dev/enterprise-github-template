@@ -9,6 +9,12 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+### Changed
+
+## [0.2.0] — 2026-09-14
+
+### Added
+
 - Dependency review workflow on pull requests and OpenSSF Scorecard workflow (public, GitHub Free-friendly)
 - `docs/references/examples.md` showing how derived Java/Python repos can evolve from this template
 - Deeper template validation: CHANGELOG `[Unreleased]` + versioned sections, ADR `Status:` lines, workflow `on:` triggers; expanded negative tests
@@ -39,5 +45,6 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Documented that the GitHub **template repository** flag is enabled and **Use this template** works now
 
-[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.0
 [0.1.0]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.1.0
