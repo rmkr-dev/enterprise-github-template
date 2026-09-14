@@ -11,6 +11,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Validator requires Scorecard weekly `schedule` / `cron`
 - AGENTS and development docs point at upgrading-from-upstream guide
+- Validator requires `workflow_dispatch` on validate-scheduled
 
 ### Changed
 
