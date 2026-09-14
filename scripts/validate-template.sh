@@ -152,6 +152,20 @@ else
   echo "OK verify-tag: release.yml"
 fi
 
+echo "==> Checking dependency-review runs on pull_request"
+if ! grep -qE 'pull_request:' .github/workflows/dependency-review.yml; then
+  echo "MISSING pull_request: in dependency-review.yml" >&2
+  fail=1
+else
+  echo "OK: dependency-review pull_request"
+fi
+if ! grep -qE 'uses:[[:space:]]*actions/dependency-review-action@' .github/workflows/dependency-review.yml; then
+  echo "MISSING actions/dependency-review-action in dependency-review.yml" >&2
+  fail=1
+else
+  echo "OK: dependency-review-action"
+fi
+
 echo "==> Checking CODEOWNERS has an owner"
 if ! grep -qE '@[A-Za-z0-9_-]+' .github/CODEOWNERS; then
   echo "MISSING owner handle in .github/CODEOWNERS" >&2

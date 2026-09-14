@@ -67,6 +67,8 @@ assert_contains "Dependency-review timeout check" "OK timeout: .github/workflows
 assert_contains "release tags check" "OK tags: release.yml" "$out"
 assert_contains "release contents write" "OK contents write: release.yml" "$out"
 assert_contains "release verify-tag" "OK verify-tag: release.yml" "$out"
+assert_contains "dependency-review pull_request" "OK: dependency-review pull_request" "$out"
+assert_contains "dependency-review-action" "OK: dependency-review-action" "$out"
 assert_contains "Scorecard permissions check" "OK permissions: .github/workflows/scorecard.yml" "$out"
 assert_contains "Scorecard concurrency check" "OK concurrency: .github/workflows/scorecard.yml" "$out"
 assert_contains "Scheduled permissions check" "OK permissions: .github/workflows/validate-scheduled.yml" "$out"
@@ -325,6 +327,16 @@ set +e
 dep_npm_rc=$?
 set -e
 assert_eq "validator fails when dependabot includes npm ecosystem" "1" "$dep_npm_rc"
+
+
+# Negative: dependency-review.yml without pull_request should fail
+cp -a "$ROOT/." "$tmpdir/repo25"
+printf 'name: Dependency review\non:\n  workflow_dispatch:\npermissions:\n  contents: read\nconcurrency:\n  group: dr\njobs:\n  dependency-review:\n    timeout-minutes: 10\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v7\n      - uses: actions/dependency-review-action@v4\n' > "$tmpdir/repo25/.github/workflows/dependency-review.yml"
+set +e
+"$tmpdir/repo25/scripts/validate-template.sh" >/dev/null 2>&1
+dr_pr_rc=$?
+set -e
+assert_eq "validator fails when dependency-review lacks pull_request" "1" "$dr_pr_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2
