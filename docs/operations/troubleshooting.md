@@ -14,6 +14,7 @@ Quick fixes for common problems on **this template** or a fresh derived repo. No
 | `FORBIDDEN Node/npm artifacts` | `package.json` / lockfile / `node_modules` landed in template | Remove them; ADR-004 keeps validation shell-only |
 | `MISSING languages: actions` / `security-events: write` | CodeQL no longer analyzes Actions YAML or cannot upload SARIF | Restore `languages: actions` and `security-events: write` in `codeql.yml` |
 | `MISSING publish_results: true` | Scorecard no longer publishes to the public API / badge | Restore `publish_results: true` (or document private-repo exception) |
+| `MISSING workflow_dispatch:` on CI | Cannot re-run template validation without a noop PR | Restore `workflow_dispatch:` under `on:` in `ci.yml` |
 | `MISSING timeout-minutes:` | Workflow job can hang indefinitely | Add `timeout-minutes` on jobs in CI, CodeQL, Scorecard, release, scheduled validate, and dependency-review workflows |
 | `MISSING schedule:` on validate-scheduled | Weekly workflow lost its cron | Restore `on.schedule` + `cron` (see ADR-003) |
 | Dependency review fails: not supported | Dependency graph / alerts off | Enable Dependency graph (and Dependabot alerts if prompted) under Security settings |
