@@ -9,6 +9,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+- ADR-006: CHANGELOG-backed GitHub Releases; validator requires Scorecard `results_file`
+
 ### Changed
 
 

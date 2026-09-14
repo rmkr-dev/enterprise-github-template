@@ -17,6 +17,7 @@ Quick fixes for common problems on **this template** or a fresh derived repo. No
 | `MISSING interval: weekly` / `FORBIDDEN non-weekly` | Dependabot cadence drifted to daily/monthly | Keep `schedule.interval: weekly` for Actions updates |
 | `MISSING groups:` in dependabot.yml | Actions bumps open as many noisy PRs | Restore Dependabot `groups` for github-actions |
 | `MISSING results_format: sarif` | Scorecard output not SARIF for code scanning | Restore `results_format: sarif` in scorecard.yml |
+| `MISSING results_file:` | Scorecard has nowhere to write SARIF before upload | Restore `results_file: results.sarif` |
 | `FORBIDDEN Node package-ecosystem` in Dependabot | npm/yarn/pnpm update stream added to this template | Remove Node ecosystems; keep `github-actions` only (ADR-004) |
 | `FORBIDDEN Node/npm artifacts` | `package.json` / lockfile / `node_modules` landed in template | Remove them; ADR-004 keeps validation shell-only |
 | `MISSING languages: actions` / `security-events: write` | CodeQL no longer analyzes Actions YAML or cannot upload SARIF | Restore `languages: actions` and `security-events: write` in `codeql.yml` |
