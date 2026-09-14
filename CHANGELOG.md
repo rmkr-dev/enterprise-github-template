@@ -11,6 +11,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Go consumer evolution sketch in `docs/references/examples.md` (docs only)
 - `workflow_dispatch` on CI for on-demand validation without a noop PR
+- Consumer FAQ (`docs/references/faq.md`)
 
 ### Changed
 

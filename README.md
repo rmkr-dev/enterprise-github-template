@@ -103,6 +103,7 @@ GitHub Actions runs those same checks on pull requests, pushes to `main`, and on
 | [Incident response](docs/operations/incident-response.md) | Light IR checklist for template consumers |
 | [Changelog](CHANGELOG.md) | Notable template changes |
 | [Examples (derived repos)](docs/references/examples.md) | How Java/Python/Go/Azure-AKS consumers can evolve from this template |
+| [FAQ (derived repos)](docs/references/faq.md) | Short answers after Use this template |
 
 ## Contributing
 
