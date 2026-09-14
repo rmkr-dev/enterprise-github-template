@@ -1,6 +1,6 @@
 # Examples: evolving a derived repository
 
-This template is **not** a sample application. After **Use this template**, the derived repo should grow into a real product in small, honest slices. The sketches below show a reasonable order for **Java**, **Python**, **Go**, **Rust**, **.NET/C#**, **PHP**, **Ruby**, **Terraform/IaC**, and **Azure/AKS** consumers. They are guidance, not files that ship in this template.
+This template is **not** a sample application. After **Use this template**, the derived repo should grow into a real product in small, honest slices. The sketches below show a reasonable order for **Java**, **Python**, **Go**, **Rust**, **.NET/C#**, **PHP**, **Ruby**, **Kotlin**, **Terraform/IaC**, and **Azure/AKS** consumers. They are guidance, not files that ship in this template.
 
 ## Shared first steps (any language)
 
@@ -112,6 +112,21 @@ Typical order after the shared steps:
 
 Prefer Bundler and the Ruby toolchain. Do not introduce Node/npm solely for documentation.
 
+
+## Kotlin sketch
+
+Typical order after the shared steps:
+
+| Slice | What lands | What stays honest |
+| --- | --- | --- |
+| 1. Module skeleton | Gradle (or Maven) Kotlin project, package layout, no fake Ktor/Spring endpoints claiming production APIs | README describes the real library or service purpose |
+| 2. Tests | JUnit/Kotlin test for real behavior | CI runs tests only after they exist |
+| 3. App CI | Workflow: checkout → JDK setup → Gradle/Maven test | Keep or retire template validation deliberately |
+| 4. Supply chain | Dependabot `gradle`/`maven` ecosystem; extend CodeQL with `java` (covers Kotlin JVM) | Document JDK / Kotlin version policy |
+| 5. Architecture | ADRs for JVM target and deploy model | No containers/K8s diagrams until those artifacts exist |
+
+Prefer the JVM toolchain the product already uses. Do not introduce Node/npm solely for documentation.
+
 ## Terraform / IaC sketch
 
 Typical order after the shared steps, when the derived product manages cloud infrastructure with **Terraform** (or similar IaC). Docs-only guidance — this template still ships **no** `.tf` files, modules, or cloud credentials.
@@ -147,7 +162,7 @@ Typical order after the shared steps, when the derived product will run on **Azu
 
 ## What not to copy from these sketches into the template
 
-- Sample `pom.xml`, `pyproject.toml`, `go.mod`, `Cargo.toml`, `.csproj`/`.sln`, `composer.json`, `Gemfile`, or application source
+- Sample `pom.xml`, `pyproject.toml`, `go.mod`, `Cargo.toml`, `.csproj`/`.sln`, `composer.json`, `Gemfile`, Gradle Kotlin DSL stubs, or application source
 - Language package managers or lockfiles in **this** template repository
 - Fake “hello world” services added only to make CI look busy
 - Sample Dockerfile, Helm chart, `.tf` modules, or AKS manifests in **this** template repository
