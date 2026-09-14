@@ -50,7 +50,7 @@ Also on a **weekly schedule** (and `workflow_dispatch`):
 | --- | --- |
 | [`.github/workflows/validate-scheduled.yml`](../../.github/workflows/validate-scheduled.yml) | Same template validator + tests + `bash -n`/ShellCheck as CI, without waiting for a PR |
 
-Dependabot opens weekly PRs for GitHub Actions updates (`.github/dependabot.yml`), grouped into a single Actions PR when possible. `CODEOWNERS` routes reviews to `@rmkr-dev`. CI, CodeQL, and dependency-review workflows use `concurrency` groups so superseded runs on the same ref cancel in progress. Every workflow checkout sets `persist-credentials: false`. Third-party Actions are pinned to commit SHAs (ADR-005).
+Dependabot opens **weekly** PRs for GitHub Actions updates (`.github/dependabot.yml`; validator forbids daily/monthly), grouped into a single Actions PR when possible. `CODEOWNERS` routes reviews to `@rmkr-dev`. CI, CodeQL, and dependency-review workflows use `concurrency` groups so superseded runs on the same ref cancel in progress. Every workflow checkout sets `persist-credentials: false`. Third-party Actions are pinned to commit SHAs (ADR-005).
 
 There is **no application build** in this repository. CI is intentionally limited to template hygiene checks.
 
