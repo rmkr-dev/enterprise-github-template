@@ -71,6 +71,8 @@ assert_contains "Dependency-review timeout check" "OK timeout: .github/workflows
 assert_contains "release tags check" "OK tags: release.yml" "$out"
 assert_contains "release contents write" "OK contents write: release.yml" "$out"
 assert_contains "release verify-tag" "OK verify-tag: release.yml" "$out"
+assert_contains "release CHANGELOG reference" "OK: release notes reference CHANGELOG.md" "$out"
+assert_contains "release CHANGELOG section" "OK: release notes include CHANGELOG section header" "$out"
 assert_contains "dependency-review pull_request" "OK: dependency-review pull_request" "$out"
 assert_contains "dependency-review-action" "OK: dependency-review-action" "$out"
 assert_contains "Scorecard permissions check" "OK permissions: .github/workflows/scorecard.yml" "$out"
@@ -401,6 +403,15 @@ set +e
 pem_rc=$?
 set -e
 assert_eq "validator fails when .gitignore lacks *.pem" "1" "$pem_rc"
+
+# Negative: release.yml without CHANGELOG.md reference should fail
+cp -a "$ROOT/." "$tmpdir/repo32"
+sed -i '/CHANGELOG.md/d' "$tmpdir/repo32/.github/workflows/release.yml"
+set +e
+"$tmpdir/repo32/scripts/validate-template.sh" >/dev/null 2>&1
+rel_cl_rc=$?
+set -e
+assert_eq "validator fails when release.yml lacks CHANGELOG.md reference" "1" "$rel_cl_rc"
 
 # Negative: floating action tag should fail SHA pin
 cp -a "$ROOT/." "$tmpdir/repo30"

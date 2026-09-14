@@ -158,6 +158,18 @@ if ! grep -qE -- '--verify-tag' .github/workflows/release.yml; then
 else
   echo "OK verify-tag: release.yml"
 fi
+if ! grep -qF 'CHANGELOG.md' .github/workflows/release.yml; then
+  echo "MISSING CHANGELOG.md reference in release.yml" >&2
+  fail=1
+else
+  echo "OK: release notes reference CHANGELOG.md"
+fi
+if ! grep -qE 'Notes from CHANGELOG' .github/workflows/release.yml; then
+  echo "MISSING CHANGELOG notes section header in release.yml" >&2
+  fail=1
+else
+  echo "OK: release notes include CHANGELOG section header"
+fi
 
 echo "==> Checking dependency-review runs on pull_request"
 if ! grep -qE 'pull_request:' .github/workflows/dependency-review.yml; then
