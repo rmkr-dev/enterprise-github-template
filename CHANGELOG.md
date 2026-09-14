@@ -9,6 +9,13 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+### Changed
+
+
+## [0.3.8] — 2026-09-14
+
+### Added
+
 - ADR-006: CHANGELOG-backed GitHub Releases; validator requires Scorecard `results_file`
 
 ### Changed
@@ -258,7 +265,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Documented that the GitHub **template repository** flag is enabled and **Use this template** works now
 
-[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.3.7...HEAD
+[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.3.8...HEAD
+[0.3.8]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.8
 [0.3.7]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.7
 [0.3.6]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.6
 [0.3.5]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.5
