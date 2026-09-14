@@ -103,13 +103,15 @@ else
   echo "OK cron: validate-scheduled.yml"
 fi
 
-echo "==> Checking CI validate job has a timeout"
-if ! grep -qE 'timeout-minutes:' .github/workflows/ci.yml; then
-  echo "MISSING timeout-minutes: in ci.yml" >&2
-  fail=1
-else
-  echo "OK timeout: .github/workflows/ci.yml"
-fi
+echo "==> Checking key workflows declare job timeouts"
+for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflows/scorecard.yml .github/workflows/release.yml; do
+  if ! grep -qE 'timeout-minutes:' "$wf"; then
+    echo "MISSING timeout-minutes: in $wf" >&2
+    fail=1
+  else
+    echo "OK timeout: $wf"
+  fi
+done
 
 echo "==> Checking CI workflows declare permissions and concurrency"
 for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflows/dependency-review.yml .github/workflows/scorecard.yml; do

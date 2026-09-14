@@ -56,6 +56,9 @@ assert_contains "ADR-003 Status check" "OK Status: docs/decisions/ADR-003-weekly
 assert_contains "CI permissions check" "OK permissions: .github/workflows/ci.yml" "$out"
 assert_contains "CI concurrency check" "OK concurrency: .github/workflows/ci.yml" "$out"
 assert_contains "CI timeout check" "OK timeout: .github/workflows/ci.yml" "$out"
+assert_contains "CodeQL timeout check" "OK timeout: .github/workflows/codeql.yml" "$out"
+assert_contains "Scorecard timeout check" "OK timeout: .github/workflows/scorecard.yml" "$out"
+assert_contains "Release timeout check" "OK timeout: .github/workflows/release.yml" "$out"
 assert_contains "release tags check" "OK tags: release.yml" "$out"
 assert_contains "release contents write" "OK contents write: release.yml" "$out"
 assert_contains "Scorecard permissions check" "OK permissions: .github/workflows/scorecard.yml" "$out"
@@ -183,6 +186,16 @@ set +e
 dep_rc=$?
 set -e
 assert_eq "validator fails when dependabot lacks github-actions" "1" "$dep_rc"
+
+
+# Negative: codeql.yml without timeout-minutes should fail
+cp -a "$ROOT/." "$tmpdir/repo13"
+printf 'name: CodeQL\non:\n  pull_request:\npermissions:\n  contents: read\nconcurrency:\n  group: codeql\njobs:\n  analyze:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v7\n' > "$tmpdir/repo13/.github/workflows/codeql.yml"
+set +e
+"$tmpdir/repo13/scripts/validate-template.sh" >/dev/null 2>&1
+cq_to_rc=$?
+set -e
+assert_eq "validator fails when codeql.yml lacks timeout-minutes" "1" "$cq_to_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2
