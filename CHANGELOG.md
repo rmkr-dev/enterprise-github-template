@@ -9,7 +9,12 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+- ADR-003 documenting weekly scheduled template validation
+- OpenSSF Scorecard badge on the README
+
 ### Changed
+
+- Validator asserts `validate-scheduled.yml` declares `schedule` / `cron`
 
 ## [0.2.1] — 2026-09-14
 
