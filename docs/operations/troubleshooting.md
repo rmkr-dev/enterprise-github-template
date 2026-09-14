@@ -10,6 +10,7 @@ Quick fixes for common problems on **this template** or a fresh derived repo. No
 | `BROKEN LINK in …` | Relative Markdown target moved | Fix the link or restore the target |
 | `MISSING concurrency:` / `permissions:` | Workflow edited incompletely | Add least-privilege `permissions:` and a `concurrency:` group (see `ci.yml`, `scorecard.yml`, `validate-scheduled.yml`, `release.yml`) |
 | `MISSING persist-credentials: false for every checkout` | A job checkout keeps `GITHUB_TOKEN` in local git config | Set `persist-credentials: false` on **every** `actions/checkout` (including Scorecard, CI, CodeQL, dependency-review, release, scheduled validate) |
+| `UNPINNED action` / `MISSING version comment on pinned action` | A `uses:` line is a floating tag (`@v7`) or a SHA without `# vX.Y.Z` | Pin the release commit SHA and keep a version comment (ADR-005). Dependabot can bump both together |
 | `MISSING package-ecosystem: github-actions` | Dependabot config lost Actions updates | Restore `package-ecosystem: github-actions` in `.github/dependabot.yml` |
 | `FORBIDDEN Node package-ecosystem` in Dependabot | npm/yarn/pnpm update stream added to this template | Remove Node ecosystems; keep `github-actions` only (ADR-004) |
 | `FORBIDDEN Node/npm artifacts` | `package.json` / lockfile / `node_modules` landed in template | Remove them; ADR-004 keeps validation shell-only |

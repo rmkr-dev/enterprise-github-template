@@ -47,7 +47,7 @@ CI runs on GitHub Actions for this template: required-file validation, a small t
 
 - No secrets in the repo, in examples, or in commit messages. Prefer OIDC for cloud deploy; see [docs/operations/secrets-and-oidc.md](docs/operations/secrets-and-oidc.md).
 - Least privilege for tokens and workflow permissions (see the permissions table in [docs/security/security.md](docs/security/security.md)).
-- Dependabot (Actions), CodeQL (Actions language), dependency review on PRs, and OpenSSF Scorecard (public) are part of this template’s defaults; extend them when application languages appear.
+- Dependabot (Actions), CodeQL (Actions language), dependency review on PRs, and OpenSSF Scorecard (public) are part of this template’s defaults; extend them when application languages appear. Pin new `uses:` lines to commit SHAs (ADR-005).
 - Report template vulnerabilities per [SECURITY.md](SECURITY.md). Treat `docs/security/security.md` as the consumer-facing posture and update it when defaults change.
 
 ## Docs and architecture

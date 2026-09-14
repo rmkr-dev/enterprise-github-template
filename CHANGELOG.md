@@ -10,6 +10,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 ### Added
 
 - All workflow checkouts set `persist-credentials: false`; validator requires one persist-false per `actions/checkout`
+- GitHub Actions `uses:` lines pinned to commit SHAs with version comments (ADR-005); validator requires 40-char pins
 
 ### Changed
 

@@ -20,6 +20,7 @@ REQUIRED=(
   "docs/decisions/ADR-002-validation-in-ci.md"
   "docs/decisions/ADR-003-weekly-scheduled-validation.md"
   "docs/decisions/ADR-004-shell-only-template-validation.md"
+  "docs/decisions/ADR-005-pin-github-actions-to-shas.md"
   "docs/development/development.md"
   "docs/development/first-week.md"
   "docs/security/security.md"
@@ -202,6 +203,44 @@ for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflow
     echo "OK persist-credentials: $wf ($persists/$checkouts)"
   fi
 done
+
+echo "==> Checking third-party GitHub Actions are pinned to commit SHAs"
+unpinned=0
+for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflows/dependency-review.yml .github/workflows/scorecard.yml .github/workflows/release.yml .github/workflows/validate-scheduled.yml; do
+  while IFS= read -r line; do
+    action="${line#*uses:}"
+    action="${action#"${action%%[![:space:]]*}"}"
+    action="${action%%#*}"
+    action="${action%"${action##*[![:space:]]}"}"
+    action="${action#\"}"
+    action="${action%\"}"
+    action="${action#\'}"
+    action="${action%\'}"
+    case "$action" in
+      ./*) continue ;;
+      docker://*)
+        echo "FORBIDDEN docker action in $wf: $action" >&2
+        fail=1
+        unpinned=1
+        continue
+        ;;
+    esac
+    if ! grep -qE '@[0-9a-f]{40}$' <<<"$action"; then
+      echo "UNPINNED action in $wf: $action" >&2
+      fail=1
+      unpinned=1
+      continue
+    fi
+    if ! grep -qE '@[0-9a-f]{40}[[:space:]]+#' <<<"$line"; then
+      echo "MISSING version comment on pinned action in $wf: $line" >&2
+      fail=1
+      unpinned=1
+    fi
+  done < <(grep -E '^[[:space:]]*uses:' "$wf" || true)
+done
+if [[ "$unpinned" -eq 0 ]]; then
+  echo "OK: all third-party actions pinned to 40-char SHAs with version comments"
+fi
 
 echo "==> Checking CodeQL analyzes Actions workflows"
 if ! grep -qE 'languages:[[:space:]]*actions' .github/workflows/codeql.yml; then
