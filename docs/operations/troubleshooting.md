@@ -41,7 +41,9 @@ bash tests/test_validate_template.sh
 | Symptom | Likely cause | Fix |
 | --- | --- | --- |
 | No GitHub Release after tagging | Tag did not match `v*` or Actions disabled | Use `vMAJOR.MINOR.PATCH`; confirm `.github/workflows/release.yml` ran |
+| Release notes missing CHANGELOG body | Tag version has no `## [X.Y.Z]` section yet | Move Unreleased notes into the version section before tagging |
 | Release notes empty of product binaries | Expected | This template ships docs/CI only—see CHANGELOG |
+| `MISSING CHANGELOG.md reference` in release.yml | Release job no longer embeds CHANGELOG | Restore CHANGELOG extraction / “Notes from CHANGELOG” header |
 
 ## Community / security
 

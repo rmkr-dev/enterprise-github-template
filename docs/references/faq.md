@@ -40,7 +40,7 @@ Docs-only evolution guidance for Java, Python, Go, Rust, .NET/C#, PHP, Ruby, Kot
 
 ## How do I cut a template-style release?
 
-On this template (or a derived repo that kept the workflow), push an annotated `vMAJOR.MINOR.PATCH` tag. `.github/workflows/release.yml` creates the GitHub Release. See [tagging.md](../operations/tagging.md) and [release-process.md](../operations/release-process.md).
+On this template (or a derived repo that kept the workflow), push an annotated `vMAJOR.MINOR.PATCH` tag after the matching `## [X.Y.Z]` CHANGELOG section exists. `.github/workflows/release.yml` creates the GitHub Release and embeds that section. See [tagging.md](../operations/tagging.md) and [release-process.md](../operations/release-process.md).
 
 ## Where should cloud credentials live?
 
