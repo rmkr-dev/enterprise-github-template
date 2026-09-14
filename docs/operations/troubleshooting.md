@@ -15,6 +15,8 @@ Quick fixes for common problems on **this template** or a fresh derived repo. No
 | `UNPINNED action` / `MISSING version comment on pinned action` | A `uses:` line is a floating tag (`@v7`) or a SHA without `# vX.Y.Z` | Pin the release commit SHA and keep a version comment (ADR-005). Dependabot can bump both together |
 | `MISSING package-ecosystem: github-actions` | Dependabot config lost Actions updates | Restore `package-ecosystem: github-actions` in `.github/dependabot.yml` |
 | `MISSING interval: weekly` / `FORBIDDEN non-weekly` | Dependabot cadence drifted to daily/monthly | Keep `schedule.interval: weekly` for Actions updates |
+| `MISSING groups:` in dependabot.yml | Actions bumps open as many noisy PRs | Restore Dependabot `groups` for github-actions |
+| `MISSING results_format: sarif` | Scorecard output not SARIF for code scanning | Restore `results_format: sarif` in scorecard.yml |
 | `FORBIDDEN Node package-ecosystem` in Dependabot | npm/yarn/pnpm update stream added to this template | Remove Node ecosystems; keep `github-actions` only (ADR-004) |
 | `FORBIDDEN Node/npm artifacts` | `package.json` / lockfile / `node_modules` landed in template | Remove them; ADR-004 keeps validation shell-only |
 | `MISSING languages: actions` / `security-events: write` | CodeQL no longer analyzes Actions YAML or cannot upload SARIF | Restore `languages: actions` and `security-events: write` in `codeql.yml` |
