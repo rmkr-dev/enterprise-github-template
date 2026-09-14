@@ -9,6 +9,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+- Validator requires `.gitattributes` `*.sh text eol=lf`, EditorConfig shell section, CI `cancel-in-progress: true`, and release `cancel-in-progress: false`
+
 ### Changed
 
 
