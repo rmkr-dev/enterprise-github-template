@@ -37,6 +37,9 @@ If a secret is committed, treat it as compromised: rotate, purge history if requ
 
 ## Related
 
+`.gitignore` in this template also ignores common key material (`*.pem`, `id_rsa`, keystores). Do not weaken those ignores to “make a demo work.”
+
+
 - [security.md](../security/security.md) — consumer security posture
 - [SECURITY.md](../../SECURITY.md) — reporting template vulnerabilities
 - [examples.md](../references/examples.md) — Azure/AKS and Terraform sketches mention OIDC
