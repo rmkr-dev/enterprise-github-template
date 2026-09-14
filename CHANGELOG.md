@@ -15,6 +15,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 ### Changed
 
 - Validator asserts `validate-scheduled.yml` declares `schedule` / `cron`
+- PR template, security posture, and operations day-to-day notes mention weekly validate and Scorecard badge
 
 ## [0.2.1] — 2026-09-14
 
