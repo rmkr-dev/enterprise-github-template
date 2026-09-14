@@ -68,7 +68,7 @@ Recommended branch protection and required check names: [branch-protection.md](.
 
 ## First week after copying
 
-Consumers who just used **Use this template** can follow [first-week.md](first-week.md) for a Day-0 / honesty-pass / first-slice checklist (docs only).
+Consumers who just used **Use this template** can follow [first-week.md](first-week.md) for a Day-0 / honesty-pass / first-slice checklist (docs only). Later, adopt upstream template releases with [upgrading-from-upstream.md](../operations/upgrading-from-upstream.md).
 
 ## Template flag status
 
@@ -85,3 +85,9 @@ The GitHub **template repository** flag is **enabled** on `rmkr-dev/enterprise-g
 2. Fill `docs/architecture/architecture.md` and update diagrams for real components.
 3. Add ADRs as you choose stack and hosting.
 4. Extend Actions with language-specific test/build jobs when application code arrives — keep Free-plan defaults and least-privilege permissions.
+
+## Related
+
+- [First-week checklist](first-week.md)
+- [Upgrading from upstream](../operations/upgrading-from-upstream.md)
+- [AGENTS.md](../../AGENTS.md)
