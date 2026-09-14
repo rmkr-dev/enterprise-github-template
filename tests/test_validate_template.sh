@@ -78,6 +78,8 @@ assert_contains "CodeQL languages actions" "OK: codeql languages actions" "$out"
 assert_contains "CodeQL security-events write" "OK: codeql security-events write" "$out"
 assert_contains "Scorecard publish_results" "OK: scorecard publish_results true" "$out"
 assert_contains "CI workflow_dispatch" "OK: ci workflow_dispatch" "$out"
+assert_contains "gitignore .env" "OK: gitignore covers .env" "$out"
+assert_contains "gitignore node_modules" "OK: gitignore covers node_modules" "$out"
 assert_contains "no Node/npm manifests" "OK: no Node/npm package manifests" "$out"
 
 # Negative: missing required file should fail
@@ -291,6 +293,16 @@ set +e
 wd_rc=$?
 set -e
 assert_eq "validator fails when ci.yml lacks workflow_dispatch" "1" "$wd_rc"
+
+
+# Negative: .gitignore without .env / node_modules should fail
+cp -a "$ROOT/." "$tmpdir/repo22"
+printf '# empty ignore\n' > "$tmpdir/repo22/.gitignore"
+set +e
+"$tmpdir/repo22/scripts/validate-template.sh" >/dev/null 2>&1
+gi_rc=$?
+set -e
+assert_eq "validator fails when .gitignore lacks .env/node_modules" "1" "$gi_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2

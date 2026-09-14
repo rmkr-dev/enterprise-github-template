@@ -200,6 +200,20 @@ else
   echo "OK: ci workflow_dispatch"
 fi
 
+echo "==> Checking .gitignore covers .env and node_modules"
+if ! grep -qE '(^|/)\.env(\.|\*|\b|$)' .gitignore && ! grep -qF '.env' .gitignore; then
+  echo "MISSING .env ignore rule in .gitignore" >&2
+  fail=1
+else
+  echo "OK: gitignore covers .env"
+fi
+if ! grep -qF 'node_modules' .gitignore; then
+  echo "MISSING node_modules ignore rule in .gitignore" >&2
+  fail=1
+else
+  echo "OK: gitignore covers node_modules"
+fi
+
 echo "==> Checking Dependabot covers github-actions"
 if ! grep -qE 'package-ecosystem:[[:space:]]*github-actions' .github/dependabot.yml; then
   echo "MISSING package-ecosystem: github-actions in dependabot.yml" >&2
