@@ -183,6 +183,14 @@ else
   echo "OK: codeql security-events write"
 fi
 
+echo "==> Checking Scorecard publishes results"
+if ! grep -qE 'publish_results:[[:space:]]*true' .github/workflows/scorecard.yml; then
+  echo "MISSING publish_results: true in scorecard.yml" >&2
+  fail=1
+else
+  echo "OK: scorecard publish_results true"
+fi
+
 echo "==> Checking Dependabot covers github-actions"
 if ! grep -qE 'package-ecosystem:[[:space:]]*github-actions' .github/dependabot.yml; then
   echo "MISSING package-ecosystem: github-actions in dependabot.yml" >&2
