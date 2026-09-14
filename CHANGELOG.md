@@ -15,6 +15,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 - Consumer guide for upgrading derived repos from upstream template releases (`docs/operations/upgrading-from-upstream.md`)
 - Validator requires `workflow_dispatch` on `ci.yml` for on-demand runs
 - Validator requires `.gitignore` to cover `.env` and `node_modules`
+- Validator requires `gh release create --verify-tag` in `release.yml`
 
 ### Changed
 
