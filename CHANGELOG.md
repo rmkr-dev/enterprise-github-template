@@ -9,7 +9,11 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+- Rust consumer evolution sketch in `docs/references/examples.md` (docs only)
+- Validator checks that `release.yml` declares `tags:` and `contents: write`
+
 ### Changed
+
 
 ## [0.2.5] — 2026-09-14
 
