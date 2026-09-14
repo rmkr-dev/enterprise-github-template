@@ -105,6 +105,10 @@ assert_contains "Scheduled permissions check" "OK permissions: .github/workflows
 assert_contains "Scheduled concurrency check" "OK concurrency: .github/workflows/validate-scheduled.yml" "$out"
 assert_contains "Release permissions check" "OK permissions: .github/workflows/release.yml" "$out"
 assert_contains "Release concurrency check" "OK concurrency: .github/workflows/release.yml" "$out"
+assert_contains "gitattributes sh lf" "OK: gitattributes *.sh eol=lf" "$out"
+assert_contains "editorconfig shell section" "OK: editorconfig has shell section" "$out"
+assert_contains "ci cancel-in-progress" "OK: ci cancel-in-progress true" "$out"
+assert_contains "release cancel-in-progress" "OK: release cancel-in-progress false" "$out"
 assert_contains "Dependabot github-actions check" "OK: dependabot github-actions ecosystem" "$out"
 assert_contains "Dependabot no npm ecosystem" "OK: dependabot has no npm/yarn/pnpm ecosystem" "$out"
 assert_contains "Dependabot weekly interval" "OK: dependabot interval weekly" "$out"
@@ -434,6 +438,24 @@ set +e
 pem_rc=$?
 set -e
 assert_eq "validator fails when .gitignore lacks *.pem" "1" "$pem_rc"
+
+# Negative: .gitattributes without *.sh eol=lf should fail
+cp -a "$ROOT/." "$tmpdir/repo40"
+sed -i '/\*\.sh/d' "$tmpdir/repo40/.gitattributes"
+set +e
+"$tmpdir/repo40/scripts/validate-template.sh" >/dev/null 2>&1
+ga_rc=$?
+set -e
+assert_eq "validator fails when .gitattributes lacks *.sh eol=lf" "1" "$ga_rc"
+
+# Negative: ci.yml without cancel-in-progress true should fail
+cp -a "$ROOT/." "$tmpdir/repo41"
+sed -i 's/cancel-in-progress: true/cancel-in-progress: false/' "$tmpdir/repo41/.github/workflows/ci.yml"
+set +e
+"$tmpdir/repo41/scripts/validate-template.sh" >/dev/null 2>&1
+cip_rc=$?
+set -e
+assert_eq "validator fails when ci.yml lacks cancel-in-progress true" "1" "$cip_rc"
 
 # Negative: issue config with blank_issues_enabled true should fail
 cp -a "$ROOT/." "$tmpdir/repo39"
