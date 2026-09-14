@@ -9,6 +9,13 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+### Changed
+
+
+## [0.3.0] — 2026-09-14
+
+### Added
+
 - Validator forbids Node/npm package manifests and `node_modules/` (ADR-004)
 - Validator requires CodeQL `languages: actions` and `security-events: write`
 - Validator requires Scorecard `publish_results: true`
@@ -18,6 +25,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 - Validator requires `gh release create --verify-tag` in `release.yml`
 
 ### Changed
+
 
 
 ## [0.2.9] — 2026-09-14
@@ -170,7 +178,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Documented that the GitHub **template repository** flag is enabled and **Use this template** works now
 
-[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.2.9...HEAD
+[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.0
 [0.2.9]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.9
 [0.2.8]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.8
 [0.2.7]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.7
