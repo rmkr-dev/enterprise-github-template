@@ -41,6 +41,7 @@ assert_contains "editorconfig required" "OK: .editorconfig" "$out"
 assert_contains "secrets-and-oidc required" "OK: docs/operations/secrets-and-oidc.md" "$out"
 assert_contains "gitattributes required" "OK: .gitattributes" "$out"
 assert_contains "CODEOWNERS check ran" "OK: CODEOWNERS has owner" "$out"
+assert_contains "CODEOWNERS catch-all" "OK: CODEOWNERS has catch-all * rule" "$out"
 assert_contains "SECURITY check ran" "OK: SECURITY.md reporting path" "$out"
 assert_contains "SECURITY supported versions" "OK: SECURITY.md supported versions" "$out"
 assert_contains "SECURITY private reporting" "OK: SECURITY.md private reporting" "$out"
@@ -221,6 +222,16 @@ set +e
 pc_rc=$?
 set -e
 assert_eq "validator fails when scorecard lacks persist-credentials false" "1" "$pc_rc"
+
+
+# Negative: CODEOWNERS with owner but no catch-all * should fail
+cp -a "$ROOT/." "$tmpdir/repo16"
+printf 'docs/ @rmkr-dev\n' > "$tmpdir/repo16/.github/CODEOWNERS"
+set +e
+"$tmpdir/repo16/scripts/validate-template.sh" >/dev/null 2>&1
+star_rc=$?
+set -e
+assert_eq "validator fails when CODEOWNERS lacks catch-all *" "1" "$star_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2
