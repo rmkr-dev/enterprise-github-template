@@ -26,7 +26,7 @@ git push origin v0.1.0
 
 ## GitHub Releases
 
-Pushing a `v*` tag triggers [`.github/workflows/release.yml`](../../.github/workflows/release.yml), which creates a GitHub Release from that tag and embeds the matching `## [X.Y.Z]` section from [CHANGELOG.md](../../CHANGELOG.md). See also [tagging.md](tagging.md).
+Pushing a `v*` tag triggers [`.github/workflows/release.yml`](../../.github/workflows/release.yml), which creates a GitHub Release from that tag and embeds the matching `## [X.Y.Z]` section from [CHANGELOG.md](../../CHANGELOG.md) via [`scripts/extract-changelog-section.sh`](../../scripts/extract-changelog-section.sh). See also [tagging.md](tagging.md).
 
 Keep the versioned CHANGELOG section accurate **before** tagging. Release notes summarize consumer-visible changes (new required files, CI behavior, policy docs)—not internal refactor chatter.
 

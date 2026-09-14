@@ -48,8 +48,9 @@ jobs:
         run: |
           set -euo pipefail
           bash -n scripts/validate-template.sh
+          bash -n scripts/extract-changelog-section.sh
           bash -n tests/test_validate_template.sh
           sudo apt-get update -qq
           sudo apt-get install -y -qq shellcheck
-          shellcheck -S warning scripts/validate-template.sh tests/test_validate_template.sh
+          shellcheck -S warning scripts/validate-template.sh scripts/extract-changelog-section.sh tests/test_validate_template.sh
           echo "shell syntax + shellcheck: OK"

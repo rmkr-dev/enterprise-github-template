@@ -46,6 +46,7 @@ bash tests/test_validate_template.sh
 | Release notes missing CHANGELOG body | Tag version has no `## [X.Y.Z]` section yet | Move Unreleased notes into the version section before tagging |
 | Release notes empty of product binaries | Expected | This template ships docs/CI only—see CHANGELOG |
 | `MISSING CHANGELOG.md reference` in release.yml | Release job no longer embeds CHANGELOG | Restore CHANGELOG extraction / “Notes from CHANGELOG” header |
+| `MISSING extract-changelog-section.sh` | Release notes helper removed | Restore `scripts/extract-changelog-section.sh` and its use from `release.yml` |
 
 ## Community / security
 

@@ -28,6 +28,7 @@ What exists today is the documentation, process skeleton, and GitHub hygiene/CI 
 | `docs/operations/incident-response.md` | Light IR checklist for template / derived-repo maintainers |
 | `docs/operations/upgrading-from-upstream.md` | How derived repos adopt later template releases |
 | `scripts/validate-template.sh` | Required-file and Markdown link checks used by CI |
+| `scripts/extract-changelog-section.sh` | Extracts a version section from CHANGELOG.md for release notes |
 | `tests/test_validate_template.sh` | Minimal expectations for the validator |
 
 Consumers copy this layout into a new repo, then replace the architecture narrative with **their** system and add application code and language-specific CI in later commits.
