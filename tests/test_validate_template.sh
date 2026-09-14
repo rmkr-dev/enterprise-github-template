@@ -68,6 +68,7 @@ assert_contains "release contents write" "OK contents write: release.yml" "$out"
 assert_contains "Scorecard permissions check" "OK permissions: .github/workflows/scorecard.yml" "$out"
 assert_contains "Scorecard concurrency check" "OK concurrency: .github/workflows/scorecard.yml" "$out"
 assert_contains "Dependabot github-actions check" "OK: dependabot github-actions ecosystem" "$out"
+assert_contains "Scorecard persist-credentials" "OK: scorecard persist-credentials false" "$out"
 
 # Negative: missing required file should fail
 tmpdir="$(mktemp -d)"
@@ -210,6 +211,16 @@ set +e
 dr_to_rc=$?
 set -e
 assert_eq "validator fails when dependency-review.yml lacks timeout-minutes" "1" "$dr_to_rc"
+
+
+# Negative: scorecard.yml without persist-credentials: false should fail
+cp -a "$ROOT/." "$tmpdir/repo15"
+sed -i '/persist-credentials:/d' "$tmpdir/repo15/.github/workflows/scorecard.yml"
+set +e
+"$tmpdir/repo15/scripts/validate-template.sh" >/dev/null 2>&1
+pc_rc=$?
+set -e
+assert_eq "validator fails when scorecard lacks persist-credentials false" "1" "$pc_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2

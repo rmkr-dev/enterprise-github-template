@@ -154,6 +154,15 @@ else
 fi
 
 
+
+echo "==> Checking Scorecard checkout disables credential persistence"
+if ! grep -qE 'persist-credentials:[[:space:]]*false' .github/workflows/scorecard.yml; then
+  echo "MISSING persist-credentials: false in scorecard.yml" >&2
+  fail=1
+else
+  echo "OK: scorecard persist-credentials false"
+fi
+
 echo "==> Checking Dependabot covers github-actions"
 if ! grep -qE 'package-ecosystem:[[:space:]]*github-actions' .github/dependabot.yml; then
   echo "MISSING package-ecosystem: github-actions in dependabot.yml" >&2
