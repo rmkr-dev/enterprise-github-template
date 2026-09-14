@@ -21,6 +21,7 @@ REQUIRED=(
   "docs/decisions/ADR-003-weekly-scheduled-validation.md"
   "docs/decisions/ADR-004-shell-only-template-validation.md"
   "docs/decisions/ADR-005-pin-github-actions-to-shas.md"
+  "docs/decisions/ADR-006-changelog-backed-github-releases.md"
   "docs/development/development.md"
   "docs/development/first-week.md"
   "docs/security/security.md"
@@ -169,6 +170,12 @@ if ! grep -qE 'results_format:[[:space:]]*sarif' .github/workflows/scorecard.yml
   fail=1
 else
   echo "OK: scorecard results_format sarif"
+fi
+if ! grep -qE 'results_file:' .github/workflows/scorecard.yml; then
+  echo "MISSING results_file: in scorecard.yml" >&2
+  fail=1
+else
+  echo "OK: scorecard results_file"
 fi
 
 echo "==> Checking release workflow tag trigger and permissions"

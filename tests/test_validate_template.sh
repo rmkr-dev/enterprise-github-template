@@ -75,6 +75,8 @@ assert_contains "ADR-003 Status check" "OK Status: docs/decisions/ADR-003-weekly
 assert_contains "ADR-004 Status check" "OK Status: docs/decisions/ADR-004-shell-only-template-validation.md" "$out"
 assert_contains "ADR-005 required" "OK: docs/decisions/ADR-005-pin-github-actions-to-shas.md" "$out"
 assert_contains "ADR-005 Status check" "OK Status: docs/decisions/ADR-005-pin-github-actions-to-shas.md" "$out"
+assert_contains "ADR-006 required" "OK: docs/decisions/ADR-006-changelog-backed-github-releases.md" "$out"
+assert_contains "ADR-006 Status check" "OK Status: docs/decisions/ADR-006-changelog-backed-github-releases.md" "$out"
 assert_contains "SHA-pinned actions" "OK: all third-party actions pinned to 40-char SHAs with version comments" "$out"
 assert_contains "CI permissions check" "OK permissions: .github/workflows/ci.yml" "$out"
 assert_contains "CI concurrency check" "OK concurrency: .github/workflows/ci.yml" "$out"
@@ -89,6 +91,7 @@ assert_contains "no write-all scorecard" "OK no write-all: .github/workflows/sco
 assert_contains "scorecard upload-sarif" "OK: scorecard upload-sarif" "$out"
 assert_contains "scorecard sarif_file" "OK: scorecard sarif_file" "$out"
 assert_contains "scorecard results_format" "OK: scorecard results_format sarif" "$out"
+assert_contains "scorecard results_file" "OK: scorecard results_file" "$out"
 assert_contains "release tags check" "OK tags: release.yml" "$out"
 assert_contains "release contents write" "OK contents write: release.yml" "$out"
 assert_contains "release verify-tag" "OK verify-tag: release.yml" "$out"
@@ -483,6 +486,15 @@ set +e
 fmt_rc=$?
 set -e
 assert_eq "validator fails when scorecard lacks results_format sarif" "1" "$fmt_rc"
+
+# Negative: scorecard without results_file should fail
+cp -a "$ROOT/." "$tmpdir/repo42"
+sed -i '/results_file:/d' "$tmpdir/repo42/.github/workflows/scorecard.yml"
+set +e
+"$tmpdir/repo42/scripts/validate-template.sh" >/dev/null 2>&1
+rf_rc=$?
+set -e
+assert_eq "validator fails when scorecard lacks results_file" "1" "$rf_rc"
 
 # Negative: ci.yml with permissions write-all should fail
 cp -a "$ROOT/." "$tmpdir/repo35"
