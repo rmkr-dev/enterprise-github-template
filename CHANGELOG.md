@@ -14,6 +14,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 - .NET/C# consumer evolution sketch in `docs/references/examples.md` (docs only)
 - Validator checks Scorecard `permissions:` / `concurrency:` and Dependabot `github-actions` ecosystem
 - Job `timeout-minutes` on CodeQL and Scorecard; validator requires timeouts on CI/CodeQL/Scorecard/release
+- ADR-004: shell-only template validation (no Node/npm)
 
 ### Changed
 
