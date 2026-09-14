@@ -21,3 +21,5 @@ This folder is the system description for repositories created from this templat
 - Vendor or company names that are not part of the software
 
 This template repository has no application runtime. CI validates docs and required files only. Start from [architecture.md](architecture.md) and replace it when you introduce real components.
+
+Credential hygiene for consumers: [secrets-and-oidc.md](../operations/secrets-and-oidc.md).

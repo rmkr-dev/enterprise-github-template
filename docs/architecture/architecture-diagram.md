@@ -21,7 +21,7 @@ flowchart TB
       Dec["decisions/<br/>ADRs (ADR-001, ADR-002)"]
       Dev["development/"]
       Sec["security/"]
-      Ops["operations/<br/>(IR + troubleshooting)"]
+      Ops["operations/<br/>(IR + troubleshooting / secrets-and-oidc)"]
       Refs["references/<br/>consumer examples"]
     end
 
