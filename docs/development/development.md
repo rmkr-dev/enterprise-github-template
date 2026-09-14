@@ -7,6 +7,7 @@ This document is how people (and agents) work **on this template**. After you cr
 - Git and a GitHub account
 - `bash` (for the local template validator)
 - No Node/npm. Do not add other runtimes unless a later application slice needs them.
+- Editor defaults: `.editorconfig` (LF, UTF-8, 2-space indent). `.gitattributes` normalizes text to LF.
 
 ## Support routing
 
