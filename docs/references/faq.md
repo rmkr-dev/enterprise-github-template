@@ -34,7 +34,11 @@ Enable Dependency graph (and Dependabot alerts if prompted) under the repository
 
 No. It does not run on pull requests. Keep PR required checks aligned with `ci.yml` jobs — see [branch-protection.md](../operations/branch-protection.md).
 
+## Which language sketches exist?
+
+Docs-only evolution guidance for Java, Python, Go, Rust, .NET/C#, and Azure/AKS lives in [examples.md](examples.md). None of those sketches add application code to **this** template.
+
 ## Related
 
-- [examples.md](examples.md) — Java / Python / Go / Azure-AKS evolution sketches
+- [examples.md](examples.md) — Java / Python / Go / Rust / .NET / Azure-AKS evolution sketches
 - [SUPPORT.md](../../SUPPORT.md) — where questions go

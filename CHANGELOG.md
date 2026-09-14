@@ -11,6 +11,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Rust consumer evolution sketch in `docs/references/examples.md` (docs only)
 - Validator checks that `release.yml` declares `tags:` and `contents: write`
+- .NET/C# consumer evolution sketch in `docs/references/examples.md` (docs only)
 
 ### Changed
 
