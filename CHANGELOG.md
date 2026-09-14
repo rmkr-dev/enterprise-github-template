@@ -13,6 +13,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 - Validator requires CodeQL `languages: actions` and `security-events: write`
 - Validator requires Scorecard `publish_results: true`
 - Consumer guide for upgrading derived repos from upstream template releases (`docs/operations/upgrading-from-upstream.md`)
+- Validator requires `workflow_dispatch` on `ci.yml` for on-demand runs
 
 ### Changed
 
