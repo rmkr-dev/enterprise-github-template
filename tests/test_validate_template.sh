@@ -53,6 +53,7 @@ assert_contains "ADR Status check" "OK Status: docs/decisions/ADR-001-github-nat
 assert_contains "scheduled workflow schedule" "OK schedule: validate-scheduled.yml" "$out"
 assert_contains "scheduled workflow cron" "OK cron: validate-scheduled.yml" "$out"
 assert_contains "ADR-003 Status check" "OK Status: docs/decisions/ADR-003-weekly-scheduled-validation.md" "$out"
+assert_contains "ADR-004 Status check" "OK Status: docs/decisions/ADR-004-shell-only-template-validation.md" "$out"
 assert_contains "CI permissions check" "OK permissions: .github/workflows/ci.yml" "$out"
 assert_contains "CI concurrency check" "OK concurrency: .github/workflows/ci.yml" "$out"
 assert_contains "CI timeout check" "OK timeout: .github/workflows/ci.yml" "$out"

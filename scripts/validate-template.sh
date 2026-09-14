@@ -19,6 +19,7 @@ REQUIRED=(
   "docs/decisions/ADR-001-github-native-template.md"
   "docs/decisions/ADR-002-validation-in-ci.md"
   "docs/decisions/ADR-003-weekly-scheduled-validation.md"
+  "docs/decisions/ADR-004-shell-only-template-validation.md"
   "docs/development/development.md"
   "docs/development/first-week.md"
   "docs/security/security.md"
