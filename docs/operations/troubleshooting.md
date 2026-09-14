@@ -8,7 +8,8 @@ Quick fixes for common problems on **this template** or a fresh derived repo. No
 | --- | --- | --- |
 | `MISSING: path` in validate | Required file renamed/removed without updating the validator | Restore the file or update `scripts/validate-template.sh` in the same PR |
 | `BROKEN LINK in …` | Relative Markdown target moved | Fix the link or restore the target |
-| `MISSING concurrency:` / `permissions:` | PR-facing workflow edited incompletely | Add least-privilege `permissions:` and a `concurrency:` group (see `ci.yml`) |
+| `MISSING concurrency:` / `permissions:` | PR-facing or Scorecard workflow edited incompletely | Add least-privilege `permissions:` and a `concurrency:` group (see `ci.yml` / `scorecard.yml`) |
+| `MISSING package-ecosystem: github-actions` | Dependabot config lost Actions updates | Restore `package-ecosystem: github-actions` in `.github/dependabot.yml` |
 | `MISSING schedule:` on validate-scheduled | Weekly workflow lost its cron | Restore `on.schedule` + `cron` (see ADR-003) |
 | Dependency review fails: not supported | Dependency graph / alerts off | Enable Dependency graph (and Dependabot alerts if prompted) under Security settings |
 | CodeQL / Scorecard noisy on private fork | Public defaults | Revisit `publish_results` and permissions for private consumers |

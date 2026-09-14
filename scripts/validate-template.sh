@@ -112,7 +112,7 @@ else
 fi
 
 echo "==> Checking CI workflows declare permissions and concurrency"
-for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflows/dependency-review.yml; do
+for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflows/dependency-review.yml .github/workflows/scorecard.yml; do
   if ! grep -qE '^[[:space:]]*permissions:' "$wf"; then
     echo "MISSING permissions: in $wf" >&2
     fail=1
@@ -147,6 +147,15 @@ if ! grep -qE '@[A-Za-z0-9_-]+' .github/CODEOWNERS; then
   fail=1
 else
   echo "OK: CODEOWNERS has owner"
+fi
+
+
+echo "==> Checking Dependabot covers github-actions"
+if ! grep -qE 'package-ecosystem:[[:space:]]*github-actions' .github/dependabot.yml; then
+  echo "MISSING package-ecosystem: github-actions in dependabot.yml" >&2
+  fail=1
+else
+  echo "OK: dependabot github-actions ecosystem"
 fi
 
 echo "==> Checking SECURITY.md policy completeness"
