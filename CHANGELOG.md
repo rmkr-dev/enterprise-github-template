@@ -10,6 +10,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 ### Added
 
 - Validator requires Dependabot `interval: weekly` and forbids `daily`/`monthly`
+- `scripts/extract-changelog-section.sh` shared by release workflow; validator requires it
 
 ### Changed
 

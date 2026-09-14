@@ -10,7 +10,7 @@ Short companion to [release-process.md](release-process.md).
 
 ## What happens on push
 
-Pushing a `v*` tag triggers [`.github/workflows/release.yml`](../../.github/workflows/release.yml), which creates a GitHub Release for that tag using `gh release create --verify-tag`. Release notes include a short template preamble plus the matching `## [X.Y.Z]` body copied from `CHANGELOG.md`.
+Pushing a `v*` tag triggers [`.github/workflows/release.yml`](../../.github/workflows/release.yml), which creates a GitHub Release for that tag using `gh release create --verify-tag`. Release notes include a short template preamble plus the matching `## [X.Y.Z]` body from `CHANGELOG.md` (via `scripts/extract-changelog-section.sh`).
 
 ## Example
 
