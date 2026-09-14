@@ -363,6 +363,18 @@ if grep -qE 'package-ecosystem:[[:space:]]*(npm|yarn|pnpm)' .github/dependabot.y
 else
   echo "OK: dependabot has no npm/yarn/pnpm ecosystem"
 fi
+if ! grep -qE 'interval:[[:space:]]*weekly' .github/dependabot.yml; then
+  echo "MISSING interval: weekly in dependabot.yml" >&2
+  fail=1
+else
+  echo "OK: dependabot interval weekly"
+fi
+if grep -qE 'interval:[[:space:]]*(daily|monthly)' .github/dependabot.yml; then
+  echo "FORBIDDEN non-weekly Dependabot interval in dependabot.yml (use weekly)" >&2
+  fail=1
+else
+  echo "OK: dependabot has no daily/monthly interval"
+fi
 
 echo "==> Checking no Node/npm package manifests (ADR-004)"
 node_hits=()

@@ -83,6 +83,8 @@ assert_contains "Release permissions check" "OK permissions: .github/workflows/r
 assert_contains "Release concurrency check" "OK concurrency: .github/workflows/release.yml" "$out"
 assert_contains "Dependabot github-actions check" "OK: dependabot github-actions ecosystem" "$out"
 assert_contains "Dependabot no npm ecosystem" "OK: dependabot has no npm/yarn/pnpm ecosystem" "$out"
+assert_contains "Dependabot weekly interval" "OK: dependabot interval weekly" "$out"
+assert_contains "Dependabot no daily/monthly" "OK: dependabot has no daily/monthly interval" "$out"
 assert_contains "CI persist-credentials" "OK persist-credentials: .github/workflows/ci.yml" "$out"
 assert_contains "CodeQL persist-credentials" "OK persist-credentials: .github/workflows/codeql.yml" "$out"
 assert_contains "Dependency-review persist-credentials" "OK persist-credentials: .github/workflows/dependency-review.yml" "$out"
@@ -407,6 +409,15 @@ set +e
 pem_rc=$?
 set -e
 assert_eq "validator fails when .gitignore lacks *.pem" "1" "$pem_rc"
+
+# Negative: dependabot with daily interval should fail
+cp -a "$ROOT/." "$tmpdir/repo34"
+sed -i 's/interval: weekly/interval: daily/' "$tmpdir/repo34/.github/dependabot.yml"
+set +e
+"$tmpdir/repo34/scripts/validate-template.sh" >/dev/null 2>&1
+dep_daily_rc=$?
+set -e
+assert_eq "validator fails when dependabot uses daily interval" "1" "$dep_daily_rc"
 
 # Negative: ci.yml without shellcheck should fail
 cp -a "$ROOT/." "$tmpdir/repo33"
