@@ -20,6 +20,7 @@ Quick fixes for common problems on **this template** or a fresh derived repo. No
 | `MISSING --verify-tag` | Release job may create a release for a mismatched tag object | Restore `gh release create … --verify-tag` in `release.yml` |
 | `MISSING pull_request:` / `dependency-review-action` | Dependency review no longer gates PRs | Restore `on.pull_request` and `actions/dependency-review-action` |
 | `MISSING schedule:` / `cron:` on CodeQL | Actions YAML no longer scanned on a weekly cadence | Restore `on.schedule` + `cron` in `codeql.yml` |
+| `MISSING schedule:` / `cron:` on Scorecard | Public Scorecard no longer refreshes weekly | Restore `on.schedule` + `cron` in `scorecard.yml` |
 | `MISSING timeout-minutes:` | Workflow job can hang indefinitely | Add `timeout-minutes` on jobs in CI, CodeQL, Scorecard, release, scheduled validate, and dependency-review workflows |
 | `MISSING schedule:` on validate-scheduled | Weekly workflow lost its cron | Restore `on.schedule` + `cron` (see ADR-003) |
 | Dependency review fails: not supported | Dependency graph / alerts off | Enable Dependency graph (and Dependabot alerts if prompted) under Security settings |
