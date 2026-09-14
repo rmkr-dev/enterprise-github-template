@@ -68,6 +68,10 @@ assert_contains "release tags check" "OK tags: release.yml" "$out"
 assert_contains "release contents write" "OK contents write: release.yml" "$out"
 assert_contains "Scorecard permissions check" "OK permissions: .github/workflows/scorecard.yml" "$out"
 assert_contains "Scorecard concurrency check" "OK concurrency: .github/workflows/scorecard.yml" "$out"
+assert_contains "Scheduled permissions check" "OK permissions: .github/workflows/validate-scheduled.yml" "$out"
+assert_contains "Scheduled concurrency check" "OK concurrency: .github/workflows/validate-scheduled.yml" "$out"
+assert_contains "Release permissions check" "OK permissions: .github/workflows/release.yml" "$out"
+assert_contains "Release concurrency check" "OK concurrency: .github/workflows/release.yml" "$out"
 assert_contains "Dependabot github-actions check" "OK: dependabot github-actions ecosystem" "$out"
 assert_contains "Scorecard persist-credentials" "OK: scorecard persist-credentials false" "$out"
 
@@ -232,6 +236,16 @@ set +e
 star_rc=$?
 set -e
 assert_eq "validator fails when CODEOWNERS lacks catch-all *" "1" "$star_rc"
+
+
+# Negative: release.yml without concurrency should fail
+cp -a "$ROOT/." "$tmpdir/repo17"
+printf 'name: Release\non:\n  push:\n    tags: ["v*"]\npermissions:\n  contents: write\njobs:\n  release:\n    timeout-minutes: 10\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v7\n' > "$tmpdir/repo17/.github/workflows/release.yml"
+set +e
+"$tmpdir/repo17/scripts/validate-template.sh" >/dev/null 2>&1
+rel_conc_rc=$?
+set -e
+assert_eq "validator fails when release.yml lacks concurrency" "1" "$rel_conc_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2
