@@ -25,6 +25,8 @@ REQUIRED=(
   "docs/operations/release-process.md"
   "docs/operations/tagging.md"
   "docs/operations/branch-protection.md"
+  "docs/references/README.md"
+  "docs/references/examples.md"
   ".gitignore"
   "CHANGELOG.md"
   ".github/workflows/ci.yml"
