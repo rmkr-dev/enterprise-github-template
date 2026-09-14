@@ -7,3 +7,6 @@
 .editorconfig text
 .gitattributes text
 LICENSE text
+
+# Shell scripts stay LF; keep executable bit via Git mode in commits.
+*.sh text eol=lf
