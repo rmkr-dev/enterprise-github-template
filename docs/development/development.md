@@ -38,7 +38,7 @@ On every pull request and every push to `main`:
 
 | Workflow | What it does |
 | --- | --- |
-| [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml) | Runs `scripts/validate-template.sh` and `tests/test_validate_template.sh` (plus shell-syntax job); also `workflow_dispatch` |
+| [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml) | Runs `scripts/validate-template.sh` and `tests/test_validate_template.sh` (plus `bash -n` + ShellCheck); also `workflow_dispatch` |
 | [`.github/workflows/codeql.yml`](../../.github/workflows/codeql.yml) | CodeQL analysis for GitHub Actions workflow YAML (`actions` language), also on a weekly schedule |
 | [`.github/workflows/release.yml`](../../.github/workflows/release.yml) | Creates a GitHub Release when a `v*` tag is pushed; embeds matching CHANGELOG section |
 | [`.github/workflows/dependency-review.yml`](../../.github/workflows/dependency-review.yml) | Dependency review on pull requests |
@@ -48,7 +48,7 @@ Also on a **weekly schedule** (and `workflow_dispatch`):
 
 | Workflow | What it does |
 | --- | --- |
-| [`.github/workflows/validate-scheduled.yml`](../../.github/workflows/validate-scheduled.yml) | Same template validator + tests + shell syntax as CI, without waiting for a PR |
+| [`.github/workflows/validate-scheduled.yml`](../../.github/workflows/validate-scheduled.yml) | Same template validator + tests + `bash -n`/ShellCheck as CI, without waiting for a PR |
 
 Dependabot opens weekly PRs for GitHub Actions updates (`.github/dependabot.yml`), grouped into a single Actions PR when possible. `CODEOWNERS` routes reviews to `@rmkr-dev`. CI, CodeQL, and dependency-review workflows use `concurrency` groups so superseded runs on the same ref cancel in progress. Every workflow checkout sets `persist-credentials: false`. Third-party Actions are pinned to commit SHAs (ADR-005).
 

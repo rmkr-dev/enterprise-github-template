@@ -35,7 +35,7 @@ Do not add a file that nothing references, or a doc that describes a file that d
 
 ## Tests and CI are first-class
 
-CI runs on GitHub Actions for this template: required-file validation, a small test around that validator, and a shell-syntax job — on pull requests, pushes to `main`, and weekly via `validate-scheduled.yml`. Pushing a `v*` tag creates a GitHub Release. There is no application build.
+CI runs on GitHub Actions for this template: required-file validation, a small test around that validator, and a shell job (`bash -n` + ShellCheck) — on pull requests, pushes to `main`, and weekly via `validate-scheduled.yml`. Pushing a `v*` tag creates a GitHub Release. There is no application build.
 
 - **GitHub Actions first.** Do not introduce another CI system unless an ADR explains why Actions cannot do the job.
 - **GitHub Free-first.** Workflows and required checks must be viable on a free GitHub plan. Do not depend on paid GitHub features or third-party secrets to get a green default pipeline.

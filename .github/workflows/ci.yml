@@ -44,9 +44,12 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Bash -n on scripts and tests
+      - name: Bash -n and ShellCheck on scripts and tests
         run: |
           set -euo pipefail
           bash -n scripts/validate-template.sh
           bash -n tests/test_validate_template.sh
-          echo "shell syntax: OK"
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq shellcheck
+          shellcheck -S warning scripts/validate-template.sh tests/test_validate_template.sh
+          echo "shell syntax + shellcheck: OK"

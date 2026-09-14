@@ -18,7 +18,7 @@ This template does **not** configure branch protection via API (org/plan setting
 Exact check names come from workflow `name:` / job `name:` fields:
 
 - `Validate template (ubuntu-latest)` from `.github/workflows/ci.yml`
-- `Shell syntax check` from `.github/workflows/ci.yml`
+- `Shell syntax check` from `.github/workflows/ci.yml` (`bash -n` + ShellCheck)
 - `Analyze Actions workflows` from `.github/workflows/codeql.yml`
 - `Dependency review` from `.github/workflows/dependency-review.yml` (PRs)
 - Scorecard checks appear after `.github/workflows/scorecard.yml` runs on `main` (not a default PR required check)

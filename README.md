@@ -73,7 +73,7 @@ bash scripts/validate-template.sh
 bash tests/test_validate_template.sh
 ```
 
-GitHub Actions runs those same checks on pull requests, pushes to `main`, and on a weekly schedule (`.github/workflows/validate-scheduled.yml`). CodeQL analyzes Actions workflow YAML. Pushing a `v*` tag creates a GitHub Release via `.github/workflows/release.yml`. Details: [docs/development/development.md](docs/development/development.md).
+GitHub Actions runs those same checks on pull requests, pushes to `main`, and on a weekly schedule (`.github/workflows/validate-scheduled.yml`), plus `bash -n` and ShellCheck on the template scripts. CodeQL analyzes Actions workflow YAML. Pushing a `v*` tag creates a GitHub Release via `.github/workflows/release.yml`. Details: [docs/development/development.md](docs/development/development.md).
 
 ## Documentation
 

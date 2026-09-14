@@ -308,6 +308,22 @@ else
   echo "OK: ci workflow_dispatch"
 fi
 
+echo "==> Checking CI and scheduled validate run ShellCheck"
+for wf in .github/workflows/ci.yml .github/workflows/validate-scheduled.yml; do
+  if ! grep -qE 'shellcheck' "$wf"; then
+    echo "MISSING shellcheck in $wf" >&2
+    fail=1
+  else
+    echo "OK shellcheck: $wf"
+  fi
+  if ! grep -qE 'bash -n' "$wf"; then
+    echo "MISSING bash -n in $wf" >&2
+    fail=1
+  else
+    echo "OK bash -n: $wf"
+  fi
+done
+
 echo "==> Checking .gitignore covers .env and node_modules"
 if ! grep -qE '(^|/)\.env(\.|\*|\b|$)' .gitignore && ! grep -qF '.env' .gitignore; then
   echo "MISSING .env ignore rule in .gitignore" >&2

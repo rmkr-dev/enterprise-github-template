@@ -25,6 +25,7 @@ Quick fixes for common problems on **this template** or a fresh derived repo. No
 | `MISSING schedule:` / `cron:` on Scorecard | Public Scorecard no longer refreshes weekly | Restore `on.schedule` + `cron` in `scorecard.yml` |
 | `MISSING workflow_dispatch:` on validate-scheduled | Cannot manually re-run weekly validate | Restore `workflow_dispatch:` under `on:` in `validate-scheduled.yml` |
 | `MISSING timeout-minutes:` | Workflow job can hang indefinitely | Add `timeout-minutes` on jobs in CI, CodeQL, Scorecard, release, scheduled validate, and dependency-review workflows |
+| `MISSING shellcheck` / ShellCheck job red | Shell lint gate removed or script has new findings | Restore `shellcheck -S warning` on scripts/tests in CI and validate-scheduled; fix findings locally with `shellcheck` |
 | `MISSING schedule:` on validate-scheduled | Weekly workflow lost its cron | Restore `on.schedule` + `cron` (see ADR-003) |
 | Dependency review fails: not supported | Dependency graph / alerts off | Enable Dependency graph (and Dependabot alerts if prompted) under Security settings |
 | CodeQL / Scorecard noisy on private fork | Public defaults | Revisit `publish_results` and permissions for private consumers |
