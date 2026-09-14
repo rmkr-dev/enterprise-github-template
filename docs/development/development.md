@@ -28,6 +28,8 @@ From the repository root:
 ```bash
 bash scripts/validate-template.sh
 bash tests/test_validate_template.sh
+# optional: preview release notes body for a version
+bash scripts/extract-changelog-section.sh 0.3.5
 ```
 
 The validator checks that required template files exist (including CODEOWNERS, SECURITY.md, CHANGELOG.md, ADRs, and workflow YAML), workflow `on:` / `jobs:` / checkout are present, CODEOWNERS names an owner, SECURITY.md has private reporting / supported-versions / no-public-disclosure guidance, CHANGELOG has `[Unreleased]` and a versioned section, each ADR declares `Status:`, Mermaid fences exist in the architecture diagram docs, and relative Markdown links resolve. The test script asserts the happy path plus negative cases (missing file, empty CODEOWNERS, weak SECURITY.md, broken CHANGELOG/ADR/workflow shape).
