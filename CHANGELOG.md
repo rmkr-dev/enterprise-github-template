@@ -12,6 +12,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 - Job `timeout-minutes` on dependency-review; validator requires timeouts on scheduled validate and dependency-review
 - Secrets and OIDC hygiene guide (`docs/operations/secrets-and-oidc.md`)
 - FAQ entries for tagging/releases, secrets/OIDC, and ADR-004 / no-npm
+- Validator checks Scorecard `persist-credentials: false`
 
 ### Changed
 
