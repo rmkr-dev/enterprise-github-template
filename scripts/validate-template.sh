@@ -98,6 +98,22 @@ else
   echo "OK cron: validate-scheduled.yml"
 fi
 
+echo "==> Checking CI workflows declare permissions and concurrency"
+for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflows/dependency-review.yml; do
+  if ! grep -qE '^[[:space:]]*permissions:' "$wf"; then
+    echo "MISSING permissions: in $wf" >&2
+    fail=1
+  else
+    echo "OK permissions: $wf"
+  fi
+  if ! grep -qE '^[[:space:]]*concurrency:' "$wf"; then
+    echo "MISSING concurrency: in $wf" >&2
+    fail=1
+  else
+    echo "OK concurrency: $wf"
+  fi
+done
+
 echo "==> Checking CODEOWNERS has an owner"
 if ! grep -qE '@[A-Za-z0-9_-]+' .github/CODEOWNERS; then
   echo "MISSING owner handle in .github/CODEOWNERS" >&2

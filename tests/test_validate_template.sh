@@ -51,6 +51,8 @@ assert_contains "ADR Status check" "OK Status: docs/decisions/ADR-001-github-nat
 assert_contains "scheduled workflow schedule" "OK schedule: validate-scheduled.yml" "$out"
 assert_contains "scheduled workflow cron" "OK cron: validate-scheduled.yml" "$out"
 assert_contains "ADR-003 Status check" "OK Status: docs/decisions/ADR-003-weekly-scheduled-validation.md" "$out"
+assert_contains "CI permissions check" "OK permissions: .github/workflows/ci.yml" "$out"
+assert_contains "CI concurrency check" "OK concurrency: .github/workflows/ci.yml" "$out"
 
 # Negative: missing required file should fail
 tmpdir="$(mktemp -d)"
@@ -134,6 +136,16 @@ set +e
 sched_rc=$?
 set -e
 assert_eq "validator fails when validate-scheduled lacks schedule/cron" "1" "$sched_rc"
+
+
+# Negative: ci.yml without concurrency should fail
+cp -a "$ROOT/." "$tmpdir/repo9"
+printf 'name: CI\non:\n  pull_request:\npermissions:\n  contents: read\njobs:\n  validate:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v7\n' > "$tmpdir/repo9/.github/workflows/ci.yml"
+set +e
+"$tmpdir/repo9/scripts/validate-template.sh" >/dev/null 2>&1
+conc_rc=$?
+set -e
+assert_eq "validator fails when ci.yml lacks concurrency" "1" "$conc_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2
