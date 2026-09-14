@@ -394,6 +394,34 @@ else
   echo "OK: gitignore covers id_rsa"
 fi
 
+echo "==> Checking .gitattributes and .editorconfig keep shell LF"
+if ! grep -qE '\*\.sh[[:space:]]+text[[:space:]]+eol=lf' .gitattributes; then
+  echo "MISSING *.sh text eol=lf in .gitattributes" >&2
+  fail=1
+else
+  echo "OK: gitattributes *.sh eol=lf"
+fi
+if ! grep -qE '^\[\*\.\{sh,bash\}\]' .editorconfig && ! grep -qE '^\[\*\.sh\]' .editorconfig; then
+  echo "MISSING shell section in .editorconfig" >&2
+  fail=1
+else
+  echo "OK: editorconfig has shell section"
+fi
+
+echo "==> Checking CI cancel-in-progress and release does not cancel"
+if ! grep -qE 'cancel-in-progress:[[:space:]]*true' .github/workflows/ci.yml; then
+  echo "MISSING cancel-in-progress: true in ci.yml" >&2
+  fail=1
+else
+  echo "OK: ci cancel-in-progress true"
+fi
+if ! grep -qE 'cancel-in-progress:[[:space:]]*false' .github/workflows/release.yml; then
+  echo "MISSING cancel-in-progress: false in release.yml" >&2
+  fail=1
+else
+  echo "OK: release cancel-in-progress false"
+fi
+
 echo "==> Checking Dependabot covers github-actions"
 if ! grep -qE 'package-ecosystem:[[:space:]]*github-actions' .github/dependabot.yml; then
   echo "MISSING package-ecosystem: github-actions in dependabot.yml" >&2
