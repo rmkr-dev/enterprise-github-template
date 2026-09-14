@@ -177,6 +177,23 @@ else
   echo "OK: dependabot github-actions ecosystem"
 fi
 
+echo "==> Checking no Node/npm package manifests (ADR-004)"
+node_hits=()
+for path in package.json package-lock.json yarn.lock pnpm-lock.yaml npm-shrinkwrap.json; do
+  if [[ -e "$path" ]]; then
+    node_hits+=("$path")
+  fi
+done
+if [[ -d node_modules ]]; then
+  node_hits+=("node_modules/")
+fi
+if [[ "${#node_hits[@]}" -gt 0 ]]; then
+  echo "FORBIDDEN Node/npm artifacts (ADR-004): ${node_hits[*]}" >&2
+  fail=1
+else
+  echo "OK: no Node/npm package manifests"
+fi
+
 echo "==> Checking SECURITY.md policy completeness"
 if ! grep -qiE 'advisory|report' SECURITY.md; then
   echo "MISSING reporting guidance in SECURITY.md" >&2
