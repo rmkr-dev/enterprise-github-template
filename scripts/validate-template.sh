@@ -56,6 +56,7 @@ REQUIRED=(
   "CODE_OF_CONDUCT.md"
   "SUPPORT.md"
   "scripts/validate-template.sh"
+  "scripts/extract-changelog-section.sh"
   "tests/test_validate_template.sh"
 )
 
@@ -169,6 +170,18 @@ if ! grep -qE 'Notes from CHANGELOG' .github/workflows/release.yml; then
   fail=1
 else
   echo "OK: release notes include CHANGELOG section header"
+fi
+if ! grep -qF 'scripts/extract-changelog-section.sh' .github/workflows/release.yml; then
+  echo "MISSING extract-changelog-section.sh in release.yml" >&2
+  fail=1
+else
+  echo "OK: release uses extract-changelog-section.sh"
+fi
+if [[ ! -x scripts/extract-changelog-section.sh ]]; then
+  echo "MISSING executable bit on scripts/extract-changelog-section.sh" >&2
+  fail=1
+else
+  echo "OK: extract-changelog-section.sh is executable"
 fi
 
 echo "==> Checking dependency-review runs on pull_request"

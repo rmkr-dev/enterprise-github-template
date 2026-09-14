@@ -30,6 +30,18 @@ assert_contains() {
 [[ -x "$SCRIPT" ]] || { echo "FAIL: validator not executable" >&2; exit 1; }
 echo "PASS: validator is executable"
 
+EXTRACT="$ROOT/scripts/extract-changelog-section.sh"
+[[ -x "$EXTRACT" ]] || { echo "FAIL: extract-changelog-section.sh not executable" >&2; exit 1; }
+echo "PASS: extract-changelog-section.sh is executable"
+extract_out="$("$EXTRACT" "0.3.4" "$ROOT/CHANGELOG.md")"
+assert_contains "extract 0.3.4 mentions persist-credentials" "persist-credentials" "$extract_out"
+set +e
+missing_out="$("$EXTRACT" "9.9.9" "$ROOT/CHANGELOG.md")"
+missing_rc=$?
+set -e
+assert_eq "extract missing version exits 0" "0" "$missing_rc"
+assert_eq "extract missing version empty" "" "$missing_out"
+
 # Happy path against this repo
 set +e
 out="$("$SCRIPT" 2>&1)"
@@ -73,6 +85,9 @@ assert_contains "release contents write" "OK contents write: release.yml" "$out"
 assert_contains "release verify-tag" "OK verify-tag: release.yml" "$out"
 assert_contains "release CHANGELOG reference" "OK: release notes reference CHANGELOG.md" "$out"
 assert_contains "release CHANGELOG section" "OK: release notes include CHANGELOG section header" "$out"
+assert_contains "release extract helper" "OK: release uses extract-changelog-section.sh" "$out"
+assert_contains "extract helper executable" "OK: extract-changelog-section.sh is executable" "$out"
+assert_contains "extract helper required" "OK: scripts/extract-changelog-section.sh" "$out"
 assert_contains "dependency-review pull_request" "OK: dependency-review pull_request" "$out"
 assert_contains "dependency-review-action" "OK: dependency-review-action" "$out"
 assert_contains "Scorecard permissions check" "OK permissions: .github/workflows/scorecard.yml" "$out"
