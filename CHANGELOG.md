@@ -9,6 +9,12 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+### Changed
+
+## [0.2.5] — 2026-09-14
+
+### Added
+
 - Go consumer evolution sketch in `docs/references/examples.md` (docs only)
 - `workflow_dispatch` on CI for on-demand validation without a noop PR
 - Consumer FAQ (`docs/references/faq.md`)
@@ -106,7 +112,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Documented that the GitHub **template repository** flag is enabled and **Use this template** works now
 
-[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.2.4...HEAD
+[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.2.5...HEAD
+[0.2.5]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.5
 [0.2.4]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.4
 [0.2.3]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.3
 [0.2.2]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.2
