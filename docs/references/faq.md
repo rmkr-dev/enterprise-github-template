@@ -20,7 +20,7 @@ You can, but then update docs and CI so they stay honest. Prefer adapting them u
 
 ## How do I get security updates from upstream?
 
-There is no automatic sync. Periodically review this template’s releases (`v*`) and cherry-pick or re-apply changes you want.
+There is no automatic sync. Periodically review this template’s releases (`v*`) and cherry-pick or re-apply changes you want. See [upgrading-from-upstream.md](../operations/upgrading-from-upstream.md) for a safe file-level upgrade order.
 
 ## Where do I report a vulnerability?
 
@@ -53,4 +53,5 @@ Not in **this** template — ADR-004 keeps validation shell-only. A derived prod
 ## Related
 
 - [examples.md](examples.md) — Java / Python / Go / Rust / .NET / PHP / Ruby / Kotlin / Terraform / Azure-AKS evolution sketches
+- [upgrading-from-upstream.md](../operations/upgrading-from-upstream.md) — adopt later template releases
 - [SUPPORT.md](../../SUPPORT.md) — where questions go

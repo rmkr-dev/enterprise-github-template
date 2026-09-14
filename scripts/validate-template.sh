@@ -31,6 +31,7 @@ REQUIRED=(
   "docs/operations/incident-response.md"
   "docs/operations/troubleshooting.md"
   "docs/operations/secrets-and-oidc.md"
+  "docs/operations/upgrading-from-upstream.md"
   "docs/references/README.md"
   "docs/references/examples.md"
   "docs/references/faq.md"

@@ -12,6 +12,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 - Validator forbids Node/npm package manifests and `node_modules/` (ADR-004)
 - Validator requires CodeQL `languages: actions` and `security-events: write`
 - Validator requires Scorecard `publish_results: true`
+- Consumer guide for upgrading derived repos from upstream template releases (`docs/operations/upgrading-from-upstream.md`)
 
 ### Changed
 
