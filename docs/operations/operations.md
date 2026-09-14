@@ -38,7 +38,6 @@ For a fuller light checklist (containment, disclosure, follow-through), see [inc
 ## Related
 
 - [secrets-and-oidc.md](secrets-and-oidc.md) — secrets hygiene / OIDC for consumers
- docs
 
 - [Incident response](incident-response.md) — light IR checklist for template consumers
 - [Troubleshooting](troubleshooting.md) — common CI/docs/release failures

@@ -6,7 +6,7 @@ Guidance for **derived** repositories. This template ships no cloud credentials 
 
 | Surface | What exists | What does **not** |
 | --- | --- | --- |
-| Actions `permissions:` | Least privilege per workflow (see [security.md](../security/security.md)) | Broad `write-all` defaults |
+| Actions `permissions:` | Least privilege per workflow (see [security.md](../security/security.md)); checkouts use `persist-credentials: false` | Broad `write-all` defaults; leftover `GITHUB_TOKEN` in local git |
 | Secrets in repo | None committed | Example `.env` files with real values |
 | Deploy identity | Documented preference for OIDC in consumer sketches | Checked-in service principal passwords |
 

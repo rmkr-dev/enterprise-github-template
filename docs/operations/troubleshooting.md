@@ -9,7 +9,7 @@ Quick fixes for common problems on **this template** or a fresh derived repo. No
 | `MISSING: path` in validate | Required file renamed/removed without updating the validator | Restore the file or update `scripts/validate-template.sh` in the same PR |
 | `BROKEN LINK in …` | Relative Markdown target moved | Fix the link or restore the target |
 | `MISSING concurrency:` / `permissions:` | Workflow edited incompletely | Add least-privilege `permissions:` and a `concurrency:` group (see `ci.yml`, `scorecard.yml`, `validate-scheduled.yml`, `release.yml`) |
-| `MISSING persist-credentials: false` on Scorecard | Checkout may keep credentials longer than needed | Restore `persist-credentials: false` on the Scorecard checkout step |
+| `MISSING persist-credentials: false for every checkout` | A job checkout keeps `GITHUB_TOKEN` in local git config | Set `persist-credentials: false` on **every** `actions/checkout` (including Scorecard, CI, CodeQL, dependency-review, release, scheduled validate) |
 | `MISSING package-ecosystem: github-actions` | Dependabot config lost Actions updates | Restore `package-ecosystem: github-actions` in `.github/dependabot.yml` |
 | `FORBIDDEN Node package-ecosystem` in Dependabot | npm/yarn/pnpm update stream added to this template | Remove Node ecosystems; keep `github-actions` only (ADR-004) |
 | `FORBIDDEN Node/npm artifacts` | `package.json` / lockfile / `node_modules` landed in template | Remove them; ADR-004 keeps validation shell-only |
