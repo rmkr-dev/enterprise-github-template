@@ -1,6 +1,6 @@
 # Examples: evolving a derived repository
 
-This template is **not** a sample application. After **Use this template**, the derived repo should grow into a real product in small, honest slices. The sketches below show a reasonable order for **Java** and **Python** consumers. They are guidance, not files that ship in this template.
+This template is **not** a sample application. After **Use this template**, the derived repo should grow into a real product in small, honest slices. The sketches below show a reasonable order for **Java**, **Python**, and **Azure/AKS** consumers. They are guidance, not files that ship in this template.
 
 ## Shared first steps (any language)
 
@@ -38,11 +38,31 @@ Typical order after the shared steps:
 
 Prefer the language’s native tooling. Do not introduce Node/npm solely for documentation.
 
+## Azure / AKS sketch
+
+Typical order after the shared steps, when the derived product will run on **Azure Kubernetes Service**. Docs-only guidance for consumers — this template still ships **no** manifests, Helm charts, or Terraform.
+
+| Slice | What lands | What stays honest |
+| --- | --- | --- |
+| 1. Container boundary | Dockerfile (or equivalent) that builds the real app image; `.dockerignore` | README says “image build,” not “cluster deployed” until deploy exists |
+| 2. App CI image job | Workflow: build (and optionally push to ACR) only after Dockerfile + tests exist | No fake `kubectl apply` against empty clusters |
+| 3. Kubernetes manifests | Deployment/Service (plain YAML, Kustomize, or Helm) matching the image | Architecture/network diagrams updated only when components are real |
+| 4. AKS deploy path | Documented target (manual `kubectl`, GitOps, or OIDC to Azure) with least-privilege identity | Do not commit Azure secrets; use OIDC / federated credentials when possible |
+| 5. Supply chain + ops | Dependabot for the app ecosystem; extend CodeQL languages; note how rollbacks work | Scorecard/CodeQL claims match what is enabled; IR points at your runtime runbook |
+
+### Honest constraints for AKS consumers
+
+- Prefer **workload identity / OIDC** from GitHub Actions to Azure over long-lived client secrets in repository secrets.
+- Keep environment-specific values (subscription, resource group, cluster name) out of the template defaults; document them in the derived repo.
+- Network and trust-boundary diagrams belong under `docs/architecture/` only when ingress, private networking, or shared services actually exist.
+- Do **not** copy sample AKS YAML into **this** template repository — it would be a fake app surface.
+
 ## What not to copy from these sketches into the template
 
 - Sample `pom.xml`, `pyproject.toml`, or application source
 - Language package managers or lockfiles in **this** template repository
 - Fake “hello world” services added only to make CI look busy
+- Sample Dockerfile, Helm chart, Terraform, or AKS manifests in **this** template repository
 
 Application files belong in the **derived** repository, in PRs that also update that repo’s docs and CI.
 
