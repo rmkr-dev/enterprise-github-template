@@ -42,3 +42,4 @@ bash tests/test_validate_template.sh
 - [README](../../README.md) — how to use the template
 - [CONTRIBUTING](../../CONTRIBUTING.md) — how to change the template itself
 - [Development](development.md) — local validation and CI shape on the template
+- [FAQ](../references/faq.md) — short answers after Use this template

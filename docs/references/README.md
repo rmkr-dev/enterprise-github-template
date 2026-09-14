@@ -5,5 +5,6 @@ Supplementary docs for consumers of this template. These are not a substitute fo
 | Doc | Purpose |
 | --- | --- |
 | [examples.md](examples.md) | How a derived Java, Python, Go, or Azure/AKS repo can evolve from this template |
+| [faq.md](faq.md) | Short FAQ for people who just used Use this template |
 
 Also useful for new derived repos: [docs/development/first-week.md](../development/first-week.md).
