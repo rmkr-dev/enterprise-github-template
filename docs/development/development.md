@@ -38,7 +38,7 @@ On every pull request and every push to `main`:
 
 | Workflow | What it does |
 | --- | --- |
-| [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml) | Runs `scripts/validate-template.sh` and `tests/test_validate_template.sh` (plus shell-syntax job) |
+| [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml) | Runs `scripts/validate-template.sh` and `tests/test_validate_template.sh` (plus shell-syntax job); also `workflow_dispatch` |
 | [`.github/workflows/codeql.yml`](../../.github/workflows/codeql.yml) | CodeQL analysis for GitHub Actions workflow YAML (`actions` language), also on a weekly schedule |
 | [`.github/workflows/release.yml`](../../.github/workflows/release.yml) | Creates a GitHub Release when a `v*` tag is pushed |
 | [`.github/workflows/dependency-review.yml`](../../.github/workflows/dependency-review.yml) | Dependency review on pull requests |
