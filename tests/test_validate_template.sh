@@ -40,7 +40,11 @@ assert_contains "PASSED line" "validate-template: PASSED" "$out"
 assert_contains "CODEOWNERS check ran" "OK: CODEOWNERS has owner" "$out"
 assert_contains "SECURITY check ran" "OK: SECURITY.md reporting path" "$out"
 assert_contains "ADR check ran" "OK: ADR count=" "$out"
+assert_contains "CHANGELOG Unreleased check" "OK: CHANGELOG has [Unreleased]" "$out"
+assert_contains "CHANGELOG version check" "OK: CHANGELOG has a versioned section" "$out"
+assert_contains "workflow on: check" "OK on: .github/workflows/ci.yml" "$out"
 assert_contains "workflow jobs check" "OK jobs: .github/workflows/ci.yml" "$out"
+assert_contains "ADR Status check" "OK Status: docs/decisions/ADR-001-github-native-template.md" "$out"
 
 # Negative: missing required file should fail
 tmpdir="$(mktemp -d)"
@@ -70,6 +74,42 @@ set +e
 sec_rc=$?
 set -e
 assert_eq "validator fails when SECURITY.md lacks reporting path" "1" "$sec_rc"
+
+# Negative: CHANGELOG without [Unreleased] should fail
+cp -a "$ROOT/." "$tmpdir/repo4"
+printf '# Changelog\n\n## [0.1.0] — 2026-09-13\n\n- initial\n' > "$tmpdir/repo4/CHANGELOG.md"
+set +e
+"$tmpdir/repo4/scripts/validate-template.sh" >/dev/null 2>&1
+cl_rc=$?
+set -e
+assert_eq "validator fails when CHANGELOG lacks [Unreleased]" "1" "$cl_rc"
+
+# Negative: ADR without Status should fail
+cp -a "$ROOT/." "$tmpdir/repo5"
+printf '# ADR-001 stub\n\nNo status line.\n' > "$tmpdir/repo5/docs/decisions/ADR-001-github-native-template.md"
+set +e
+"$tmpdir/repo5/scripts/validate-template.sh" >/dev/null 2>&1
+adr_rc=$?
+set -e
+assert_eq "validator fails when ADR lacks Status" "1" "$adr_rc"
+
+# Negative: remove all ADRs should fail
+cp -a "$ROOT/." "$tmpdir/repo6"
+rm -f "$tmpdir/repo6"/docs/decisions/ADR-*.md
+set +e
+"$tmpdir/repo6/scripts/validate-template.sh" >/dev/null 2>&1
+noadr_rc=$?
+set -e
+assert_eq "validator fails when no ADR files exist" "1" "$noadr_rc"
+
+# Negative: workflow without on: should fail
+cp -a "$ROOT/." "$tmpdir/repo7"
+printf 'name: CI\njobs:\n  validate:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v7\n' > "$tmpdir/repo7/.github/workflows/ci.yml"
+set +e
+"$tmpdir/repo7/scripts/validate-template.sh" >/dev/null 2>&1
+wf_rc=$?
+set -e
+assert_eq "validator fails when workflow lacks on:" "1" "$wf_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2
