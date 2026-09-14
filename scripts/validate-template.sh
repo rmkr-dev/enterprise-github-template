@@ -203,6 +203,18 @@ if ! grep -qE 'security-events:[[:space:]]*write' .github/workflows/codeql.yml; 
 else
   echo "OK: codeql security-events write"
 fi
+if ! grep -qE '^[[:space:]]*schedule:' .github/workflows/codeql.yml; then
+  echo "MISSING schedule: in codeql.yml" >&2
+  fail=1
+else
+  echo "OK: codeql schedule"
+fi
+if ! grep -qE 'cron:' .github/workflows/codeql.yml; then
+  echo "MISSING cron: in codeql.yml" >&2
+  fail=1
+else
+  echo "OK: codeql cron"
+fi
 
 echo "==> Checking Scorecard publishes results"
 if ! grep -qE 'publish_results:[[:space:]]*true' .github/workflows/scorecard.yml; then
