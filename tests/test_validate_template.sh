@@ -39,6 +39,9 @@ assert_eq "validator exit 0 on repo" "0" "$rc"
 assert_contains "PASSED line" "validate-template: PASSED" "$out"
 assert_contains "CODEOWNERS check ran" "OK: CODEOWNERS has owner" "$out"
 assert_contains "SECURITY check ran" "OK: SECURITY.md reporting path" "$out"
+assert_contains "SECURITY supported versions" "OK: SECURITY.md supported versions" "$out"
+assert_contains "SECURITY private reporting" "OK: SECURITY.md private reporting" "$out"
+assert_contains "SECURITY no public disclosure" "OK: SECURITY.md no-public-disclosure" "$out"
 assert_contains "ADR check ran" "OK: ADR count=" "$out"
 assert_contains "CHANGELOG Unreleased check" "OK: CHANGELOG has [Unreleased]" "$out"
 assert_contains "CHANGELOG version check" "OK: CHANGELOG has a versioned section" "$out"
@@ -74,6 +77,15 @@ set +e
 sec_rc=$?
 set -e
 assert_eq "validator fails when SECURITY.md lacks reporting path" "1" "$sec_rc"
+
+# Negative: SECURITY.md with report keyword but no private / supported versions / no-public guidance
+cp -a "$ROOT/." "$tmpdir/repo3b"
+printf '# Security\n\n## Reporting\n\nPlease report issues somehow.\n' > "$tmpdir/repo3b/SECURITY.md"
+set +e
+"$tmpdir/repo3b/scripts/validate-template.sh" >/dev/null 2>&1
+sec_partial_rc=$?
+set -e
+assert_eq "validator fails when SECURITY.md lacks private/supported/no-public policy" "1" "$sec_partial_rc"
 
 # Negative: CHANGELOG without [Unreleased] should fail
 cp -a "$ROOT/." "$tmpdir/repo4"
