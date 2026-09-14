@@ -17,6 +17,7 @@ concurrency:
 jobs:
   validate:
     name: Validate template
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,6 +31,7 @@ jobs:
 
   shellcheck-scripts:
     name: Shell syntax check
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
