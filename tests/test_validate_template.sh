@@ -89,6 +89,8 @@ assert_contains "Scorecard cron" "OK: scorecard cron" "$out"
 assert_contains "CI workflow_dispatch" "OK: ci workflow_dispatch" "$out"
 assert_contains "gitignore .env" "OK: gitignore covers .env" "$out"
 assert_contains "gitignore node_modules" "OK: gitignore covers node_modules" "$out"
+assert_contains "gitignore *.pem" "OK: gitignore covers *.pem" "$out"
+assert_contains "gitignore id_rsa" "OK: gitignore covers id_rsa" "$out"
 assert_contains "no Node/npm manifests" "OK: no Node/npm package manifests" "$out"
 
 # Negative: missing required file should fail
@@ -372,6 +374,16 @@ set +e
 sched_wd_rc=$?
 set -e
 assert_eq "validator fails when validate-scheduled lacks workflow_dispatch" "1" "$sched_wd_rc"
+
+
+# Negative: .gitignore without *.pem should fail
+cp -a "$ROOT/." "$tmpdir/repo29"
+sed -i '/\*\.pem/d' "$tmpdir/repo29/.gitignore"
+set +e
+"$tmpdir/repo29/scripts/validate-template.sh" >/dev/null 2>&1
+pem_rc=$?
+set -e
+assert_eq "validator fails when .gitignore lacks *.pem" "1" "$pem_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2

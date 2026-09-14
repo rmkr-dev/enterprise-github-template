@@ -17,6 +17,7 @@ Quick fixes for common problems on **this template** or a fresh derived repo. No
 | `MISSING publish_results: true` | Scorecard no longer publishes to the public API / badge | Restore `publish_results: true` (or document private-repo exception) |
 | `MISSING workflow_dispatch:` on CI | Cannot re-run template validation without a noop PR | Restore `workflow_dispatch:` under `on:` in `ci.yml` |
 | `MISSING .env` / `node_modules` ignore | Local env files or accidental Node trees can be committed | Restore `.env` / `node_modules/` entries in `.gitignore` |
+| `MISSING *.pem` / `id_rsa` ignore | Credential files may be committed by accident | Restore `*.pem` / `id_rsa` (and related) entries in `.gitignore` |
 | `MISSING --verify-tag` | Release job may create a release for a mismatched tag object | Restore `gh release create … --verify-tag` in `release.yml` |
 | `MISSING pull_request:` / `dependency-review-action` | Dependency review no longer gates PRs | Restore `on.pull_request` and `actions/dependency-review-action` |
 | `MISSING schedule:` / `cron:` on CodeQL | Actions YAML no longer scanned on a weekly cadence | Restore `on.schedule` + `cron` in `codeql.yml` |

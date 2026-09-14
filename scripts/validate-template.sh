@@ -263,6 +263,18 @@ if ! grep -qF 'node_modules' .gitignore; then
 else
   echo "OK: gitignore covers node_modules"
 fi
+if ! grep -qF '*.pem' .gitignore; then
+  echo "MISSING *.pem ignore rule in .gitignore" >&2
+  fail=1
+else
+  echo "OK: gitignore covers *.pem"
+fi
+if ! grep -qE '(^|/)id_rsa$' .gitignore && ! grep -qF 'id_rsa' .gitignore; then
+  echo "MISSING id_rsa ignore rule in .gitignore" >&2
+  fail=1
+else
+  echo "OK: gitignore covers id_rsa"
+fi
 
 echo "==> Checking Dependabot covers github-actions"
 if ! grep -qE 'package-ecosystem:[[:space:]]*github-actions' .github/dependabot.yml; then
