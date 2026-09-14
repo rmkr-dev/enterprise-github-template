@@ -13,6 +13,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 - Secrets and OIDC hygiene guide (`docs/operations/secrets-and-oidc.md`)
 - FAQ entries for tagging/releases, secrets/OIDC, and ADR-004 / no-npm
 - Validator checks Scorecard `persist-credentials: false`
+- PHP consumer evolution sketch in `docs/references/examples.md` (docs only)
 
 ### Changed
 

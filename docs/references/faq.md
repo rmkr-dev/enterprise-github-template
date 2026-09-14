@@ -36,7 +36,7 @@ No. It does not run on pull requests. Keep PR required checks aligned with `ci.y
 
 ## Which language sketches exist?
 
-Docs-only evolution guidance for Java, Python, Go, Rust, .NET/C#, Terraform/IaC, and Azure/AKS lives in [examples.md](examples.md). None of those sketches add application code to **this** template.
+Docs-only evolution guidance for Java, Python, Go, Rust, .NET/C#, PHP, Terraform/IaC, and Azure/AKS lives in [examples.md](examples.md). None of those sketches add application code to **this** template.
 
 ## How do I cut a template-style release?
 
@@ -52,5 +52,5 @@ Not in **this** template — ADR-004 keeps validation shell-only. A derived prod
 
 ## Related
 
-- [examples.md](examples.md) — Java / Python / Go / Rust / .NET / Terraform / Azure-AKS evolution sketches
+- [examples.md](examples.md) — Java / Python / Go / Rust / .NET / PHP / Terraform / Azure-AKS evolution sketches
 - [SUPPORT.md](../../SUPPORT.md) — where questions go
