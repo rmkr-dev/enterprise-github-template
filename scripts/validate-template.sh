@@ -20,6 +20,7 @@ REQUIRED=(
   "docs/decisions/ADR-002-validation-in-ci.md"
   "docs/decisions/ADR-003-weekly-scheduled-validation.md"
   "docs/development/development.md"
+  "docs/development/first-week.md"
   "docs/security/security.md"
   "docs/operations/README.md"
   "docs/operations/operations.md"
