@@ -51,6 +51,8 @@ CI runs the same checks on pull requests, pushes to `main`, and on a weekly sche
 
 Questions about process belong in the pull request. Architecture-level choices belong in an ADR — see [docs/decisions/README.md](docs/decisions/README.md).
 
+If you maintain a **derived** repository and want later improvements from this template, prefer the file-level upgrade order in [docs/operations/upgrading-from-upstream.md](docs/operations/upgrading-from-upstream.md) over inventing a silent sync.
+
 ## Community
 
 - Be excellent: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)

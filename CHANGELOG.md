@@ -10,6 +10,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 ### Added
 
 - `.gitignore` covers common credential patterns (`*.pem`, `id_rsa`, keystores); validator requires `*.pem` and `id_rsa`
+- CONTRIBUTING and architecture docs point at upgrading-from-upstream guide
 
 ### Changed
 

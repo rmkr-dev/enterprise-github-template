@@ -26,6 +26,7 @@ What exists today is the documentation, process skeleton, and GitHub hygiene/CI 
 | `.github/CODEOWNERS` | Default review owner `@rmkr-dev` |
 | `.github/ISSUE_TEMPLATE/`, `PULL_REQUEST_TEMPLATE.md` | Community issue/PR hygiene (including good-first-issue form) |
 | `docs/operations/incident-response.md` | Light IR checklist for template / derived-repo maintainers |
+| `docs/operations/upgrading-from-upstream.md` | How derived repos adopt later template releases |
 | `scripts/validate-template.sh` | Required-file and Markdown link checks used by CI |
 | `tests/test_validate_template.sh` | Minimal expectations for the validator |
 
