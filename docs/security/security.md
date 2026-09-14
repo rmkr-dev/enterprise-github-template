@@ -7,6 +7,7 @@ This repository ships documentation, process defaults, and GitHub Actions hygien
 - No secrets, tokens, or credentials in the tree, examples, or commit messages
 - Workflow permissions are least-privilege (`contents: read` for CI; CodeQL adds `security-events: write`)
 - Every `actions/checkout` sets `persist-credentials: false` so the job token is not left in local git config
+- Third-party Actions are pinned to commit SHAs with version comments (see [ADR-005](../decisions/ADR-005-pin-github-actions-to-shas.md))
 - Dependabot keeps GitHub Actions dependencies on a weekly cadence
 - CodeQL analyzes Actions workflow YAML on PR, push to `main`, and a weekly schedule
 - Dependency review runs on pull requests (GitHub-native; free for public repositories). Requires Dependency graph / vulnerability alerts enabled under the repository Security settings (enable Dependabot alerts if the workflow reports that Dependency review is not supported).

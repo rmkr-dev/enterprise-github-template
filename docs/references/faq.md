@@ -46,6 +46,10 @@ On this template (or a derived repo that kept the workflow), push an annotated `
 
 Not in git. Prefer OIDC / federated credentials from GitHub Actions. See [secrets-and-oidc.md](../operations/secrets-and-oidc.md).
 
+## Why are Actions pinned to long SHAs?
+
+Mutable tags (`@v4`) can move. This template pins the commit SHA of the intended release and keeps a `# vX.Y.Z` comment so Dependabot and humans can still see the version. See [ADR-005](../decisions/ADR-005-pin-github-actions-to-shas.md).
+
 ## Can I add Prettier or markdownlint via npm?
 
 Not in **this** template — ADR-004 keeps validation shell-only. A derived product repo may add Node if the **product** needs it; do not add it only to lint Markdown here.

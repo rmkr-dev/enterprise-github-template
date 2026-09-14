@@ -18,7 +18,7 @@ flowchart TB
 
     subgraph docs["docs/"]
       Arch["architecture/<br/>architecture.md + diagrams"]
-      Dec["decisions/<br/>ADRs (ADR-001, ADR-002)"]
+      Dec["decisions/<br/>ADRs (ADR-001 … ADR-005)"]
       Dev["development/"]
       Sec["security/"]
       Ops["operations/<br/>(IR + troubleshooting / secrets-and-oidc)"]
