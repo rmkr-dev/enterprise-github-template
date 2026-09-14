@@ -9,7 +9,12 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+- Light incident-response checklist for template consumers (`docs/operations/incident-response.md`)
+- Stronger `SECURITY.md` policy checks in the template validator (supported versions, private reporting, no public disclosure)
+
 ### Changed
+
+- Polished `SECURITY.md` with supported-versions table, advisory URL, response expectations, and clearer scope
 
 ## [0.2.0] — 2026-09-14
 
