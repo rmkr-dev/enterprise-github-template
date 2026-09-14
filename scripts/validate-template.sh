@@ -105,6 +105,12 @@ if ! grep -qE 'cron:' .github/workflows/validate-scheduled.yml; then
 else
   echo "OK cron: validate-scheduled.yml"
 fi
+if ! grep -qE 'workflow_dispatch:' .github/workflows/validate-scheduled.yml; then
+  echo "MISSING workflow_dispatch: in validate-scheduled.yml" >&2
+  fail=1
+else
+  echo "OK: validate-scheduled workflow_dispatch"
+fi
 
 echo "==> Checking key workflows declare job timeouts"
 for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflows/scorecard.yml .github/workflows/release.yml .github/workflows/validate-scheduled.yml .github/workflows/dependency-review.yml; do
