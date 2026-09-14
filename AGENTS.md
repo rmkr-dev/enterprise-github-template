@@ -55,6 +55,7 @@ CI runs on GitHub Actions for this template: required-file validation, a small t
 - User-facing or contributor-facing behavior needs a doc update in the same PR.
 - System shape lives in `docs/architecture/`. Significant choices (tooling, auth, data stores, CI policy) get an ADR under `docs/decisions/`. See [docs/decisions/README.md](docs/decisions/README.md).
 - Network diagrams are out of scope unless the consumer’s system has a network to document. See [docs/architecture/network-diagram.md](docs/architecture/network-diagram.md).
+- Derived repos that want later template improvements should follow [docs/operations/upgrading-from-upstream.md](docs/operations/upgrading-from-upstream.md) rather than inventing a silent sync.
 
 ## Definition of done
 
