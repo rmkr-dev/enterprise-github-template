@@ -96,6 +96,7 @@ GitHub Actions runs those same checks on pull requests and pushes to `main`. Cod
 | [Release process](docs/operations/release-process.md) | Tagging and template releases |
 | [Tagging](docs/operations/tagging.md) | `v*` tags and the release workflow |
 | [Branch protection](docs/operations/branch-protection.md) | Recommended required checks |
+| [Incident response](docs/operations/incident-response.md) | Light IR checklist for template consumers |
 | [Changelog](CHANGELOG.md) | Notable template changes |
 | [Examples (derived repos)](docs/references/examples.md) | How Java/Python consumers can evolve from this template |
 

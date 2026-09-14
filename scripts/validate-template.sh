@@ -25,6 +25,7 @@ REQUIRED=(
   "docs/operations/release-process.md"
   "docs/operations/tagging.md"
   "docs/operations/branch-protection.md"
+  "docs/operations/incident-response.md"
   "docs/references/README.md"
   "docs/references/examples.md"
   ".gitignore"
@@ -88,12 +89,30 @@ else
   echo "OK: CODEOWNERS has owner"
 fi
 
-echo "==> Checking SECURITY.md has a reporting path"
+echo "==> Checking SECURITY.md policy completeness"
 if ! grep -qiE 'advisory|report' SECURITY.md; then
   echo "MISSING reporting guidance in SECURITY.md" >&2
   fail=1
 else
   echo "OK: SECURITY.md reporting path"
+fi
+if ! grep -qiE 'supported versions' SECURITY.md; then
+  echo "MISSING Supported versions section in SECURITY.md" >&2
+  fail=1
+else
+  echo "OK: SECURITY.md supported versions"
+fi
+if ! grep -qiE 'private' SECURITY.md; then
+  echo "MISSING private reporting guidance in SECURITY.md" >&2
+  fail=1
+else
+  echo "OK: SECURITY.md private reporting"
+fi
+if ! grep -qiE 'do \*\*not\*\* open a public|do not open a public' SECURITY.md; then
+  echo "MISSING do-not-disclose-publicly guidance in SECURITY.md" >&2
+  fail=1
+else
+  echo "OK: SECURITY.md no-public-disclosure"
 fi
 
 echo "==> Checking CHANGELOG structure"
