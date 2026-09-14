@@ -97,6 +97,10 @@ assert_contains "Scorecard publish_results" "OK: scorecard publish_results true"
 assert_contains "Scorecard schedule" "OK: scorecard schedule" "$out"
 assert_contains "Scorecard cron" "OK: scorecard cron" "$out"
 assert_contains "CI workflow_dispatch" "OK: ci workflow_dispatch" "$out"
+assert_contains "CI shellcheck" "OK shellcheck: .github/workflows/ci.yml" "$out"
+assert_contains "Scheduled shellcheck" "OK shellcheck: .github/workflows/validate-scheduled.yml" "$out"
+assert_contains "CI bash -n" "OK bash -n: .github/workflows/ci.yml" "$out"
+assert_contains "Scheduled bash -n" "OK bash -n: .github/workflows/validate-scheduled.yml" "$out"
 assert_contains "gitignore .env" "OK: gitignore covers .env" "$out"
 assert_contains "gitignore node_modules" "OK: gitignore covers node_modules" "$out"
 assert_contains "gitignore *.pem" "OK: gitignore covers *.pem" "$out"
@@ -403,6 +407,15 @@ set +e
 pem_rc=$?
 set -e
 assert_eq "validator fails when .gitignore lacks *.pem" "1" "$pem_rc"
+
+# Negative: ci.yml without shellcheck should fail
+cp -a "$ROOT/." "$tmpdir/repo33"
+sed -i '/shellcheck/d' "$tmpdir/repo33/.github/workflows/ci.yml"
+set +e
+"$tmpdir/repo33/scripts/validate-template.sh" >/dev/null 2>&1
+sc_ci_rc=$?
+set -e
+assert_eq "validator fails when ci.yml lacks shellcheck" "1" "$sc_ci_rc"
 
 # Negative: release.yml without CHANGELOG.md reference should fail
 cp -a "$ROOT/." "$tmpdir/repo32"
