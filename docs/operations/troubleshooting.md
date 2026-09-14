@@ -10,6 +10,7 @@ Quick fixes for common problems on **this template** or a fresh derived repo. No
 | `BROKEN LINK in …` | Relative Markdown target moved | Fix the link or restore the target |
 | `MISSING concurrency:` / `permissions:` | PR-facing or Scorecard workflow edited incompletely | Add least-privilege `permissions:` and a `concurrency:` group (see `ci.yml` / `scorecard.yml`) |
 | `MISSING package-ecosystem: github-actions` | Dependabot config lost Actions updates | Restore `package-ecosystem: github-actions` in `.github/dependabot.yml` |
+| `MISSING timeout-minutes:` | Workflow job can hang indefinitely | Add `timeout-minutes` on jobs in CI, CodeQL, Scorecard, and release workflows |
 | `MISSING schedule:` on validate-scheduled | Weekly workflow lost its cron | Restore `on.schedule` + `cron` (see ADR-003) |
 | Dependency review fails: not supported | Dependency graph / alerts off | Enable Dependency graph (and Dependabot alerts if prompted) under Security settings |
 | CodeQL / Scorecard noisy on private fork | Public defaults | Revisit `publish_results` and permissions for private consumers |

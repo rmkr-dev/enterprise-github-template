@@ -13,6 +13,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 - Validator checks that `release.yml` declares `tags:` and `contents: write`
 - .NET/C# consumer evolution sketch in `docs/references/examples.md` (docs only)
 - Validator checks Scorecard `permissions:` / `concurrency:` and Dependabot `github-actions` ecosystem
+- Job `timeout-minutes` on CodeQL and Scorecard; validator requires timeouts on CI/CodeQL/Scorecard/release
 
 ### Changed
 

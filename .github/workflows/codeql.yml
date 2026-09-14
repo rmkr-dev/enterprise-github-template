@@ -19,6 +19,7 @@ concurrency:
 jobs:
   analyze:
     name: Analyze Actions workflows
+    timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
