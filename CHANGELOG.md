@@ -9,6 +9,13 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+### Changed
+
+
+## [0.3.6] — 2026-09-14
+
+### Added
+
 - Validator requires Dependabot `groups:` and Scorecard `results_format: sarif`
 - `scripts/README.md` indexes template scripts; validator requires issue config `blank_issues_enabled: false` + security advisory contact link
 
@@ -240,7 +247,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Documented that the GitHub **template repository** flag is enabled and **Use this template** works now
 
-[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.3.5...HEAD
+[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.3.6...HEAD
+[0.3.6]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.6
 [0.3.5]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.5
 [0.3.4]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.4
 [0.3.3]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.3

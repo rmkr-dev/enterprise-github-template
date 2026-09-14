@@ -39,6 +39,8 @@ bash scripts/validate-template.sh
 bash tests/test_validate_template.sh
 ```
 
+Script roles: [scripts/README.md](scripts/README.md).
+
 CI runs the same checks on pull requests, pushes to `main`, and on a weekly schedule.
 
 ## What we will not merge
