@@ -149,6 +149,15 @@ else
   echo "OK: CODEOWNERS has owner"
 fi
 
+
+echo "==> Checking Dependabot covers github-actions"
+if ! grep -qE 'package-ecosystem:[[:space:]]*github-actions' .github/dependabot.yml; then
+  echo "MISSING package-ecosystem: github-actions in dependabot.yml" >&2
+  fail=1
+else
+  echo "OK: dependabot github-actions ecosystem"
+fi
+
 echo "==> Checking SECURITY.md policy completeness"
 if ! grep -qiE 'advisory|report' SECURITY.md; then
   echo "MISSING reporting guidance in SECURITY.md" >&2

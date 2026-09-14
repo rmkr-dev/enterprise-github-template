@@ -60,6 +60,7 @@ assert_contains "release tags check" "OK tags: release.yml" "$out"
 assert_contains "release contents write" "OK contents write: release.yml" "$out"
 assert_contains "Scorecard permissions check" "OK permissions: .github/workflows/scorecard.yml" "$out"
 assert_contains "Scorecard concurrency check" "OK concurrency: .github/workflows/scorecard.yml" "$out"
+assert_contains "Dependabot github-actions check" "OK: dependabot github-actions ecosystem" "$out"
 
 # Negative: missing required file should fail
 tmpdir="$(mktemp -d)"
@@ -173,6 +174,15 @@ set +e
 sc_rc=$?
 set -e
 assert_eq "validator fails when scorecard.yml lacks concurrency" "1" "$sc_rc"
+
+# Negative: dependabot without github-actions ecosystem should fail
+cp -a "$ROOT/." "$tmpdir/repo12"
+printf 'version: 2\nupdates:\n  - package-ecosystem: npm\n    directory: /\n    schedule:\n      interval: weekly\n' > "$tmpdir/repo12/.github/dependabot.yml"
+set +e
+"$tmpdir/repo12/scripts/validate-template.sh" >/dev/null 2>&1
+dep_rc=$?
+set -e
+assert_eq "validator fails when dependabot lacks github-actions" "1" "$dep_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2
