@@ -57,6 +57,9 @@ assert_contains "scheduled workflow cron" "OK cron: validate-scheduled.yml" "$ou
 assert_contains "scheduled workflow_dispatch" "OK: validate-scheduled workflow_dispatch" "$out"
 assert_contains "ADR-003 Status check" "OK Status: docs/decisions/ADR-003-weekly-scheduled-validation.md" "$out"
 assert_contains "ADR-004 Status check" "OK Status: docs/decisions/ADR-004-shell-only-template-validation.md" "$out"
+assert_contains "ADR-005 required" "OK: docs/decisions/ADR-005-pin-github-actions-to-shas.md" "$out"
+assert_contains "ADR-005 Status check" "OK Status: docs/decisions/ADR-005-pin-github-actions-to-shas.md" "$out"
+assert_contains "SHA-pinned actions" "OK: all third-party actions pinned to 40-char SHAs with version comments" "$out"
 assert_contains "CI permissions check" "OK permissions: .github/workflows/ci.yml" "$out"
 assert_contains "CI concurrency check" "OK concurrency: .github/workflows/ci.yml" "$out"
 assert_contains "CI timeout check" "OK timeout: .github/workflows/ci.yml" "$out"
@@ -398,6 +401,24 @@ set +e
 pem_rc=$?
 set -e
 assert_eq "validator fails when .gitignore lacks *.pem" "1" "$pem_rc"
+
+# Negative: floating action tag should fail SHA pin
+cp -a "$ROOT/." "$tmpdir/repo30"
+sed -i 's#actions/checkout@[0-9a-f]\{40\}#actions/checkout@v7#' "$tmpdir/repo30/.github/workflows/ci.yml"
+set +e
+"$tmpdir/repo30/scripts/validate-template.sh" >/dev/null 2>&1
+pin_rc=$?
+set -e
+assert_eq "validator fails when checkout is not SHA-pinned" "1" "$pin_rc"
+
+# Negative: SHA pin without version comment should fail
+cp -a "$ROOT/." "$tmpdir/repo31"
+sed -i 's/  # v7.0.1//' "$tmpdir/repo31/.github/workflows/ci.yml"
+set +e
+"$tmpdir/repo31/scripts/validate-template.sh" >/dev/null 2>&1
+pin_cmt_rc=$?
+set -e
+assert_eq "validator fails when SHA-pinned action lacks version comment" "1" "$pin_cmt_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2
