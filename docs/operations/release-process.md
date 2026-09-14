@@ -22,6 +22,7 @@ git push origin v0.1.0
 ```
 
 4. Prefer semantic versions: `vMAJOR.MINOR.PATCH`. Start at `v0.x` while the template is still evolving quickly.
+5. Prefer **patch** bumps (`v0.2.x`) for docs/CI hygiene; use a **minor** bump when the template’s required surface area changes in a consumer-visible way (new required workflows/docs consumers must adopt).
 
 ## GitHub Releases
 
