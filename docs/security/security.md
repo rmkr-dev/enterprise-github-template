@@ -13,6 +13,19 @@ This repository ships documentation, process defaults, and GitHub Actions hygien
 - Template validation also runs on a **weekly schedule** (`.github/workflows/validate-scheduled.yml`) in addition to pull requests and pushes to `main`
 - Vulnerability reports for this template go through [SECURITY.md](../../SECURITY.md) (GitHub Security Advisories / `@rmkr-dev`)
 
+## Workflow permissions (template defaults)
+
+| Workflow | Top-level `permissions` | Why |
+| --- | --- | --- |
+| `ci.yml` | `contents: read` | Validate docs/scripts only |
+| `validate-scheduled.yml` | `contents: read` | Same checks on a weekly cron |
+| `dependency-review.yml` | `contents: read` | PR dependency graph review |
+| `codeql.yml` | `contents: read`, `security-events: write`, `actions: read` | Upload CodeQL results |
+| `scorecard.yml` | `read-all` at workflow; job grants `security-events` / `id-token` write | Public Scorecard + SARIF |
+| `release.yml` | `contents: write` | Create GitHub Release for `v*` tags |
+
+Derived repos should re-review these when adding deploy jobs. Prefer OIDC over long-lived cloud secrets. Do not widen `GITHUB_TOKEN` permissions “just in case.”
+
 ## Expectations for derived repositories
 
 When you create a product repo from this template:

@@ -12,10 +12,12 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 - Concurrency groups on CI, CodeQL, and dependency-review workflows (cancel superseded runs)
 - Validator checks that those workflows declare `permissions:` and `concurrency:`
 - First-week checklist for template consumers (`docs/development/first-week.md`)
+- Workflow permissions table in `docs/security/security.md`
 
 ### Changed
 
 - `.gitattributes` marks `*.sh` as LF text; CODEOWNERS documents default owner intent
+- AGENTS and operations docs point at the workflow permissions table
 
 ## [0.2.2] — 2026-09-14
 
