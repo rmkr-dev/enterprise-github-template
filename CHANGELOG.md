@@ -12,6 +12,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 - Light incident-response checklist for template consumers (`docs/operations/incident-response.md`)
 - Stronger `SECURITY.md` policy checks in the template validator (supported versions, private reporting, no public disclosure)
 - Azure/AKS consumer evolution sketch in `docs/references/examples.md` (docs only)
+- Weekly scheduled template validation workflow (`.github/workflows/validate-scheduled.yml`)
 
 ### Changed
 

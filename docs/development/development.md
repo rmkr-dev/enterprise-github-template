@@ -28,7 +28,7 @@ bash scripts/validate-template.sh
 bash tests/test_validate_template.sh
 ```
 
-The validator checks that required template files exist (including CODEOWNERS, SECURITY.md, CHANGELOG.md, ADRs, and workflow YAML), workflow `on:` / `jobs:` / checkout are present, CODEOWNERS names an owner, SECURITY.md has a reporting path, CHANGELOG has `[Unreleased]` and a versioned section, each ADR declares `Status:`, Mermaid fences exist in the architecture diagram docs, and relative Markdown links resolve. The test script asserts the happy path plus negative cases (missing file, empty CODEOWNERS, weak SECURITY.md, broken CHANGELOG/ADR/workflow shape).
+The validator checks that required template files exist (including CODEOWNERS, SECURITY.md, CHANGELOG.md, ADRs, and workflow YAML), workflow `on:` / `jobs:` / checkout are present, CODEOWNERS names an owner, SECURITY.md has private reporting / supported-versions / no-public-disclosure guidance, CHANGELOG has `[Unreleased]` and a versioned section, each ADR declares `Status:`, Mermaid fences exist in the architecture diagram docs, and relative Markdown links resolve. The test script asserts the happy path plus negative cases (missing file, empty CODEOWNERS, weak SECURITY.md, broken CHANGELOG/ADR/workflow shape).
 
 ## CI (GitHub Actions)
 
@@ -36,11 +36,17 @@ On every pull request and every push to `main`:
 
 | Workflow | What it does |
 | --- | --- |
-| [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml) | Runs `scripts/validate-template.sh` and `tests/test_validate_template.sh` |
+| [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml) | Runs `scripts/validate-template.sh` and `tests/test_validate_template.sh` (plus shell-syntax job) |
 | [`.github/workflows/codeql.yml`](../../.github/workflows/codeql.yml) | CodeQL analysis for GitHub Actions workflow YAML (`actions` language), also on a weekly schedule |
 | [`.github/workflows/release.yml`](../../.github/workflows/release.yml) | Creates a GitHub Release when a `v*` tag is pushed |
 | [`.github/workflows/dependency-review.yml`](../../.github/workflows/dependency-review.yml) | Dependency review on pull requests |
 | [`.github/workflows/scorecard.yml`](../../.github/workflows/scorecard.yml) | OpenSSF Scorecard on `main` pushes and weekly schedule |
+
+Also on a **weekly schedule** (and `workflow_dispatch`):
+
+| Workflow | What it does |
+| --- | --- |
+| [`.github/workflows/validate-scheduled.yml`](../../.github/workflows/validate-scheduled.yml) | Same template validator + tests + shell syntax as CI, without waiting for a PR |
 
 Dependabot opens weekly PRs for GitHub Actions updates (`.github/dependabot.yml`), grouped into a single Actions PR when possible. `CODEOWNERS` routes reviews to `@rmkr-dev`.
 
