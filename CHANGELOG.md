@@ -9,7 +9,12 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+- Concurrency groups on CI, CodeQL, and dependency-review workflows (cancel superseded runs)
+- Validator checks that those workflows declare `permissions:` and `concurrency:`
+
 ### Changed
+
+- `.gitattributes` marks `*.sh` as LF text; CODEOWNERS documents default owner intent
 
 ## [0.2.2] — 2026-09-14
 
