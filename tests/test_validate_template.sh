@@ -56,6 +56,8 @@ assert_contains "ADR-003 Status check" "OK Status: docs/decisions/ADR-003-weekly
 assert_contains "CI permissions check" "OK permissions: .github/workflows/ci.yml" "$out"
 assert_contains "CI concurrency check" "OK concurrency: .github/workflows/ci.yml" "$out"
 assert_contains "CI timeout check" "OK timeout: .github/workflows/ci.yml" "$out"
+assert_contains "release tags check" "OK tags: release.yml" "$out"
+assert_contains "release contents write" "OK contents write: release.yml" "$out"
 
 # Negative: missing required file should fail
 tmpdir="$(mktemp -d)"
@@ -149,6 +151,16 @@ set +e
 conc_rc=$?
 set -e
 assert_eq "validator fails when ci.yml lacks concurrency" "1" "$conc_rc"
+
+
+# Negative: release.yml without tags: should fail
+cp -a "$ROOT/." "$tmpdir/repo10"
+printf 'name: Release\non:\n  push:\n    branches: [main]\npermissions:\n  contents: write\njobs:\n  release:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v7\n' > "$tmpdir/repo10/.github/workflows/release.yml"
+set +e
+"$tmpdir/repo10/scripts/validate-template.sh" >/dev/null 2>&1
+rel_rc=$?
+set -e
+assert_eq "validator fails when release.yml lacks tags:" "1" "$rel_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2
