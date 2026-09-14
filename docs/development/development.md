@@ -65,6 +65,10 @@ Recommended branch protection and required check names: [branch-protection.md](.
 6. If the decision is significant, add an ADR under `docs/decisions/`.
 7. Run the local validation commands before opening the PR.
 
+## First week after copying
+
+Consumers who just used **Use this template** can follow [first-week.md](first-week.md) for a Day-0 / honesty-pass / first-slice checklist (docs only).
+
 ## Template flag status
 
 The GitHub **template repository** flag is **enabled** on `rmkr-dev/enterprise-github-template`. Consumers can create a new repository with **Use this template** from the GitHub UI. Maintainers should keep that flag on unless an ADR records turning it off.

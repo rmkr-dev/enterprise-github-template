@@ -85,6 +85,7 @@ GitHub Actions runs those same checks on pull requests, pushes to `main`, and on
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Contributor Covenant conduct policy |
 | [SUPPORT.md](SUPPORT.md) | Where questions and reports should go |
 | [Development](docs/development/development.md) | Local validation and what CI does |
+| [First-week checklist](docs/development/first-week.md) | Day-0 checklist after Use this template |
 | [Architecture overview](docs/architecture/README.md) | How architecture docs are organized |
 | [Current architecture](docs/architecture/architecture.md) | What this repo is today |
 | [Architecture diagram](docs/architecture/architecture-diagram.md) | Mermaid view of template surfaces |
