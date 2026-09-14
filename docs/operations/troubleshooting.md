@@ -57,6 +57,7 @@ bash tests/test_validate_template.sh
 | Symptom | Fix |
 | --- | --- |
 | Want to file a vuln publicly | Don’t—use [SECURITY.md](../../SECURITY.md) private advisory |
+| Blank issues suddenly available | Issue form config drifted | Restore `blank_issues_enabled: false` and security `contact_links` in `.github/ISSUE_TEMPLATE/config.yml` |
 | Looking for starter work | `good first issue` label / form — [CONTRIBUTING.md](../../CONTRIBUTING.md) |
 | CI red on `main` | Treat as an incident — [incident-response.md](incident-response.md) |
 
