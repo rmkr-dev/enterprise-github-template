@@ -9,6 +9,13 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+### Changed
+
+
+## [0.3.7] — 2026-09-14
+
+### Added
+
 - Validator requires `.gitattributes` `*.sh text eol=lf`, EditorConfig shell section, CI `cancel-in-progress: true`, and release `cancel-in-progress: false`
 
 ### Changed
@@ -249,7 +256,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Documented that the GitHub **template repository** flag is enabled and **Use this template** works now
 
-[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.3.6...HEAD
+[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.3.7...HEAD
+[0.3.7]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.7
 [0.3.6]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.6
 [0.3.5]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.5
 [0.3.4]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.3.4
