@@ -54,8 +54,14 @@ for path in "${REQUIRED[@]}"; do
   fi
 done
 
-echo "==> Checking workflow jobs are non-empty"
+echo "==> Checking workflow triggers and jobs"
 for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflows/release.yml; do
+  if ! grep -qE '^[[:space:]]*on:' "$wf"; then
+    echo "MISSING on: trigger in $wf" >&2
+    fail=1
+  else
+    echo "OK on: $wf"
+  fi
   if ! grep -qE '^[[:space:]]*jobs:' "$wf"; then
     echo "MISSING jobs: key in $wf" >&2
     fail=1
@@ -86,7 +92,21 @@ else
   echo "OK: SECURITY.md reporting path"
 fi
 
-echo "==> Checking at least one ADR exists"
+echo "==> Checking CHANGELOG structure"
+if ! grep -qE '^## \[Unreleased\]' CHANGELOG.md; then
+  echo "MISSING ## [Unreleased] section in CHANGELOG.md" >&2
+  fail=1
+else
+  echo "OK: CHANGELOG has [Unreleased]"
+fi
+if ! grep -qE '^## \[[0-9]+\.[0-9]+\.[0-9]+\]' CHANGELOG.md; then
+  echo "MISSING versioned ## [X.Y.Z] section in CHANGELOG.md" >&2
+  fail=1
+else
+  echo "OK: CHANGELOG has a versioned section"
+fi
+
+echo "==> Checking ADRs exist and declare Status"
 adr_count="$(find docs/decisions -maxdepth 1 -type f \( -name 'ADR-*.md' -o -name '[0-9][0-9][0-9][0-9]-*.md' \) | wc -l | tr -d ' ')"
 if [[ "$adr_count" -lt 1 ]]; then
   echo "MISSING: no ADR files under docs/decisions/" >&2
@@ -94,6 +114,15 @@ if [[ "$adr_count" -lt 1 ]]; then
 else
   echo "OK: ADR count=$adr_count"
 fi
+mapfile -t adr_files < <(find docs/decisions -maxdepth 1 -type f \( -name 'ADR-*.md' -o -name '[0-9][0-9][0-9][0-9]-*.md' \) | sort)
+for adr in "${adr_files[@]}"; do
+  if ! grep -qE '^(- )?Status:' "$adr"; then
+    echo "MISSING Status: in $adr" >&2
+    fail=1
+  else
+    echo "OK Status: $adr"
+  fi
+done
 
 echo "==> Checking Mermaid diagram sources exist"
 for path in docs/architecture/architecture-diagram.md docs/architecture/network-diagram.md; do
