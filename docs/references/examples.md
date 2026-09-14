@@ -1,6 +1,6 @@
 # Examples: evolving a derived repository
 
-This template is **not** a sample application. After **Use this template**, the derived repo should grow into a real product in small, honest slices. The sketches below show a reasonable order for **Java**, **Python**, **Go**, **Rust**, **.NET/C#**, and **Azure/AKS** consumers. They are guidance, not files that ship in this template.
+This template is **not** a sample application. After **Use this template**, the derived repo should grow into a real product in small, honest slices. The sketches below show a reasonable order for **Java**, **Python**, **Go**, **Rust**, **.NET/C#**, **Terraform/IaC**, and **Azure/AKS** consumers. They are guidance, not files that ship in this template.
 
 ## Shared first steps (any language)
 
@@ -81,6 +81,21 @@ Typical order after the shared steps:
 
 Prefer the .NET SDK CLI. Do not introduce Node/npm solely for documentation.
 
+
+## Terraform / IaC sketch
+
+Typical order after the shared steps, when the derived product manages cloud infrastructure with **Terraform** (or similar IaC). Docs-only guidance — this template still ships **no** `.tf` files, modules, or cloud credentials.
+
+| Slice | What lands | What stays honest |
+| --- | --- | --- |
+| 1. Root module skeleton | `versions.tf` / `providers.tf`, empty or minimal resources matching a real plan | README says “infra module,” not “production cloud” until apply exists |
+| 2. Plan in CI | Workflow: checkout → Terraform setup → `fmt`/`validate`/`plan` (no auto-apply on PR) | Plan output is advisory; apply is a separate, protected path |
+| 3. State backend | Documented remote state (e.g. cloud object store) with locking | Do not commit state files or backend secrets |
+| 4. Supply chain | Dependabot is limited for Terraform; pin provider versions; consider `terraform providers lock` | Document how provider upgrades are reviewed |
+| 5. Architecture | ADRs for cloud account boundaries, environments, and apply identity (OIDC preferred) | Network diagrams only when VPCs/peering/etc. actually exist |
+
+Prefer provider OIDC from GitHub Actions over long-lived cloud keys. Do not introduce Node/npm solely for documentation or Terraform wrappers.
+
 ## Azure / AKS sketch
 
 Typical order after the shared steps, when the derived product will run on **Azure Kubernetes Service**. Docs-only guidance for consumers — this template still ships **no** manifests, Helm charts, or Terraform.
@@ -105,7 +120,7 @@ Typical order after the shared steps, when the derived product will run on **Azu
 - Sample `pom.xml`, `pyproject.toml`, `go.mod`, `Cargo.toml`, `.csproj`/`.sln`, or application source
 - Language package managers or lockfiles in **this** template repository
 - Fake “hello world” services added only to make CI look busy
-- Sample Dockerfile, Helm chart, Terraform, or AKS manifests in **this** template repository
+- Sample Dockerfile, Helm chart, `.tf` modules, or AKS manifests in **this** template repository
 
 Application files belong in the **derived** repository, in PRs that also update that repo’s docs and CI.
 
