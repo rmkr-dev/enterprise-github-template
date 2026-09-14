@@ -10,6 +10,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 ### Added
 
 - Validator forbids npm/yarn/pnpm Dependabot ecosystems (ADR-004)
+- First-week checklist and SUPPORT point at upgrading-from-upstream guide
 
 ### Changed
 

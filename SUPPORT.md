@@ -7,6 +7,7 @@
 | Need | Where to go |
 | --- | --- |
 | How to use or contribute | [README.md](README.md), [docs/development/development.md](docs/development/development.md), [CONTRIBUTING.md](CONTRIBUTING.md), [FAQ](docs/references/faq.md) |
+| Sync later template releases | [Upgrading from upstream](docs/operations/upgrading-from-upstream.md) |
 | CI/docs not validating | [Troubleshooting](docs/operations/troubleshooting.md) |
 | Bug in the template | [Bug report](https://github.com/rmkr-dev/enterprise-github-template/issues/new?template=bug_report.yml) |
 | Improvement idea | [Feature request](https://github.com/rmkr-dev/enterprise-github-template/issues/new?template=feature_request.yml) |

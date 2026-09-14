@@ -9,6 +9,7 @@ A short checklist for maintainers of a **new repository created from this templa
 3. Replace `README.md` title/purpose for the product; keep the `docs/` layout unless an ADR says otherwise.
 4. Update `.github/CODEOWNERS` to your maintainers (remove `@rmkr-dev` if it does not apply).
 5. Skim [SECURITY.md](../../SECURITY.md) and keep a private reporting path (GitHub Security Advisories).
+6. Note the template version you started from (latest `v*` release) so later upgrades have a baseline — see [upgrading-from-upstream.md](../operations/upgrading-from-upstream.md).
 
 ## Day 1–2 (honesty pass)
 
@@ -45,3 +46,4 @@ Also skim [secrets-and-oidc.md](../operations/secrets-and-oidc.md) before adding
 - [CONTRIBUTING](../../CONTRIBUTING.md) — how to change the template itself
 - [Development](development.md) — local validation and CI shape on the template
 - [FAQ](../references/faq.md) — short answers after Use this template
+- [Upgrading from upstream](../operations/upgrading-from-upstream.md) — adopt later template releases later
