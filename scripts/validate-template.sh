@@ -18,6 +18,7 @@ REQUIRED=(
   "docs/decisions/README.md"
   "docs/decisions/ADR-001-github-native-template.md"
   "docs/decisions/ADR-002-validation-in-ci.md"
+  "docs/decisions/ADR-003-weekly-scheduled-validation.md"
   "docs/development/development.md"
   "docs/security/security.md"
   "docs/operations/README.md"
@@ -82,6 +83,20 @@ for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflow
     echo "OK checkout: $wf"
   fi
 done
+
+echo "==> Checking validate-scheduled has a cron schedule"
+if ! grep -qE '^[[:space:]]*schedule:' .github/workflows/validate-scheduled.yml; then
+  echo "MISSING schedule: in validate-scheduled.yml" >&2
+  fail=1
+else
+  echo "OK schedule: validate-scheduled.yml"
+fi
+if ! grep -qE 'cron:' .github/workflows/validate-scheduled.yml; then
+  echo "MISSING cron: in validate-scheduled.yml" >&2
+  fail=1
+else
+  echo "OK cron: validate-scheduled.yml"
+fi
 
 echo "==> Checking CODEOWNERS has an owner"
 if ! grep -qE '@[A-Za-z0-9_-]+' .github/CODEOWNERS; then
