@@ -54,6 +54,10 @@ assert_contains "secrets-and-oidc required" "OK: docs/operations/secrets-and-oid
 assert_contains "gitattributes required" "OK: .gitattributes" "$out"
 assert_contains "CODEOWNERS check ran" "OK: CODEOWNERS has owner" "$out"
 assert_contains "CODEOWNERS catch-all" "OK: CODEOWNERS has catch-all * rule" "$out"
+assert_contains "blank issues disabled" "OK: blank_issues_enabled false" "$out"
+assert_contains "issue contact_links" "OK: issue contact_links present" "$out"
+assert_contains "issue security advisory link" "OK: issue config links security advisories" "$out"
+assert_contains "scripts README required" "OK: scripts/README.md" "$out"
 assert_contains "SECURITY check ran" "OK: SECURITY.md reporting path" "$out"
 assert_contains "SECURITY supported versions" "OK: SECURITY.md supported versions" "$out"
 assert_contains "SECURITY private reporting" "OK: SECURITY.md private reporting" "$out"
@@ -430,6 +434,15 @@ set +e
 pem_rc=$?
 set -e
 assert_eq "validator fails when .gitignore lacks *.pem" "1" "$pem_rc"
+
+# Negative: issue config with blank_issues_enabled true should fail
+cp -a "$ROOT/." "$tmpdir/repo39"
+sed -i 's/blank_issues_enabled: false/blank_issues_enabled: true/' "$tmpdir/repo39/.github/ISSUE_TEMPLATE/config.yml"
+set +e
+"$tmpdir/repo39/scripts/validate-template.sh" >/dev/null 2>&1
+blank_rc=$?
+set -e
+assert_eq "validator fails when blank issues enabled" "1" "$blank_rc"
 
 # Negative: dependabot without groups should fail
 cp -a "$ROOT/." "$tmpdir/repo37"

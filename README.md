@@ -54,7 +54,7 @@ Do not introduce Node, npm, or other runtimes in this template unless a later ap
 ├── CHANGELOG.md              # Template release history
 ├── LICENSE
 ├── README.md                 # You are here
-├── scripts/                  # Template validation (used by CI)
+├── scripts/                  # Template validation + changelog extract (see scripts/README.md)
 ├── tests/                    # Checks for the validator
 ├── .github/                  # Actions, Dependabot, community templates
 └── docs/

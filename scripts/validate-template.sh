@@ -57,6 +57,7 @@ REQUIRED=(
   "SUPPORT.md"
   "scripts/validate-template.sh"
   "scripts/extract-changelog-section.sh"
+  "scripts/README.md"
   "tests/test_validate_template.sh"
 )
 
@@ -440,6 +441,26 @@ if [[ "${#node_hits[@]}" -gt 0 ]]; then
   fail=1
 else
   echo "OK: no Node/npm package manifests"
+fi
+
+echo "==> Checking issue template config disables blank issues"
+if ! grep -qE 'blank_issues_enabled:[[:space:]]*false' .github/ISSUE_TEMPLATE/config.yml; then
+  echo "MISSING blank_issues_enabled: false in ISSUE_TEMPLATE/config.yml" >&2
+  fail=1
+else
+  echo "OK: blank_issues_enabled false"
+fi
+if ! grep -qE 'contact_links:' .github/ISSUE_TEMPLATE/config.yml; then
+  echo "MISSING contact_links: in ISSUE_TEMPLATE/config.yml" >&2
+  fail=1
+else
+  echo "OK: issue contact_links present"
+fi
+if ! grep -qE 'security/advisories' .github/ISSUE_TEMPLATE/config.yml; then
+  echo "MISSING security/advisories contact link in ISSUE_TEMPLATE/config.yml" >&2
+  fail=1
+else
+  echo "OK: issue config links security advisories"
 fi
 
 echo "==> Checking SECURITY.md policy completeness"
