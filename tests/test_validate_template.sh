@@ -83,6 +83,8 @@ assert_contains "CodeQL security-events write" "OK: codeql security-events write
 assert_contains "CodeQL schedule" "OK: codeql schedule" "$out"
 assert_contains "CodeQL cron" "OK: codeql cron" "$out"
 assert_contains "Scorecard publish_results" "OK: scorecard publish_results true" "$out"
+assert_contains "Scorecard schedule" "OK: scorecard schedule" "$out"
+assert_contains "Scorecard cron" "OK: scorecard cron" "$out"
 assert_contains "CI workflow_dispatch" "OK: ci workflow_dispatch" "$out"
 assert_contains "gitignore .env" "OK: gitignore covers .env" "$out"
 assert_contains "gitignore node_modules" "OK: gitignore covers node_modules" "$out"
@@ -349,6 +351,16 @@ set +e
 cq_sched_rc=$?
 set -e
 assert_eq "validator fails when codeql lacks schedule/cron" "1" "$cq_sched_rc"
+
+
+# Negative: scorecard.yml without schedule/cron should fail
+cp -a "$ROOT/." "$tmpdir/repo27"
+sed -i '/schedule:/,/cron:/d' "$tmpdir/repo27/.github/workflows/scorecard.yml"
+set +e
+"$tmpdir/repo27/scripts/validate-template.sh" >/dev/null 2>&1
+sc_sched_rc=$?
+set -e
+assert_eq "validator fails when scorecard lacks schedule/cron" "1" "$sc_sched_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2

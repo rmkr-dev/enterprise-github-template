@@ -223,6 +223,18 @@ if ! grep -qE 'publish_results:[[:space:]]*true' .github/workflows/scorecard.yml
 else
   echo "OK: scorecard publish_results true"
 fi
+if ! grep -qE '^[[:space:]]*schedule:' .github/workflows/scorecard.yml; then
+  echo "MISSING schedule: in scorecard.yml" >&2
+  fail=1
+else
+  echo "OK: scorecard schedule"
+fi
+if ! grep -qE 'cron:' .github/workflows/scorecard.yml; then
+  echo "MISSING cron: in scorecard.yml" >&2
+  fail=1
+else
+  echo "OK: scorecard cron"
+fi
 
 echo "==> Checking CI allows on-demand workflow_dispatch"
 if ! grep -qE 'workflow_dispatch:' .github/workflows/ci.yml; then
