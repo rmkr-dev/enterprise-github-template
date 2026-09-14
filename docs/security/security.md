@@ -8,6 +8,8 @@ This repository ships documentation, process defaults, and GitHub Actions hygien
 - Workflow permissions are least-privilege (`contents: read` for CI; CodeQL adds `security-events: write`)
 - Dependabot keeps GitHub Actions dependencies on a weekly cadence
 - CodeQL analyzes Actions workflow YAML on PR, push to `main`, and a weekly schedule
+- Dependency review runs on pull requests (GitHub-native; free for public repositories)
+- OpenSSF Scorecard runs on pushes to `main` and weekly, publishing results to the public Scorecard API and code scanning (free for public repositories; private consumers should revisit `publish_results` and permissions)
 - Vulnerability reports for this template go through [SECURITY.md](../../SECURITY.md) (GitHub Security Advisories / `@rmkr-dev`)
 
 ## Expectations for derived repositories

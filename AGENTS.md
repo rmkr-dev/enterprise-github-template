@@ -46,7 +46,7 @@ CI runs on GitHub Actions for this template: required-file validation, a small t
 
 - No secrets in the repo, in examples, or in commit messages.
 - Least privilege for tokens and workflow permissions.
-- Dependabot (Actions) and CodeQL (Actions language) are part of this template’s defaults; extend them when application languages appear.
+- Dependabot (Actions), CodeQL (Actions language), dependency review on PRs, and OpenSSF Scorecard (public) are part of this template’s defaults; extend them when application languages appear.
 - Report template vulnerabilities per [SECURITY.md](SECURITY.md). Treat `docs/security/security.md` as the consumer-facing posture and update it when defaults change.
 
 ## Docs and architecture

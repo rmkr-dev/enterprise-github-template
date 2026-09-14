@@ -39,6 +39,8 @@ On every pull request and every push to `main`:
 | [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml) | Runs `scripts/validate-template.sh` and `tests/test_validate_template.sh` |
 | [`.github/workflows/codeql.yml`](../../.github/workflows/codeql.yml) | CodeQL analysis for GitHub Actions workflow YAML (`actions` language), also on a weekly schedule |
 | [`.github/workflows/release.yml`](../../.github/workflows/release.yml) | Creates a GitHub Release when a `v*` tag is pushed |
+| [`.github/workflows/dependency-review.yml`](../../.github/workflows/dependency-review.yml) | Dependency review on pull requests |
+| [`.github/workflows/scorecard.yml`](../../.github/workflows/scorecard.yml) | OpenSSF Scorecard on `main` pushes and weekly schedule |
 
 Dependabot opens weekly PRs for GitHub Actions updates (`.github/dependabot.yml`), grouped into a single Actions PR when possible. `CODEOWNERS` routes reviews to `@rmkr-dev`.
 
