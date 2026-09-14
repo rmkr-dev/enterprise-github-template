@@ -11,5 +11,6 @@ Maintainer-facing notes for operating **this template repository**.
 | [branch-protection.md](branch-protection.md) | Recommended `main` protection and required checks |
 | [troubleshooting.md](troubleshooting.md) | Common CI/docs/release failure modes |
 | [secrets-and-oidc.md](secrets-and-oidc.md) | Secrets hygiene and OIDC preference for derived repos |
+| [upgrading-from-upstream.md](upgrading-from-upstream.md) | How derived repos adopt later template releases |
 
 Application runbooks do not belong here until a derived product introduces a runtime.
