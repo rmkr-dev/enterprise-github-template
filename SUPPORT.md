@@ -7,6 +7,7 @@
 | Need | Where to go |
 | --- | --- |
 | How to use or contribute | [README.md](README.md), [docs/development/development.md](docs/development/development.md), [CONTRIBUTING.md](CONTRIBUTING.md) |
+| CI/docs not validating | [Troubleshooting](docs/operations/troubleshooting.md) |
 | Bug in the template | [Bug report](https://github.com/rmkr-dev/enterprise-github-template/issues/new?template=bug_report.yml) |
 | Improvement idea | [Feature request](https://github.com/rmkr-dev/enterprise-github-template/issues/new?template=feature_request.yml) |
 | Small starter task | [Good first issue](https://github.com/rmkr-dev/enterprise-github-template/issues/new?template=good_first_issue.yml) or browse the `good first issue` label |
