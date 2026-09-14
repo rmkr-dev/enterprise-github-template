@@ -74,6 +74,8 @@ assert_contains "Release permissions check" "OK permissions: .github/workflows/r
 assert_contains "Release concurrency check" "OK concurrency: .github/workflows/release.yml" "$out"
 assert_contains "Dependabot github-actions check" "OK: dependabot github-actions ecosystem" "$out"
 assert_contains "Scorecard persist-credentials" "OK: scorecard persist-credentials false" "$out"
+assert_contains "CodeQL languages actions" "OK: codeql languages actions" "$out"
+assert_contains "CodeQL security-events write" "OK: codeql security-events write" "$out"
 assert_contains "no Node/npm manifests" "OK: no Node/npm package manifests" "$out"
 
 # Negative: missing required file should fail
@@ -257,6 +259,16 @@ set +e
 npm_rc=$?
 set -e
 assert_eq "validator fails when package.json present" "1" "$npm_rc"
+
+
+# Negative: codeql.yml without languages: actions should fail
+cp -a "$ROOT/." "$tmpdir/repo19"
+sed -i 's/languages: actions/languages: javascript/' "$tmpdir/repo19/.github/workflows/codeql.yml"
+set +e
+"$tmpdir/repo19/scripts/validate-template.sh" >/dev/null 2>&1
+cq_lang_rc=$?
+set -e
+assert_eq "validator fails when codeql lacks languages: actions" "1" "$cq_lang_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2

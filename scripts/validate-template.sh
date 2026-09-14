@@ -169,6 +169,20 @@ else
   echo "OK: scorecard persist-credentials false"
 fi
 
+echo "==> Checking CodeQL analyzes Actions workflows"
+if ! grep -qE 'languages:[[:space:]]*actions' .github/workflows/codeql.yml; then
+  echo "MISSING languages: actions in codeql.yml" >&2
+  fail=1
+else
+  echo "OK: codeql languages actions"
+fi
+if ! grep -qE 'security-events:[[:space:]]*write' .github/workflows/codeql.yml; then
+  echo "MISSING security-events: write in codeql.yml" >&2
+  fail=1
+else
+  echo "OK: codeql security-events write"
+fi
+
 echo "==> Checking Dependabot covers github-actions"
 if ! grep -qE 'package-ecosystem:[[:space:]]*github-actions' .github/dependabot.yml; then
   echo "MISSING package-ecosystem: github-actions in dependabot.yml" >&2
