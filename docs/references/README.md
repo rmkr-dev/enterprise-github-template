@@ -4,4 +4,4 @@ Supplementary docs for consumers of this template. These are not a substitute fo
 
 | Doc | Purpose |
 | --- | --- |
-| [examples.md](examples.md) | How a derived Java or Python repo can evolve from this template |
+| [examples.md](examples.md) | How a derived Java, Python, or Azure/AKS repo can evolve from this template |
