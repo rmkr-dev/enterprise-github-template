@@ -21,13 +21,14 @@ flowchart TB
       Dec["decisions/<br/>ADRs (ADR-001, ADR-002)"]
       Dev["development/"]
       Sec["security/"]
-      Ops["operations/"]
+      Ops["operations/<br/>(incl. incident-response)"]
+      Refs["references/<br/>consumer examples"]
     end
 
     subgraph github[".github/"]
-      WF["workflows/<br/>ci.yml, codeql.yml, release.yml"]
+      WF["workflows/<br/>ci, validate-scheduled,<br/>codeql, dependency-review,<br/>scorecard, release"]
       Dep["dependabot.yml"]
-      Hygiene["CODEOWNERS, ISSUE_TEMPLATE,<br/>PULL_REQUEST_TEMPLATE"]
+      Hygiene["CODEOWNERS, ISSUE_TEMPLATE<br/>(incl. good first issue),<br/>PULL_REQUEST_TEMPLATE"]
     end
 
     subgraph tooling["Validation in CI"]
@@ -59,6 +60,6 @@ flowchart TB
 
 - **Consumers** (people and agents) enter through `README.md` and `AGENTS.md`.
 - **`docs/`** holds the lasting description of architecture, decisions (including why validation runs in CI), development practice, and security posture.
-- **`.github/workflows/ci.yml`** invokes the validate script and its tests on every PR and every push to `main` (see ADR-002).
+- **`.github/workflows/ci.yml`** and **`validate-scheduled.yml`** invoke the validate script and its tests on every PR, every push to `main`, and weekly (see ADR-002).
 - **`scripts/` / `tests/`** are the only “runtime” in this repo: shell checks invoked by Actions and locally.
 - A **derived repository** gets a snapshot of these files; it does not stay coupled to upstream template updates unless the consumer chooses to merge them later.

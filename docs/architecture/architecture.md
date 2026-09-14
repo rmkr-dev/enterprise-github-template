@@ -21,10 +21,11 @@ What exists today is the documentation, process skeleton, and GitHub hygiene/CI 
 | `CHANGELOG.md` | Notable changes for template consumers |
 | `.gitignore` | Ignores editor/env/accidental build artifacts |
 | `docs/operations/branch-protection.md` | Recommended required checks on `main` |
-| `.github/workflows/` | CI (template validation), CodeQL (`actions`), dependency review, OpenSSF Scorecard |
+| `.github/workflows/` | CI validation, weekly scheduled validate, CodeQL (`actions`), dependency review, OpenSSF Scorecard, release-on-tag |
 | `.github/dependabot.yml` | Weekly GitHub Actions dependency updates |
 | `.github/CODEOWNERS` | Default review owner `@rmkr-dev` |
-| `.github/ISSUE_TEMPLATE/`, `PULL_REQUEST_TEMPLATE.md` | Community issue/PR hygiene |
+| `.github/ISSUE_TEMPLATE/`, `PULL_REQUEST_TEMPLATE.md` | Community issue/PR hygiene (including good-first-issue form) |
+| `docs/operations/incident-response.md` | Light IR checklist for template / derived-repo maintainers |
 | `scripts/validate-template.sh` | Required-file and Markdown link checks used by CI |
 | `tests/test_validate_template.sh` | Minimal expectations for the validator |
 
@@ -43,7 +44,7 @@ See [architecture-diagram.md](architecture-diagram.md) for a Mermaid view of the
 
 ## CI shape
 
-CI does **not** build an application. It validates that the template’s required files and docs stay coherent (`scripts/validate-template.sh` plus tests, including a shell-syntax job). CodeQL analyzes Actions workflow YAML. Dependency review runs on pull requests. OpenSSF Scorecard runs on `main` and on a weekly schedule for public supply-chain signals. See [ADR-002](../decisions/ADR-002-validation-in-ci.md) and [development.md](../development/development.md).
+CI does **not** build an application. It validates that the template’s required files and docs stay coherent (`scripts/validate-template.sh` plus tests, including a shell-syntax job) on pull requests, pushes to `main`, and a weekly schedule (`validate-scheduled.yml`). CodeQL analyzes Actions workflow YAML. Dependency review runs on pull requests. OpenSSF Scorecard runs on `main` and on a weekly schedule for public supply-chain signals. See [ADR-002](../decisions/ADR-002-validation-in-ci.md) and [development.md](../development/development.md).
 
 ## Network posture
 
