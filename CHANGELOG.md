@@ -9,6 +9,12 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+### Changed
+
+## [0.2.4] — 2026-09-14
+
+### Added
+
 - Job `timeout-minutes` on CI, scheduled validate, and release workflows
 - Concurrency group on OpenSSF Scorecard workflow
 - Operations troubleshooting guide (`docs/operations/troubleshooting.md`)
@@ -95,7 +101,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 - Documented that the GitHub **template repository** flag is enabled and **Use this template** works now
 
-[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.2.3...HEAD
+[Unreleased]: https://github.com/rmkr-dev/enterprise-github-template/compare/v0.2.4...HEAD
+[0.2.4]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.4
 [0.2.3]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.3
 [0.2.2]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.2
 [0.2.1]: https://github.com/rmkr-dev/enterprise-github-template/releases/tag/v0.2.1
