@@ -76,6 +76,7 @@ assert_contains "Dependabot github-actions check" "OK: dependabot github-actions
 assert_contains "Scorecard persist-credentials" "OK: scorecard persist-credentials false" "$out"
 assert_contains "CodeQL languages actions" "OK: codeql languages actions" "$out"
 assert_contains "CodeQL security-events write" "OK: codeql security-events write" "$out"
+assert_contains "Scorecard publish_results" "OK: scorecard publish_results true" "$out"
 assert_contains "no Node/npm manifests" "OK: no Node/npm package manifests" "$out"
 
 # Negative: missing required file should fail
@@ -269,6 +270,16 @@ set +e
 cq_lang_rc=$?
 set -e
 assert_eq "validator fails when codeql lacks languages: actions" "1" "$cq_lang_rc"
+
+
+# Negative: scorecard.yml without publish_results: true should fail
+cp -a "$ROOT/." "$tmpdir/repo20"
+sed -i 's/publish_results: true/publish_results: false/' "$tmpdir/repo20/.github/workflows/scorecard.yml"
+set +e
+"$tmpdir/repo20/scripts/validate-template.sh" >/dev/null 2>&1
+pr_rc=$?
+set -e
+assert_eq "validator fails when scorecard lacks publish_results true" "1" "$pr_rc"
 
 if [[ "$fail" -ne 0 ]]; then
   echo "tests: FAILED" >&2
