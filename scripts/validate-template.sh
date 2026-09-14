@@ -152,6 +152,12 @@ if ! grep -qE '@[A-Za-z0-9_-]+' .github/CODEOWNERS; then
 else
   echo "OK: CODEOWNERS has owner"
 fi
+if ! grep -qE '^[[:space:]]*\*[[:space:]]+@' .github/CODEOWNERS; then
+  echo "MISSING catch-all * owner rule in .github/CODEOWNERS" >&2
+  fail=1
+else
+  echo "OK: CODEOWNERS has catch-all * rule"
+fi
 
 
 
