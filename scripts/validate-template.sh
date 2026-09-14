@@ -188,13 +188,20 @@ fi
 
 
 
-echo "==> Checking Scorecard checkout disables credential persistence"
-if ! grep -qE 'persist-credentials:[[:space:]]*false' .github/workflows/scorecard.yml; then
-  echo "MISSING persist-credentials: false in scorecard.yml" >&2
-  fail=1
-else
-  echo "OK: scorecard persist-credentials false"
-fi
+echo "==> Checking every workflow checkout disables credential persistence"
+for wf in .github/workflows/ci.yml .github/workflows/codeql.yml .github/workflows/dependency-review.yml .github/workflows/scorecard.yml .github/workflows/release.yml .github/workflows/validate-scheduled.yml; do
+  checkouts="$(grep -cE 'uses:[[:space:]]*actions/checkout@' "$wf" || true)"
+  persists="$(grep -cE 'persist-credentials:[[:space:]]*false' "$wf" || true)"
+  if [[ "$checkouts" -lt 1 ]]; then
+    echo "MISSING actions/checkout in $wf" >&2
+    fail=1
+  elif [[ "$persists" -lt "$checkouts" ]]; then
+    echo "MISSING persist-credentials: false for every checkout in $wf (checkouts=$checkouts persist-false=$persists)" >&2
+    fail=1
+  else
+    echo "OK persist-credentials: $wf ($persists/$checkouts)"
+  fi
+done
 
 echo "==> Checking CodeQL analyzes Actions workflows"
 if ! grep -qE 'languages:[[:space:]]*actions' .github/workflows/codeql.yml; then

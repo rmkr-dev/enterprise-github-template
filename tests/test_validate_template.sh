@@ -78,7 +78,12 @@ assert_contains "Release permissions check" "OK permissions: .github/workflows/r
 assert_contains "Release concurrency check" "OK concurrency: .github/workflows/release.yml" "$out"
 assert_contains "Dependabot github-actions check" "OK: dependabot github-actions ecosystem" "$out"
 assert_contains "Dependabot no npm ecosystem" "OK: dependabot has no npm/yarn/pnpm ecosystem" "$out"
-assert_contains "Scorecard persist-credentials" "OK: scorecard persist-credentials false" "$out"
+assert_contains "CI persist-credentials" "OK persist-credentials: .github/workflows/ci.yml" "$out"
+assert_contains "CodeQL persist-credentials" "OK persist-credentials: .github/workflows/codeql.yml" "$out"
+assert_contains "Dependency-review persist-credentials" "OK persist-credentials: .github/workflows/dependency-review.yml" "$out"
+assert_contains "Scorecard persist-credentials" "OK persist-credentials: .github/workflows/scorecard.yml" "$out"
+assert_contains "Release persist-credentials" "OK persist-credentials: .github/workflows/release.yml" "$out"
+assert_contains "Scheduled persist-credentials" "OK persist-credentials: .github/workflows/validate-scheduled.yml" "$out"
 assert_contains "CodeQL languages actions" "OK: codeql languages actions" "$out"
 assert_contains "CodeQL security-events write" "OK: codeql security-events write" "$out"
 assert_contains "CodeQL schedule" "OK: codeql schedule" "$out"
@@ -244,6 +249,15 @@ set +e
 pc_rc=$?
 set -e
 assert_eq "validator fails when scorecard lacks persist-credentials false" "1" "$pc_rc"
+
+# Negative: ci.yml with checkout but no persist-credentials: false should fail
+cp -a "$ROOT/." "$tmpdir/repo15b"
+sed -i '/persist-credentials:/d' "$tmpdir/repo15b/.github/workflows/ci.yml"
+set +e
+"$tmpdir/repo15b/scripts/validate-template.sh" >/dev/null 2>&1
+ci_pc_rc=$?
+set -e
+assert_eq "validator fails when ci.yml lacks persist-credentials false" "1" "$ci_pc_rc"
 
 
 # Negative: CODEOWNERS with owner but no catch-all * should fail
