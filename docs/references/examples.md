@@ -1,6 +1,6 @@
 # Examples: evolving a derived repository
 
-This template is **not** a sample application. After **Use this template**, the derived repo should grow into a real product in small, honest slices. The sketches below show a reasonable order for **Java**, **Python**, and **Azure/AKS** consumers. They are guidance, not files that ship in this template.
+This template is **not** a sample application. After **Use this template**, the derived repo should grow into a real product in small, honest slices. The sketches below show a reasonable order for **Java**, **Python**, **Go**, and **Azure/AKS** consumers. They are guidance, not files that ship in this template.
 
 ## Shared first steps (any language)
 
@@ -38,6 +38,20 @@ Typical order after the shared steps:
 
 Prefer the language’s native tooling. Do not introduce Node/npm solely for documentation.
 
+## Go sketch
+
+Typical order after the shared steps:
+
+| Slice | What lands | What stays honest |
+| --- | --- | --- |
+| 1. Module skeleton | `go.mod`, package layout, no fake HTTP handlers claiming production APIs | README describes the real module purpose |
+| 2. Tests | `go test` for real behavior | CI runs tests only after they exist |
+| 3. App CI | Workflow: checkout → Go setup → `go test ./...` | Keep or retire template validation deliberately |
+| 4. Supply chain | Dependabot `gomod` ecosystem; extend CodeQL with `go` | Document module proxy / private module needs if any |
+| 5. Architecture | ADRs for module boundaries and deploy target | No containers/K8s diagrams until those artifacts exist |
+
+Prefer Go’s native tooling. Do not introduce Node/npm solely for documentation.
+
 ## Azure / AKS sketch
 
 Typical order after the shared steps, when the derived product will run on **Azure Kubernetes Service**. Docs-only guidance for consumers — this template still ships **no** manifests, Helm charts, or Terraform.
@@ -59,7 +73,7 @@ Typical order after the shared steps, when the derived product will run on **Azu
 
 ## What not to copy from these sketches into the template
 
-- Sample `pom.xml`, `pyproject.toml`, or application source
+- Sample `pom.xml`, `pyproject.toml`, `go.mod`, or application source
 - Language package managers or lockfiles in **this** template repository
 - Fake “hello world” services added only to make CI look busy
 - Sample Dockerfile, Helm chart, Terraform, or AKS manifests in **this** template repository
