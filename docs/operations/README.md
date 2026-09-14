@@ -10,5 +10,6 @@ Maintainer-facing notes for operating **this template repository**.
 | [tagging.md](tagging.md) | Tag naming and release workflow trigger |
 | [branch-protection.md](branch-protection.md) | Recommended `main` protection and required checks |
 | [troubleshooting.md](troubleshooting.md) | Common CI/docs/release failure modes |
+| [secrets-and-oidc.md](secrets-and-oidc.md) | Secrets hygiene and OIDC preference for derived repos |
 
 Application runbooks do not belong here until a derived product introduces a runtime.

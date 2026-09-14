@@ -98,6 +98,7 @@ GitHub Actions runs those same checks on pull requests, pushes to `main`, and on
 | [Security](docs/security/security.md) | Baseline security expectations |
 | [Operations](docs/operations/README.md) | Maintainer ops for this template |
 | [Troubleshooting](docs/operations/troubleshooting.md) | Common CI/docs/release failure modes |
+| [Secrets and OIDC](docs/operations/secrets-and-oidc.md) | Credential hygiene for derived repos |
 | [Release process](docs/operations/release-process.md) | Tagging and template releases |
 | [Tagging](docs/operations/tagging.md) | `v*` tags and the release workflow |
 | [Branch protection](docs/operations/branch-protection.md) | Recommended required checks |

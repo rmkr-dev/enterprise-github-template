@@ -42,7 +42,10 @@ When you create a product repo from this template:
 - Paid scanners as a merge gate
 - Company names or private support emails in the template
 
-## Related community docs
+## Related
+
+- [Secrets and OIDC hygiene](../operations/secrets-and-oidc.md)
+ community docs
 
 - Vulnerability reporting: [SECURITY.md](../../SECURITY.md)
 - Incident response (template-scoped): [docs/operations/incident-response.md](../operations/incident-response.md)
